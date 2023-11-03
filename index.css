@@ -8,3 +8,22 @@ h2 {
     border-bottom-style:solid;
     border-color:blue;
 }
+
+.header {
+    padding: 10px;
+    color: rgb(141, 206, 206);
+    text-align: left;
+    background-color:darkslategray;
+    margin-bottom: 20px;
+  }
+  .footer {
+    padding: 10px;
+    color: rgb(141, 206, 206);
+    text-align: left;
+    background-color:darkslategray;
+  }
+  
+  .container-fluid {
+    margin: 10px;
+  }
+    
