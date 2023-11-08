@@ -1,4 +1,4 @@
-/* stylelint-disable stylistic/selector-list-comma-newline-after */
+/* style lint-disable stylistic/selector-list-comma-newline-after */
 
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
@@ -36,4 +36,22 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post-meta {
   margin-bottom: 1.25rem;
   color: #727272;
+}
+
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: floatUp 1.5s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
