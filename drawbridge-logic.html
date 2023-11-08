@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawbridge Logic Puzzle</title>
+</head>
+
+<body>
+    <h1>Wolf Logic Puzzle</h1>
+    <p>There are two wolves in front of a duck, two wolves behind a wolf, and a wolf in the middle. How many wolves are there? (Answer with a number)</p>
+    <input type="number" id="answer" placeholder="Enter your answer">
+    <button onclick="checkAnswer()">Check Answer</button>
+    <p id="result"></p>
+
+</body>
+
+<script>
+    function checkAnswer() {
+    var userAnswer = document.getElementById('answer').value;
+    var correctAnswer = 3; // The correct answer to the puzzle
+
+    if (userAnswer == correctAnswer) {
+        document.getElementById('result').textContent = 'Bravo to you. You continue with your search for the ______';
+    } else {
+        document.getElementById('result').textContent = 'Wrong answer. ';
+    }
+}
+
+</script>
+
+</html>
