@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-  <script src="color-modes.js"></script>
+  <script src="js/color-modes.js"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +12,11 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-  <link href="bootstrap.min.css" rel="stylesheet">
-  <link href="blog.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/blog.css" rel="stylesheet">
 
   <style>
-   
+
   </style>
 
 
@@ -43,7 +43,7 @@
       </div>
     </header>
 
-    
+
   </div>
 
   <main class="container">
@@ -51,13 +51,31 @@
       <div class="col-lg-6 px-0">
         <h1 class="display-5 fst-italic">You wake in a dim room....</h1>
         <div id="hidden">
+          <p class="lead my-3" style="display:none;">There are subtle shapes of furniture covered in sheets not far from
+            the walls</p>
           <p class="lead my-3" style="display: none;">You push yourself off of the floor, and you feel the cold
-            bitterness of a stone floor...
-          </p>
+            bitterness of a stone floor...</p>
           <p class="lead my-3" style="display: none;">The cobbles beneath you make standing hard...</p>
           <p class="lead my-3" style="display: none;">Fumbling along the walls, your hand brushes against something
             warm...</p>
         </div>
+        <div id="investigateWarm">
+          <p class="lead my-3" style="display:none;">You realize the fabric is fur lining the walls...</p>
+          <p class="lead my-3" style="display:none;">You follow the fur</p>
+          <p class="lead my-3" style="display:none;">The fur ends </p>
+          <p class="lead my-3" style="display:none;">Your hand goes back to the fur, you are confused by its warmth...</p>
+          <p class="lead my-3" style="display:none;">You realize the fur is a part of a hanging deer, still warm from the hunt</p>
+          <p class="lead my-3" style="display:none;">You begin to hear the dripping of the blood onto the floor</p>
+          <p class="lead my-3" style="display:none;">Fear courses through you, you are alone in this room with the dead deer</p>
+          <p class="lead my-3" style="display:none;">Panicked, you quickly move to the other side of the room to try to find a door</p>
+        </div>
+
+        <div id ="keepMoving">
+          <p class="lead my-3" style="display:none;">You continue to run your hands along the wall, hoping to find a knob</p>
+          <p class="lead my-3" style="display:none;">You hand touches a handle</p>
+          <p class="lead my-3" style="display:none;">You try to push and pull, but the door does not budge</p>
+        </div>
+
         <button type="button" class="btn btn-outline-light" onclick="advanceText()">Advance</button>
       </div>
     </div>
@@ -66,20 +84,16 @@
       <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-150 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
-           
+
             <a class="mb-0 stretched-link icon-link-hover gap-1" href="#">Investigate the warm feeling</a>
-            </div>
-          
+          </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-150 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
-         
             <a class="mb-0 stretched-link icon-link-hover gap-1" href="#">Keep moving on</a>
-     
           </div>
-         
         </div>
       </div>
     </div>
@@ -110,17 +124,17 @@
     var linksContainer = document.getElementById("links");
 
     function advanceText() {
-        if (currentIndex < textElements.length) {
-            textElements[currentIndex].style.display = "block";
-            currentIndex++;
-        }
+      if (currentIndex < textElements.length) {
+        textElements[currentIndex].style.display = "block";
+        currentIndex++;
+      }
 
-        if (currentIndex >= textElements.length) {
-            advanceButton.style.display = "none"; // Hide the "Advance" button
-            linksContainer.style.display = "block"; // Show the links
-        }
+      if (currentIndex >= textElements.length) {
+        advanceButton.style.display = "none"; // Hide the "Advance" button
+        linksContainer.style.display = "block"; // Show the links
+      }
     }
-   
+
   </script>
 
 </body>
