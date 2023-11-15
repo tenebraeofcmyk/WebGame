@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Local Storage</title>
+</head>
+<body>
+
+<h1>Clear Local Storage</h1>
+
+<button onclick="clearLocalStorage()">Clear Local Storage</button>
+<button onclick="goToNextPage()">Go to Next Page</button>
+
+<script>
+    function clearLocalStorage() {
+        localStorage.clear();
+        alert('Local storage has been cleared!');
+    }
+
+    function goToNextPage(){
+        window.location.href = 'countertestwithwordproblem.html';
+    }
+</script>
+
+</body>
+</html>

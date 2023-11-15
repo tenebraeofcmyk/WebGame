@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Local Storage</title>
+</head>
+<body>
+
+    <p style="font-weight: bold;">Inventory</p>
+    <p>Coins: <span id="correctCount"></span></p> 
+    <h1>Next Puzzle Page!</h1>
+
+    <script>
+        let correctAnswers = localStorage.getItem('correctAnswers') || 0;
+        document.getElementById('correctCount').textContent = correctAnswers;
+    </script>
+
+</body>
+</html>

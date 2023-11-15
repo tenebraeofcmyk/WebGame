@@ -6,55 +6,45 @@
     <title>Quiz</title>
 </head>
 <body>
-
-
-    <!--Clear local storage on page load. In real game this would be part of start page-->
-    <button onclick="clearlocalbutton()">Clear Local Storage</button>
     
     <p style="font-weight: bold;">Inventory</p>
     <p>Coins: <span id="correctCount"></span></p> 
-      <h1>The Courtyard</h1>
-      <div id="problem">
-      </div>
-      <div id="userInput" style="display: none;">
+    <h1>The Courtyard</h1>
+    <div id="problem"></div>
+    <div id="userInput" style="display: none;">
         <br>
         <label for="userAnswer">Your Answer: $</label>
         <input type="text" id="userAnswer">
         <button id="submitBtn">Submit</button>
         <br>
-      </div>
-      <br>
-      <div id="result"></div>
-      <br>
-      
-      <button id="ShowPuzzleButton" onclick="WPpuzzleroom3()">Show Puzzle</button> 
-        
-      <div id="result">
-
+    </div>
+    <br>
+    <div id="result"></div>
+    <br>
+    <div>
+        <button id="ShowPuzzleButton" onclick="WPpuzzleroom3()">New Puzzle</button> 
+        <button id="goToNextRoom" onclick="goToNextRoom()">Move On</button>
+    </div>
 
     <!--Javascript-->        
     <script>
 
-
-    //function clearlocalbutton() {
-        // Clear local storage on page load
-      //  localStorage.clear(); 
-    //}
-
-
     // Load correct answer count from local storage on page load
     let correctAnswers = localStorage.getItem('correctAnswers') || 0;
     document.getElementById('correctCount').textContent = correctAnswers;
+    document.getElementById("goToNextRoom").style.display = "none";
 
+    function goToNextRoom() {
+        window.location.href = 'testnextpage.html';
+    }
 
-
-    //
     function WPpuzzleroom3() {
         
         //Initial Display
         document.getElementById("result").innerHTML = '';
         document.getElementById("ShowPuzzleButton").style.display = "none";
         document.getElementById("userAnswer").value='';
+        document.getElementById("goToNextRoom").style.display = "none";
 
         //Equation    
         const num1 = Math.floor(Math.random() * 107) + 52;
@@ -79,21 +69,27 @@
                 // Save correct answer count to local storage
                 localStorage.setItem('correctAnswers', correctAnswers);
                 updateCorrectCount();
-            
-            } else {
+
+                document.getElementById("goToNextRoom").style.display = "block";
+                document.getElementById("ShowPuzzleButton").style.display = "block";
+            } 
+
+            else {
                     document.getElementById("result").innerHTML = `Sorry, the correct answer is ${correctAnswer}. Keep practicing!`;
+                    document.getElementById("ShowPuzzleButton").style.display = "block";
             }
     
             // Hide the input field after submitting
             document.getElementById("problem").innerHTML = '';
             document.getElementById("userInput").style.display = "none";
-            document.getElementById("ShowPuzzleButton").style.display = "block";
 
             function updateCorrectCount() {
                 document.getElementById('correctCount').textContent = correctAnswers;
             }
         }
+       
     }
+    
 
 </script>
 
