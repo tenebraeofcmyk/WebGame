@@ -9,8 +9,6 @@ window.onload = (event) => {
   //console.log(advanceTextBtn);
 
   // Text to display line by line
-  const text = "This is line 1.\nThis is line 2.\nAnd this is line 3.";
-
   const storyPt1 = [
                     "You wake in a dim room....",
                     "There are subtle shapes of furniture covered in sheets not far from the walls",
@@ -18,7 +16,25 @@ window.onload = (event) => {
                     "The cobbles beneath you make standing hard...",
                   ];
   
-  //display text line by line                
+//nested object of story chunks
+  storyObj = {
+      storyPt1 : [
+        "You wake in a dim room....",
+        "There are subtle shapes of furniture covered in sheets not far from the walls",
+        "You push yourself off of the floor, and you feel the cold bitterness of a stone floor...",
+        "The cobbles beneath you make standing hard...",
+      ], 
+      storyPt2 : [
+
+      ],
+    };
+
+  //   nestedObj[storyPt1] = 
+
+  /**
+  * Display text line by line with a delay.
+  * @param {string[]} textArray - An array of strings representing the lines of text.
+  */              
   function displayText(textArray) {
     //console.log(textArray);
 
