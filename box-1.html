@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="js/color-modes.js"></script>
+  <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+
+  <title>The First Box</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/blog.css" rel="stylesheet">
+
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #000;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="blog.css" rel="stylesheet">
+</head>
+
+<body>  
+    <h1>Nonogram Puzzle</h1>
+    <p>These boxes are really hard to open, you will need to unlock the puzzle on each box to see inside. Use hints on the left and top edges to solve the puzzle.</p>
+    <table id="nonogram">
+    </table>
+    <div id="message"></div>
+    
+    <script>
+      const puzzleData = [
+        [1, 1, 0, 0, 0, 1, 1, 1],
+        [1, 0, 1, 0, 1, 0, 0, 1],
+        [0, 0, 1, 0, 1, 1, 0, 0],
+        [0, 1, 0, 1, 0, 0, 1, 1],
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1]
+      ];
+    
+      const rowHints = [
+        [2],
+        [1, 1],
+        [1, 1],
+        [2],
+        [1, 1],
+        [1, 1],
+        [1, 1],
+        [1, 1]
+      ];
+    
+      const colHints = [
+        [1, 1],
+        [2],
+        [1, 1],
+        [2],
+        [1, 1],
+        [2],
+        [1, 1],
+        [2]
+      ];
+    
+      const table = document.getElementById('nonogram');
+      const messageDiv = document.getElementById('message');
+    
+      // Populate the table with cells and hints
+      for (let i = 0; i < puzzleData.length; i++) {
+        const row = document.createElement('tr');
+    
+        // Create row hints
+        const hintCell = document.createElement('td');
+        hintCell.textContent = rowHints[i].join(' ');
+        row.appendChild(hintCell);
+    
+        // Create puzzle cells
+        for (let j = 0; j < puzzleData[i].length; j++) {
+          const cell = document.createElement('td');
+          cell.addEventListener('click', () => toggleCell(i, j));
+          row.appendChild(cell);
+        }
+    
+        table.appendChild(row);
+      }
+    
+      // Create column hints
+      const hintRow = document.createElement('tr');
+      hintRow.innerHTML = '<td></td>'; // Empty cell in the top-left corner
+      for (let i = 0; i < colHints.length; i++) {
+        const hintCell = document.createElement('td');
+        hintCell.textContent = colHints[i].join(' ');
+        hintRow.appendChild(hintCell);
+      }
+      table.appendChild(hintRow);
+    
+      // Function to toggle the state of a cell (0 or 1)
+      function toggleCell(row, col) {
+        puzzleData[row][col] = 1 - puzzleData[row][col]; // Toggle between 0 and 1
+        updateTable();
+      }
+    
+      // Update the table based on the puzzle data
+      function updateTable() {
+        const rows = table.getElementsByTagName('tr');
+        for (let i = 0; i < puzzleData.length; i++) {
+          const cells = rows[i + 1].getElementsByTagName('td');
+          for (let j = 0; j < puzzleData[i].length; j++) {
+            cells[j].textContent = puzzleData[i][j];
+            cells[j].style.backgroundColor = puzzleData[i][j] ? '#000' : '#fff';
+            cells[j].style.color = puzzleData[i][j] ? '#fff' : '#000';
+          }
+        }
+    
+        // Check if the puzzle is completed
+        if (isPuzzleCompleted()) {
+          messageDiv.textContent = 'With the puzzle completed, you hear the box pop open!';
+        } else {
+          messageDiv.textContent = '';
+        }
+      }
+    
+      // Function to check if the puzzle is completed
+      function isPuzzleCompleted() {
+        for (let i = 0; i < puzzleData.length; i++) {
+          for (let j = 0; j < puzzleData[i].length; j++) {
+            if (puzzleData[i][j] !== 1) {
+              return false; // Puzzle is not completed
+            }
+          }
+        }
+        return true; // Puzzle is completed
+      }
+    
+      // Initial table update
+      updateTable();
+    </script>
+    
+    </body>
+    </html>

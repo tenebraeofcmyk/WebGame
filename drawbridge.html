@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="js/color-modes.js"></script>
+  <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+
+  <title>At the Drawbridge Puzzle</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/blog.css" rel="stylesheet">
+
+  <style>
+
+  </style>
+
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Wolf Logic Puzzle</h1>
+    <p>There are two wolves in front of a wolf, two wolves behind a wolf, and a wolf in the middle. How many wolves are there? (Answer with a number)</p>
+    <input type="number" id="answer" placeholder="Enter your answer">
+    <button onclick="checkAnswer()">Check Answer</button>
+    <p id="result"></p>
+
+</body>
+
+<script>
+    function checkAnswer() {
+    var userAnswer = document.getElementById('answer').value;
+    var correctAnswer = 3; // The correct answer to the puzzle
+
+    if (userAnswer == correctAnswer) {
+        document.getElementById('result').textContent = 'Bravo to you. You continue with your search for the ______';
+    } else {
+        document.getElementById('result').textContent = 'Wrong answer. ';
+    }
+}
+
+</script>
+
+</html>
