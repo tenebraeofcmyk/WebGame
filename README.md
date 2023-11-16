@@ -8,6 +8,7 @@ Function -
 Legibility - 
     Being readable based on font
     Script must be engaging, not confusing to user
+    All Javascript must be completed in CamelCase to maintain uniformity
 Puzzles - 
     Having the correct answer for each puzzle
     Using language that is challenging, but not confusing
