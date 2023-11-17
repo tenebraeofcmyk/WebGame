@@ -65,7 +65,7 @@ window.onload = (event) => {
     }
 
     let currentChapter = "start";
-   
+
 
     function displayChapter() {
         console.log('Entering displayChapter. Current chapter:', currentChapter);
@@ -95,7 +95,7 @@ window.onload = (event) => {
     document.getElementById("continueSearchB").addEventListener('click', continueSearch);
     document.getElementById("kickDoorB").addEventListener('click', kickDoor);
 
-    document.getElementById('lightTorchB').addEventListener('click', lightTorch);
+    document.getElementById('lightTorchButton').addEventListener('click', lightTorch);
 
     const torchIcon = document.getElementById("torchIcon");
 
@@ -106,33 +106,47 @@ window.onload = (event) => {
 
         switch (currentChapter) {
             case "start":
-                console.log('Switch case: start');
+                //console.log('Switch case: start');
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "none";
-                currentChapter = "start";
                 break;
             case "investigateWarm":
-                console.log('Switch case: investigateWarm');
-                continueKick.style.display='block';
+                //  console.log('Switch case: investigateWarm');
+                continueKick.style.display = 'block';
                 break;
             case "keepMoving":
                 console.log('Switch case:keepMoving');
+                //currentChapter="";
 
                 break;
-                case "lightTorch":
-                    console.log('Switch to light Torch');
-                    currentChapter="plaqueDoors";
+            case "continueSearch":
+                console.log('Switch case:continueSearch');
+                // currentChapter = "lightTorch";
                 break;
+            case "kickDoor":
+                console.log('Switch case:kickDoor');
+                currentChapter = "lightTorch";
+                lightTorchButton.style.display = 'block';
+                nextButton.style.display = "none";
+                break;
+            case "lightTorch":
+                console.log('Switch to light Torch');
+              currentChapter = "plaqueDoors";
+                break;
+            case "plaqueDoors":
+                currentChapter = "plaqueRead";
+                console.log('Switch to plaqueDoors');
+                lightTorchButton.style.display = 'none';
+                break;
+
+
             // Add more cases as needed
         }
-
-        // Remove the event listener after the click
         document.getElementById('nextButton').removeEventListener('click', nextChapter);
-
-        // Display the next chapter
         displayChapter();
-    }
+    
     document.getElementById('nextButton').addEventListener('click', nextChapter);
+    }
 
     function investigateWarm() {
         currentChapter = "investigateWarm";
@@ -141,28 +155,33 @@ window.onload = (event) => {
         displayChapter();
     }
     function keepMoving() {
-        currentChapter ="keepMoving";
-        continueKick.style.display='block';
+        currentChapter = "keepMoving";
+        continueKick.style.display = 'block'; 
         buttonContainer.style.display = 'none';
         displayChapter();
     }
     function continueSearch() {
-        currentChapter ="continueSearch";
-        lightTorchB.style.display ='block';
+        currentChapter = "continueSearch";
         displayChapter();
     }
 
-    function kickDoor(){
-        currentChapter="kickDoor";
-        continueKick.style.display='none';
-        lightTorchB.style.display ='block';
+    function kickDoor() {
+        console.log ("function kick Door ran");
+        currentChapter = "kickDoor";
+        nextButton.style.display = "block";
+        continueKick.style.display = 'none';
         displayChapter();
     }
-    function lightTorch(){
+    function lightTorch() {
+        console.log("function lightTorch ran");
         currentChapter="lightTorch";
-        lightTorchB.style.display ='none';
-        torchIcon.style.display='block';
+        torchIcon.style.display = 'block';
+        lightTorchButton.style.display = 'none';
         nextButton.style.display = "block";
+        nextChapter();
+    }
+    function plaqueDoors() {
+        currentChapter = "plaqueDoors";
         displayChapter();
     }
 }
