@@ -53,28 +53,31 @@
         <h1 class="display-5 fst-italic">You wake in a dim room....</h1>
         <div id="scriptContainer"></div>
         <button id="nextButton" class="btn btn-outline-light"> Next</button>
-
+        <button id="lightTorchB" class="btn btn-outline-light" style="display:none"> Light Torch</button>
       </div>
     </div>
 
-    <div class="row mb-2" id="buttonContainer" style="display: none;">
-      <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-150 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <button type="button" class="btn btn-outline-light" id="investigateWarm">Investigate the warm
-              feeling</button>
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-150 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
+    <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
+      <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="investigateWarmB">Investigate the warm
+          feeling</button>
 
-                  <button type="button" class="btn btn-outline-light" id="keepMoving">Keep moving on</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="keepMovingB">Keep moving on</button>
+        
       </div>
     </div>
+    <div class="row mb-2 align-left" id="continueKick" style="display: none;">
+      <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="continueSearchB">Continue searching</button>
+
+        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="kickDoorB">Kick down the door</button>
+        
+      </div>
+    </div>
+
+   <div id ="flint"></div>
+    
+    
 
 
 
