@@ -20,7 +20,8 @@
     
     <p style="font-weight: bold;">Inventory</p>
     <p>Coins: <span id="correctCount"></span></p> 
-    <h1>The Courtyard</h1>
+    <h1>Puzzle1</h1>
+    <p>You are so glad you stopped as the market for candy before embarking on your journey. </p>
     <div id="problem"></div>
     <div id="userInput" style="display: none;">
         <br>
@@ -65,7 +66,7 @@
         const correctAnswer = (num2 * num3);
         
         //problem and userInput visible
-        document.getElementById("problem").innerHTML = `Oliver buys candy for $${num2} per bag. If he buy ${num3} bags, how much does he spend?`;
+        document.getElementById("problem").innerHTML = `You bought candy for $${num2} per bag. If you bought ${num3} bags, how much does you spend?`;
         document.getElementById("userInput").style.display = "block";
     
         // Check the answer when the user submits
@@ -97,72 +98,9 @@
             function updateCorrectCount() {
                 document.getElementById('correctCount').textContent = correctAnswers;
             }
+        }  
         }
-       
-    }
-    
-
-</script>
-
-
-
-
-
-
-<!--   
-
-function checkAnswer() {
-    const userAnswer = document.getElementById('userInput');
-    const correctAnswer = (num2 * num3);
-
-    if (userAnswer = correctAnswer) {
-        alert('Correct!');
-        correctAnswers++;
-        updateCorrectCount();
-    } else {
-        alert('Incorrect. Try again!');
-    }
-    }   
-
-    function updateCorrectCount() {
-    document.getElementById('correctCount').textContent = correctAnswers;
-    }
-
-
-
-<h1>Quiz Time!</h1>
-
-<div id="question">
-    <p>What is the capital of France?</p>
-    <input type="text" id="answer">
-    <button onclick="checkAnswer()">Submit</button>
-</div>
-
-<div id="result">
-    <p>Correct Answers: <span id="correctCount">0</span></p> </div>
-
-<script>
-    let correctAnswers = 0;
-
-    function checkAnswer() {
-        const userAnswer = document.getElementById('answer').value.toLowerCase();
-        const correctAnswer = 'paris';
-
-        if (userAnswer === correctAnswer) {
-            alert('Correct!');
-            correctAnswers++;
-            updateCorrectCount();
-        } else {
-            alert('Incorrect. Try again!');
-        }
-    }
-
-    function updateCorrectCount() {
-        document.getElementById('correctCount').textContent = correctAnswers;
-    }
-</script>
-
--->
+    </script>
 
 </body>
 </html>
