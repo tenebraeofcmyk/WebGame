@@ -58,10 +58,47 @@ window.onload = (event) => {
                 "Avoid the doom, take heed and be shrewd.",
                 "Tell me, dear author, which door should be pursued?"
             ]
+        },
+
+        firstDoor: {
+            lines: [
+                "This is not the door.",
+                "It opens to a long stairwell that gets colder as you go down the spiral of stairs.",
+                "You find an empty dungeon with a whistling wind.",
+                "You wonder why there is a wind coming from a dungeon.",
+                "You investigate."
+            ]
+        },
+        findPick: {
+            lines: [
+                "In one of the cells, you see a dim light.",
+                "The cell is missing a rock cobble in the wall. This lets in a jagged hole of light.",
+                "Below the light source you see an iron pick on the floor."
+            ]
+        },
+        // ([Button]:Iron Pick.]Show iron pick in Inventory) (ironPick) 
+
+        backUp: {
+            lines: [
+                "You go back up the stairs since there is no exit or interest."
+            ]
+        },
+
+        secondDoor: {
+            lines: [
+                "This is not the door.",
+                "When you rattle the door handle this time, you hear chains clinking behind the door, followed by the rustling of dogs that begin to howl and bark ferociously.",
+                "Time to choose another door."
+            ]
+        },
+
+        thirdDoor: {
+            lines: [
+                "This is the door.",
+                "When you rattle the door, the age of the lock stops you from opening it the first time. You try one more time, and the hinges creak.",
+                "You step through the doorway, leaving the darkness behind with your torch in hand, and you enter a gray-ish lit hall."
+            ]
         }
-
-
-
     }
 
     let currentChapter = "start";
@@ -97,7 +134,16 @@ window.onload = (event) => {
 
     document.getElementById('lightTorchButton').addEventListener('click', lightTorch);
 
+    document.getElementById('takePickButton').addEventListener('click', takePick);
+
     const torchIcon = document.getElementById("torchIcon");
+    const ironPickIcon = document.getElementById("ironPickIcon");
+    
+
+    const doorChoice = document.getElementById("doorChoice");
+    document.getElementById("firstDoorB").addEventListener('click', selectFirstDoor);
+    document.getElementById("secondDoorB").addEventListener('click', selectSecondDoor);
+    document.getElementById("thirdDoorB").addEventListener('click', selectThirdDoor);
 
 
     function nextChapter() {
@@ -113,15 +159,15 @@ window.onload = (event) => {
             case "investigateWarm":
                 //  console.log('Switch case: investigateWarm');
                 continueKick.style.display = 'block';
+                nextButton.style.display = "none";
+                currentChapter = "keepMoving";
                 break;
             case "keepMoving":
                 console.log('Switch case:keepMoving');
-                //currentChapter="";
+                currentChapter = "lightTorch";
+                lightTorchButton.style.display = 'block';
+                nextButton.style.display = "none";
 
-                break;
-            case "continueSearch":
-                console.log('Switch case:continueSearch');
-                // currentChapter = "lightTorch";
                 break;
             case "kickDoor":
                 console.log('Switch case:kickDoor');
@@ -131,21 +177,39 @@ window.onload = (event) => {
                 break;
             case "lightTorch":
                 console.log('Switch to light Torch');
-              currentChapter = "plaqueDoors";
-                break;
-            case "plaqueDoors":
                 currentChapter = "plaqueRead";
-                console.log('Switch to plaqueDoors');
-                lightTorchButton.style.display = 'none';
                 break;
+
+            case "plaqueRead":
+                console.log('Switch to plaqueRead');
+                lightTorchButton.style.display = 'none';
+                doorChoice.style.display = 'block';
+                break;
+            case "firstDoor":
+                console.log('Switch to firstDoor');
+                currentChapter = "findPick";
+                nextButton.style.display = "none";
+                takePickButton.style.display = "block";
+                break;
+            case "backUp":
+                console.log('Switch to backUp');
+                currentChapter = "plaqueRead";
+                nextButton.style.display = "none";
+                doorChoice.style.display = 'block';
+                break;
+            case "secondDoor":
+                console.log('switch to secondDoor');
+                currentChapter = "plaqueRead";
+                break;
+
 
 
             // Add more cases as needed
         }
         document.getElementById('nextButton').removeEventListener('click', nextChapter);
         displayChapter();
-    
-    document.getElementById('nextButton').addEventListener('click', nextChapter);
+
+        document.getElementById('nextButton').addEventListener('click', nextChapter);
     }
 
     function investigateWarm() {
@@ -156,17 +220,22 @@ window.onload = (event) => {
     }
     function keepMoving() {
         currentChapter = "keepMoving";
-        continueKick.style.display = 'block'; 
+        continueKick.style.display = 'block';
         buttonContainer.style.display = 'none';
         displayChapter();
     }
     function continueSearch() {
-        currentChapter = "continueSearch";
+        console.log('Function continueSearch ran');
+        currentChapter = "lightTorch";
+        lightTorchButton.style.display = 'block';
+        nextButton.style.display = "none";
+        buttonContainer.style.display = 'none';
+        continueKick.style.display = 'none';
         displayChapter();
     }
 
     function kickDoor() {
-        console.log ("function kick Door ran");
+        console.log("function kick Door ran");
         currentChapter = "kickDoor";
         nextButton.style.display = "block";
         continueKick.style.display = 'none';
@@ -174,14 +243,44 @@ window.onload = (event) => {
     }
     function lightTorch() {
         console.log("function lightTorch ran");
-        currentChapter="lightTorch";
+        currentChapter = "lightTorch";
         torchIcon.style.display = 'block';
         lightTorchButton.style.display = 'none';
-        nextButton.style.display = "block";
+        nextButton.style.display = "none";
+        doorChoice.style.display = 'block';
         nextChapter();
     }
-    function plaqueDoors() {
-        currentChapter = "plaqueDoors";
+
+    function selectFirstDoor() {
+        console.log("first door selected");
+        currentChapter = "firstDoor";
+        nextButton.style.display = "block";
+        doorChoice.style.display = 'none';
+        displayChapter();
+    }
+    function takePick() {
+        console.log("you take the iron pick");
+        takePickButton.style.display = "none";
+        nextButton.style.display = "block";
+        ironPickIcon.style.display = 'block';
+        currentChapter = "backUp";
+        displayChapter();
+    }
+
+    function selectSecondDoor() {
+        console.log("second door selected");
+        currentChapter = "secondDoor";
+        doorChoice.style.display = 'none';
+        nextButton.style.display = "block";
+        displayChapter();
+    }
+
+    function selectThirdDoor() {
+        console.log("third door selected");
+        currentChapter ="thirdDoor";
+        doorChoice.style.display = 'none';
+        nextButton.style.display = "none";
         displayChapter();
     }
 }
+

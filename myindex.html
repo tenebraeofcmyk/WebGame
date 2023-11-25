@@ -54,27 +54,43 @@
         <div id="scriptContainer"></div>
         <button id="nextButton" class="btn btn-outline-light"> Next</button>
         <button id="lightTorchButton" class="btn btn-outline-light" style="display:none"> Light Torch</button>
+        <button id="takePickButton" class="btn btn-outline-light" style="display:none"> Take Iron Pick</button>
       </div>
     </div>
 
     <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
       <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="investigateWarmB">Investigate the warm
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+          id="investigateWarmB">Investigate the warm
           feeling</button>
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="keepMovingB">Keep moving on</button>
-        
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="keepMovingB">Keep
+          moving on</button>
+
       </div>
     </div>
     <div class="row mb-2 align-left" id="continueKick" style="display: none;">
       <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="continueSearchB">Continue searching</button>
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+          id="continueSearchB">Continue searching</button>
 
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="kickDoorB">Kick down the door</button>
-        
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="kickDoorB">Kick down
+          the door</button>
+
+      </div>
+    </div>
+    <div class="row mb-2 align-left" id="doorChoice" style="display: none;">
+      <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="firstDoorB">First
+          Door</button>
+
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="secondDoorB">Second
+          Door</button>
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="thirdDoorB">Third
+          Door</button>
       </div>
     </div>
 
-   
+
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
@@ -84,10 +100,16 @@
           <div id="flint">
             <i class="fa-solid fa-fire-flame-curved fa-xl" id="torchIcon" style="display:none;margin:10px"></i>
           </div>
+          <div id="pick">
+            <i class="fa-solid fa-trowel fa-xl" id="ironPickIcon" style="display:none; margin:10px"></i>
+          </div>
           <div id="candy">
-            
+
           </div>
         </div>
+      </div>
+    </div>
+
 
 
   </main>
