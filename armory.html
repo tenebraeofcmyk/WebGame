@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
 
-  <title>Chase the Lights Puzzle</title>
+  <title>Fill the Stones</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -28,166 +28,88 @@
     }
   </style>
 
-  <!-- Custom styles for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="blog.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="container">
-        <header class="border-bottom lh-1 py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
-                <a class="link-secondary" href="#">About</a>
-            </div>
-            <div class="col-4 text-center">
-                <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">A Text Game</a>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                <a class="btn btn-sm btn-outline-secondary" href="#">Restart</a>
-            </div>
-            </div>
-        </header>
-    </div>
-
-  <!--used for debugging-->
-  <div id="textContainer"></div>
-
-  <main class="container">
-    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-      <div class="col-lg-6 px-0">
-        <h1 class="display-5 fst-italic">Every castle has an armory...</h1>
-        <div id="enteringArmory">
-            <p class="lead my-3" style="display:none;">You are interested in seeing if any damage happened to the knights of this castle, and you figure the armory could give clues to this.</p>
-            <p class="lead my-3" style="display: none;">Getting closer to the drawbridge reveals a door in the side of the alcove’s walls.</p>
-            <p class="lead my-3" style="display: none;">You realize that if you were not looking for a door you would not find it, it is hidden in the shadows. The wooden door is coated gray, hiding it even more in the shadows of the cobble.</p>
-            <p class="lead my-3" style="display: none;">As you look closely, the paint is designed to look like the cobble, and there are knobs in the center of each shape. You realize that to unlock the door, you need to press the buttons in the correct order.</p>
+  <div class="container">
+    <header class="border-bottom lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="link-secondary" href="#">About</a>
         </div>
-        <h1>Turn on all of the Cobble Stones</h1>
-        <button onclick="showPuzzle()">Play Puzzle</button>
-        <div id="puzzle-container" style="display: none;"></div>
-        
-        <button onclick="checkProgress()">Have I completed this room before?</button>
-        <div id="investigateArmory">
-            <p class="lead my-3" style="display:none;">Once you figure out the order, you walk into the room.</p>
-            <p class="lead my-3" style="display:none;">You see the walls are lined with maces, axes, broadswords, longswords, chains, and armor.</p>
-            <p class="lead my-3" style="display:none;">You keep searching for any clues.</p>
-            <p class="lead my-3" style="display:none;">In the corner, you see a pile of armor.</p>
-            <p class="lead my-3" style="display:none;">You inspect the armor and find it is filled with dead bodies, all of them collapsed on the floor.</p>
-            <p class="lead my-3" style="display:none;">You are surprised they are not fully rotted yet.</p>
-            <p class="lead my-3" style="display:none;">When you check the knights for signs of damage, you smell a musky smell that makes you scrunch your nose. It almost smells like a poison.</p>
-            <p class="lead my-3" style="display:none;">Concerned of their fate, you quickly turn out and leave the armory.</p>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">A Text Game</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <a class="btn btn-sm btn-outline-secondary" href="#">Restart</a>
         </div>
       </div>
-    </div>
+    </header>
+
+
+  </div>
+    <main class="container">
+      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+          <div class="col-lg-6 px-0">
+              <h1 class="display-5 fst-italic">Every Castle Has an Armory....</h1>
+              <div id="scriptContainer"></div>
+              <button id="nextButton" class="btn btn-outline-light">Next</button>
+          </div>
+      </div>
+  
+      <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
+          <div class="col p-4 d-flex">
+              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                  id="investigateDoorB">Investigate the Secret Door</button>
+              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                  id="enterArmoryB">Enter the Room</button>
+  
+          </div>
+      </div>
+      <div class="row mb-2 align-left" id="continueKick" style="display: none;">
+          <div class="col p-4 d-flex">
+              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                  id="continueSearchB">Continue searching</button>
+  
+              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                  id="investigateArmorB">Investigate the Armor</button>
+  
+          </div>
+      </div>
+  
+      <div class="col-md-4">
+          <div class="position-sticky" style="top: 2rem;">
+              <div class="p-4 mb-3 bg-body-tertiary rounded">
+                  <h4 class="fst-italic">Inventory</h4>
+                  <p class="mb-0">All the stuff you have collected</p>
+                  <div id="torchIcon" style="display:none">
+                      <i class="fa-solid fa-fire-flame-curved fa-xl"> <var>1 Torch</var></i>
+                  </div>
+                  <div id="ironPickIcon" style="display:none">
+                      <i class="fa-solid fa-trowel fa-xl"><var> 1 Iron Pick</var></i>
+                  </div>
+                  <div id="candy">
+  
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
   </main>
-  <script>
-    let roomId = 'room1';
-    let puzzleSize = 4; // puzzle size
+
+  <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+
+    <p class="mb-0">
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
 
 
-    // progressTracker.js
-    function hasCompletedRoom(roomId) {
-      const completedRooms = JSON.parse(localStorage.getItem('completedRooms')) || [];
-      return completedRooms.includes(roomId);
-    }
+  <script src="js/armory.js"></script>
 
-    function markRoomAsCompleted(roomId) {
-      const completedRooms = JSON.parse(localStorage.getItem('completedRooms')) || [];
-      if (!completedRooms.includes(roomId)) {
-        completedRooms.push(roomId);
-        localStorage.setItem('completedRooms', JSON.stringify(completedRooms));
-      }
-    }
-
-    function checkProgress() {
-      if (hasCompletedRoom(roomId)) {
-        alert("You remember the musky smell of blood and poison. You do not want to go back in.");
-      } else {
-        alert("You have a feeling this goes somewhere.");
-      }
-    }
-
-    // Function to submit the answer
-    function submitAnswer() {
-      const answer = document.getElementById("answerInput").value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
-      const correctAnswer = "111111"; // Replace with the actual correct answer
-
-      if (answer === correctAnswer) {
-        alert("The stones shudder as the door to the armory opens. You walk in.");
-        // Mark the room as completed
-        const roomId = 'room1'; // Change this identifier for each room
-        markRoomAsCompleted(roomId);
-      } else {
-        alert("The wall does not move. You try again.");
-      }
-    }
-
-    function initializePuzzle() {
-        const puzzleSize = 4;
-        lights = Array.from({ length: puzzleSize }, () => Array(puzzleSize).fill(true));
-
-      // Randomly toggle some lights initially
-      for (let i = 0; i < puzzleSize * puzzleSize; i++) {
-        const row = Math.floor(Math.random() * puzzleSize);
-        const col = Math.floor(Math.random() * puzzleSize);
-        toggleLight(row, col);
-      }
-
-      renderPuzzle();
-    }
-
-    function toggleLight(row, col) {
-      lights[row][col] = !lights[row][col];
-
-      const neighbors = [
-        { row: row - 1, col },
-        { row: row + 1, col },
-        { row, col: col - 1 },
-        { row, col: col + 1 }
-      ];
-
-      neighbors.forEach(neighbor => {
-        if (neighbor.row >= 0 && neighbor.row < puzzleSize && neighbor.col >= 0 && neighbor.col < puzzleSize) {
-          lights[neighbor.row][neighbor.col] = !lights[neighbor.row][neighbor.col];
-        }
-      });
-    }
-
-    function renderPuzzle() {
-      const puzzleContainer = document.getElementById("puzzle-container");
-      puzzleContainer.innerHTML = "";
-
-      for (let i = 0; i < puzzleSize; i++) {
-        for (let j = 0; j < puzzleSize; j++) {
-          const light = document.createElement("div");
-          light.classList.add("light");
-          light.style.backgroundColor = lights[i][j] ? "dark-gray" : "gray";
-          light.onclick = () => {
-            toggleLight(i, j);
-            renderPuzzle();
-          };
-          puzzleContainer.appendChild(light);
-        }
-        const lineBreak = document.createElement("br");
-        puzzleContainer.appendChild(lineBreak);
-      }
-    }
-
-    function showPuzzle() {
-      initializePuzzle();
-      const puzzleContainer = document.getElementById("puzzle-container");
-      puzzleContainer.style.display = "block";
-    }
-    
-    // Initialize the puzzle when the page loads
-    window.onload = initializePuzzle;
-    // Mark the room as completed
-        markRoomAsCompleted(roomId);
-    
-    </script>
 </body>
 
 </html>
