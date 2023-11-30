@@ -1,5 +1,6 @@
-window.onload = (event) => {
-  console.log("page is fully loaded");
+window.onload = () => {
+    console.log("page is fully loaded");
+
 
   const story = {
     start: {
@@ -34,121 +35,132 @@ window.onload = (event) => {
   }  
 };
 
+
 let currentChapter = "start";
+displayChapter();
+
 
 function displayChapter() {
-  console.log('Entering displayChapter. Current chapter:', currentChapter);
-  const storyContainer = document.getElementById('scriptContainer');
-  const chapter = story[currentChapter];
-  const chapterElement = document.createElement('div');
+    console.log('Entering displayChapter. Current chapter:', currentChapter);
+    const storyContainer = document.getElementById('scriptContainer');
+    const chapter = story[currentChapter];
 
-  chapter.lines.forEach(line => {
-    const lineElement = document.createElement('p');
-    lineElement.classList.add('lead', 'my-3');
-    lineElement.textContent = line;
-    chapterElement.appendChild(lineElement);
-  });
-  storyContainer.innerHTML = '';
-  storyContainer.appendChild(chapterElement);
+    const chapterElement = document.createElement('div');
+
+    chapter.lines.forEach(line => {
+        const lineElement = document.createElement('p');
+        lineElement.classList.add('lead', 'my-3');
+        lineElement.textContent = line;
+        chapterElement.appendChild(lineElement);
+    });
+    storyContainer.innerHTML = '';
+    storyContainer.appendChild(chapterElement);
+
 }
 
-function nextChapter(chapter) {
-  console.log('Entering nextChapter. Current chapter:', chapter);
+const nextButton = document.getElementById('nextButton');
+document.getElementById('nextButton').addEventListener('click', nextChapter);
 
-    switch (chapter) {
+const buttonContainer = document.getElementById("buttonContainer");
+document.getElementById("investigateDoorB").addEventListener('click', investigateDoor);
+
+const puzzleContainer = document.getElementById("puzzleContainer");
+document.getElementById('playPuzzleButton').addEventListener('click', playPuzzle);
+
+const buttonContainer3 = document.getElementById("buttonContainer3");
+document.getElementById('enterArmoryButton').addEventListener('click', enterArmory);
+
+const buttonContainer4 = document.getElementById("buttonContainer4");
+document.getElementById("investigateArmorB").addEventListener('click', investigateArmor);
+
+const buttonContainer5 = document.getElementById("buttonContainer5");
+document.getElementById('exitArmoryButton').addEventListener('click', exitArmory);
+
+initializePuzzle();
+
+let puzzleSize = 4; 
+
+
+
+function nextChapter() {
+    // Logic to determine the next chapter based on the current chapter
+    console.log('Entering nextChapter. Current chapter:', currentChapter);
+
+    switch (currentChapter) {
       case "start":
-        // console.log('Switch case: start');
-        buttonContainer.style.display = 'block';
-        nextButton.style.display = "none";
-        break;
+          //console.log('Switch case: start');
+          buttonContainer.style.display = 'block';
+          nextButton.style.display = "none";
+          break;
       case "investigateDoor":
-        console.log('Switch case: investigateDoor');
-        continueDoor.style.display = 'block';
+          console.log('Switch case:investigateDoor');
+          currentChapter = "investigateDoor";
+          investigateDoorB.style.display = 'block';
+          nextButton.style.display = "none";
+          break;
+      case "playPuzzle":
+        console.log('Switch case:playPuzzle');
+        currentChapter = "playPuzzle";
+        playPuzzleButton.style.display = 'block';
         nextButton.style.display = "none";
-        currentChapter = "investigateDoor";
         break;
       case "enterArmory":
-        console.log('Switch case:investigateDoor');
+        console.log('Switch case:enterArmory');
         currentChapter = "enterArmory";
-        lightTorchButton.style.display = 'block';
+        enterArmoryButton.style.display = 'block';
         nextButton.style.display = "none";
         break;
       case "investigateArmor":
-        console.log('Switch case:enterArmory');
+        console.log('Switch case:investigateArmor');
         currentChapter = "investigateArmor";
-        lightTorchButton.style.display = 'block';
+        investigateArmorB.style.display = 'block';
         nextButton.style.display = "none";
         break;
-    }
-  }
-
-  // Adding the click event listener correctly
-  document.getElementById('nextButton').addEventListener('click', () => nextChapter(currentChapter));
-
-  const buttonContainer = document.getElementById("buttonContainer");
-  const continueDoor = document.getElementById("continueDoor");
-  const lightTorchButton = document.getElementById("lightTorchButton");
-  const nextButton = document.getElementById("nextButton");
-
-    
-
-
-  switch (currentChapter) {
-    case "start":
-        //console.log('Switch case: start');
-        buttonContainer.style.display = 'block';
+      case "exitArmory":
+        console.log('Switch case:exitArmory');
+        currentChapter = "investigateArmor";
+        exitArmoryButton.style.display = 'block';
         nextButton.style.display = "none";
-        break;
-    case "investigateDoor":
-        //  console.log('Switch case: investigateDoor');
-        continueKick.style.display = 'block';
-        nextButton.style.display = "none";
-        currentChapter = "keepMoving";
-        break;
-    case "enterArmory":
-        console.log('Switch case:keepMoving');
-        currentChapter = "lightTorch";
-        lightTorchButton.style.display = 'block';
-        nextButton.style.display = "none";
-        break;
-    case "investigateArmor":
-        console.log('Switch case:kickDoor');
-        currentChapter = "lightTorch";
-        lightTorchButton.style.display = 'block';
-        nextButton.style.display = "none";
-        break;
+        break;  
+
+      }
+    document.getElementById('nextButton').removeEventListener('click', nextChapter);
+    displayChapter();
+
+    document.getElementById('nextButton').addEventListener('click', nextChapter);
 }
 
-
-//Full "Fill the Stone" Puzzle
-let roomId = 'room1';
-let puzzleSize = 4; // puzzle size
-
-
-// progressTracker.js
-function hasCompletedRoom(roomId) {
-  const completedRooms = JSON.parse(localStorage.getItem('completedRooms')) || [];
-  return completedRooms.includes(roomId);
+function investigateDoor() {
+    currentChapter = "investigateDoor";
+    buttonContainer.style.display = 'none';
+    nextButton.style.display = "block";
+    displayChapter();
+}
+function enterArmory() {
+    console.log('Function enterArmory ran');
+    currentChapter = "enterArmory";
+    enterArmoryButton.style.display = 'block';
+    nextButton.style.display = "none";
+    buttonContainer.style.display = 'none';
+    enterArmoryButton.style.display = 'none';
+    displayChapter();
 }
 
-function markRoomAsCompleted(roomId) {
-  const completedRooms = JSON.parse(localStorage.getItem('completedRooms')) || [];
-  if (!completedRooms.includes(roomId)) {
-    completedRooms.push(roomId);
-    localStorage.setItem('completedRooms', JSON.stringify(completedRooms));
-  }
+function investigateArmor() {
+    console.log("function investigate Armor ran");
+    currentChapter = "investigateArmor";
+    nextButton.style.display = "block";
+    investigateArmorB.style.display = 'none';
+    displayChapter();
+}
+function exitArmory() {
+  console.log("function exit Armory ran");
+  currentChapter = "exitArmory";
+  nextButton.style.display = "block";
+  exitArmoryButton.style.display = 'none';
+  displayChapter();
 }
 
-function checkProgress() {
-  if (hasCompletedRoom(roomId)) {
-    alert("You remember the musky smell of blood and poison. You do not want to go back in.");
-  } else {
-    alert("You have a feeling this goes somewhere.");
-  }
-}
-
-displayChapter();
-};
 
 
 // Define markRoomAsCompleted function
@@ -172,15 +184,15 @@ function submitAnswer() {
   if (answer === correctAnswer) {
     alert("The stones shudder as the door to the armory opens. You walk in.");
     // Mark the room as completed
-    const roomId = 'room1'; // Change this identifier for each room
+    const roomId = 'roomArmory'; // Change this identifier for each room
     markRoomAsCompleted(roomId);
   } else {
     alert("The wall does not move. You try again.");
   }
 }
 
+
 function initializePuzzle() {
-    const puzzleSize = 4;
     lights = Array.from({ length: puzzleSize }, () => Array(puzzleSize).fill(true));
 
   // Randomly toggle some lights initially
@@ -211,7 +223,7 @@ function toggleLight(row, col) {
 }
 
 function renderPuzzle() {
-  const puzzleContainer = document.getElementById("puzzle-container");
+  const puzzleContainer = document.getElementById("puzzleContainer");
   puzzleContainer.innerHTML = "";
 
   for (let i = 0; i < puzzleSize; i++) {
@@ -230,13 +242,14 @@ function renderPuzzle() {
   }
 }
 
-function showPuzzle() {
+function playPuzzle() {
   initializePuzzle();
-  const puzzleContainer = document.getElementById("puzzle-container");
+  const puzzleContainer = document.getElementById("puzzleContainer");
   puzzleContainer.style.display = "block";
 }
 
-// Initialize the puzzle when the page loads
-window.onload = initializePuzzle;
-// Mark the room as completed
-    markRoomAsCompleted(roomId);
+
+currentChapter = "start";
+displayChapter(); 
+
+};

@@ -3,7 +3,7 @@
 
 <head>
     <script src="js/color-modes.js"></script>
-    <script src="js/progressTracker.js"></script>
+    <script src="js/armory.js"></script>
     <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>    
 
   <meta charset="utf-8">
@@ -31,7 +31,7 @@
 </head>
 
 <body>
-
+<div class="scriptContainer">
   <div class="container">
     <header class="border-bottom lh-1 py-3">
       <div class="row flex-nowrap justify-content-between align-items-center">
@@ -57,27 +57,45 @@
               <button id="nextButton" class="btn btn-outline-light">Next</button>
           </div>
       </div>
-  
+
       <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
-          <div class="col p-4 d-flex">
-              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-                  id="investigateDoorB">Investigate the Secret Door</button>
-              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-                  id="enterArmoryB">Enter the Room</button>
-  
-          </div>
+        <div class="col p-4 d-flex">
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                id="investigateDoorB">Investigate the Secret Door</button>
+        </div>
       </div>
-      <div class="row mb-2 align-left" id="continueKick" style="display: none;">
-          <div class="col p-4 d-flex">
-              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-                  id="continueSearchB">Continue searching</button>
-  
-              <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-                  id="investigateArmorB">Investigate the Armor</button>
-  
-          </div>
+
+
+      <div class="row mb-2 align-left" id="puzzleContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                id="playPuzzleButton">Play Puzzle</button>
+            <!--Puzzle goes here before progressing-->
+        </div>
       </div>
-  
+
+      <div class="row mb-2 align-left" id="buttonContainer3" style="display: none;">
+        <div class="col p-4 d-flex">
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                id="enterArmoryButton">Enter Armory</button>
+        </div>
+      </div>
+
+      <div class="row mb-2 align-left" id="buttonContainer4" style="display: none;">
+        <div class="col p-4 d-flex">
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                id="investigateArmorB">Investigate Armor</button>
+        </div>
+      </div>
+
+      <div class="row mb-2 align-left" id="buttonContainer5" style="display: none;">
+        <div class="col p-4 d-flex">
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                id="exitArmoryButton">Exit Armory</button>
+        </div>
+      </div>
+    </div>
+
       <div class="col-md-4">
           <div class="position-sticky" style="top: 2rem;">
               <div class="p-4 mb-3 bg-body-tertiary rounded">
@@ -96,9 +114,8 @@
           </div>
       </div>
 
-
-
   </main>
+</div>
 
   <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
 
@@ -107,8 +124,6 @@
     </p>
   </footer>
 
-
-  <script src="js/armory.js"></script>
 
 </body>
 
