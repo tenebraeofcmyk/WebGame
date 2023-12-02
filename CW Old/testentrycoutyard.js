@@ -4,7 +4,7 @@ let currentChapter = "walkForward";
 //    console.log("page is fully loaded");
 
     const story = {
-        walkForward: {
+        "walkForward": {
             lines: [
                 "With the grayish natural light, you no longer need the torch.",
                 "Shaking it until there are no more flames, you concentrate on your left.",
@@ -12,12 +12,12 @@ let currentChapter = "walkForward";
                 "You walk forward."
             ]
         },
-        belowFountain: {
+        "belowFountain": {
             lines:[
                 "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
                 "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."]
             },
-        realizeTreasure:{
+        "realizeTreasure":{
             lines:[
                 "You take a few more steps forward, and more of the castle comes into view.",
                 "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows…",
@@ -25,9 +25,8 @@ let currentChapter = "walkForward";
                 "You want to find these trinkets."  
             ]  
         }
-    }
+    };
 
-    let currentChapter = "walkForward";
 
     function displayChapter() {
         //console.log('Entering displayChapter. Current chapter:', currentChapter);

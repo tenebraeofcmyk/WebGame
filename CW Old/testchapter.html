@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+
+<!-- Christie Needs to:
+
+-- change the story names
+-- add the puzzle
+-- add the styling from the courtyard html file (how does the flexbox, etc work??)
+-- if this is working, i need to make this file the entrycourtyard one
+-- make sure local storage works (and add inventory box???)
+-- remove the current question
+-- put script into js file
+-- make a courtyard holding html page that i will remove before migrating to main
+
+-->
+
+
+<head>
+  <script src="color-modes.js"></script>
+  <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+
+  <title>Entry to Courtyard</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="bootstrap2.min.css" rel="stylesheet">
+  <link href="blog.css" rel="stylesheet">
+
+  <style>
+
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Text</title>
+</head>
+<body>
+
+<p id="chapterText"></p>
+<button id="nextButton" onclick="nextChapter()">Next Chapter</button> 
+
+<button id="finishButton" style="display:none;" onclick="askQuestion()">Finish</button>
+
+<script>
+    let currentChapter = null;
+    // Different chapters of text within a story
+    const storyChapters = {
+        "intro": [
+                "With the grayish natural light, you no longer need the torch.",
+                "Shaking it until there are no more flames, you concentrate on your left.",
+                "The right is only a stone wall.",
+                "You walk forward."
+            ],
+        "plot_twist": [
+                "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
+                "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."
+            ],
+        "resolution":[
+                "You take a few more steps forward, and more of the castle comes into view.",
+                "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows…",
+                "With the grandeur of the castle, you realize there is likely a lot of wealth hidden in each of the different rooms.",
+                "You want to find these trinkets."  
+            ]  
+    };
+
+    // Function to display the text for a given chapter
+    function displayChapter(chapter) {
+        document.getElementById("chapterText").innerHTML = storyChapters[chapter] || "No more chapters";
+
+        // Check if it's the last chapter and show/hide buttons accordingly
+        if (chapter === "resolution") {
+            document.getElementById("finishButton").style.display = "block";
+            document.getElementById("nextButton").style.display = "none";
+        } else {
+            document.getElementById("finishButton").style.display = "none";
+            document.getElementById("nextButton").style.display = "block";
+        }
+    }
+
+    // Function to determine the next chapter based on current chapter
+    function determineNextChapter(currentChapter) {
+        // Add your logic here to determine the next chapter based on the current chapter
+        // For simplicity, let's assume a linear progression
+        switch (currentChapter) {
+            case null:
+                return "intro";
+            case "intro":
+                return "plot_twist";
+            case "plot_twist":
+                return "resolution";
+            default:
+                return null; // No more chapters
+        }
+    }
+
+    // Function to handle the "Next Chapter" button click
+    function nextChapter() {
+        // If it's the first click or the current chapter is null, set it to "intro"
+        if (currentChapter === null) {
+            currentChapter = "intro";
+        } else {
+            // Determine the next chapter based on currentChapter
+            currentChapter = determineNextChapter(currentChapter);
+        }
+
+        // Display the text for the next chapter
+        displayChapter(currentChapter);
+    }
+
+    // Function to ask a question before allowing access to the last chapter
+    function askQuestion() {
+        // Replace the question and answer with your own
+        const userAnswer = prompt("To proceed, answer the question: What is the capital of France?").toLowerCase();
+
+        if (userAnswer === "paris") {
+            // Redirect to the last chapter if the answer is correct
+            window.location.href = "path/to/your/page.html";
+        } else {
+            // Alert and do not proceed if the answer is incorrect
+            alert("Incorrect answer. Try again!");
+        }
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
