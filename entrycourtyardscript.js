@@ -48,17 +48,17 @@ window.onload = (event) => {
 
     document.getElementById('nextButton').addEventListener('click', nextChapter);
 
-    const buttonContainer = document.getElementById("buttonContainer");
-    document.getElementById("investigateWarmB").addEventListener('click', investigateWarm);
-    document.getElementById("keepMovingB").addEventListener('click', keepMoving);
+    //const buttonContainer = document.getElementById("buttonContainer");
+    //document.getElementById("investigateWarmB").addEventListener('click', investigateWarm);
+    //document.getElementById("keepMovingB").addEventListener('click', keepMoving);
 
-    const continueKick = document.getElementById("continueKick");
-    document.getElementById("continueSearchB").addEventListener('click', continueSearch);
-    document.getElementById("kickDoorB").addEventListener('click', kickDoor);
+    //const continueKick = document.getElementById("continueKick");
+    //document.getElementById("continueSearchB").addEventListener('click', continueSearch);
+    //document.getElementById("kickDoorB").addEventListener('click', kickDoor);
 
-    document.getElementById('lightTorchButton').addEventListener('click', lightTorch);
+    //document.getElementById('lightTorchButton').addEventListener('click', lightTorch);
 
-    const torchIcon = document.getElementById("torchIcon");
+    //const torchIcon = document.getElementById("torchIcon");
 
 
     function nextChapter() {
@@ -66,14 +66,15 @@ window.onload = (event) => {
         console.log('Entering nextChapter. Current chapter:', currentChapter);
 
         switch (currentChapter) {
-            case "start":
-                //console.log('Switch case: start');
+            case "walkForward":
+                //console.log('Switch case: walkForward');
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "none";
                 break;
-            case "investigateWarm":
-                //  console.log('Switch case: investigateWarm');
-                continueKick.style.display = 'block';
+            case "belowFountain":
+                //  console.log('Switch case: belowFountain');
+                buttonContainer.style.display = 'block';
+                nextButton.style.display = "none";
                 break;
             case "keepMoving":
                 console.log('Switch case:keepMoving');
