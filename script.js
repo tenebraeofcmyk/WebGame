@@ -76,7 +76,6 @@ window.onload = (event) => {
                 "Below the light source you see an iron pick on the floor."
             ]
         },
-        // ([Button]:Iron Pick.]Show iron pick in Inventory) (ironPick) 
 
         backUp: {
             lines: [

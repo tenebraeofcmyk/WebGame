@@ -66,10 +66,11 @@ window.onload = (event) => {
         console.log('Entering nextChapter. Current chapter:', currentChapter);
 
         switch (currentChapter) {
-            case "start":
+            case "walkForward":
                 //console.log('Switch case: start');
-                buttonContainer.style.display = 'block';
-                nextButton.style.display = "none";
+                buttonContainer.style.display = 'none';
+                nextButton.style.display = "block";
+                currentChapter ="belowFountain";
                 break;
             case "investigateWarm":
                 //  console.log('Switch case: investigateWarm');
