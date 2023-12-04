@@ -37,6 +37,11 @@ window.onload = () => {
 let currentChapter = "start";
 displayChapter();
 
+const nextButton = document.getElementById('nextButton');
+nextButton.addEventListener('click', nextChapter);
+const playPuzzleButton = document.getElementById("playPuzzleButton");
+playPuzzleButton.addEventListener('click', playPuzzle);
+
 function displayChapter() {
     console.log('Entering displayChapter. Current chapter:', currentChapter);
     const storyContainer = document.getElementById('scriptContainer');
@@ -49,28 +54,12 @@ function displayChapter() {
         lineElement.textContent = line;
         chapterElement.appendChild(lineElement);
     });
+
     storyContainer.innerHTML = '';
     storyContainer.appendChild(chapterElement);
 
 }
 
-const nextButton = document.getElementById('nextButton');
-
-const buttonContainer = document.getElementById("buttonContainer");
-document.getElementById("investigateDoorB").addEventListener('click', investigateDoor);
-
-const puzzleContainer = document.getElementById("puzzleContainer");
-const playPuzzleButton = document.getElementById('playPuzzleButton');
-document.getElementById('playPuzzleButton').addEventListener('click', playPuzzle);
-
-const buttonContainer3 = document.getElementById("buttonContainer3");
-document.getElementById('enterArmoryButton').addEventListener('click', enterArmory);
-
-const buttonContainer4 = document.getElementById("buttonContainer4");
-document.getElementById("investigateArmorB").addEventListener('click', investigateArmor);
-
-const buttonContainer5 = document.getElementById("buttonContainer5");
-document.getElementById('exitArmoryButton').addEventListener('click', exitArmory);
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
@@ -79,103 +68,56 @@ function nextChapter() {
     switch (currentChapter) {
       
       case "start":
-          console.log('Switch case: start');
-          currentChapter = "start";
-          playPuzzleButton.style.display = 'block';
+          //console.log('Switch case: start');
           buttonContainer.style.display = 'block';
           nextButton.style.display = "none";
+          currentChapter = "start";
+          displayChapter();
           break;
       case "investigateDoor":
-          console.log('Switch case:investigateDoor');
-          currentChapter = "investigateDoor";
-          investigateDoorB.style.display = 'block';
+          //console.log('Switch case: investigateDoor');
+          buttonContainer.style.display = 'block';
           nextButton.style.display = "none";
+          currentChapter = "investigateDoor";
           break;
       case "playPuzzle":
-          console.log('Switch case:playPuzzle');
+          //console.log('Switch case:playPuzzle');
           currentChapter = "playPuzzle";
           playPuzzleButton.style.display = 'block';
           nextButton.style.display = "none";
           break;
       case "enterArmory":
-          console.log('Switch case:enterArmory');
+          //console.log('Switch case:enterArmory');
           currentChapter = "enterArmory";
-          enterArmoryButton.style.display = 'block';
-          nextButton.style.display = "none";
+          nextButton.style.display = "block";
           break;
       case "investigateArmor":
-          console.log('Switch case:investigateArmor');
+          //console.log('Switch case:investigateArmor');
           currentChapter = "investigateArmor";
-          investigateArmorB.style.display = 'block';
-          nextButton.style.display = "none";
+          nextButton.style.display = "block";
           break;
-      case "exitArmory":
-          console.log('Switch case:exitArmory');
-          currentChapter = "investigateArmor";
-          exitArmoryButton.style.display = 'block';
-          nextButton.style.display = "none";
-          break;  
 
       }
 
+      document.getElementById('nextButton').removeEventListener('click', nextChapter);
+        displayChapter();
+
+        document.getElementById('nextButton').addEventListener('click', nextChapter);
+
 }
 
-playPuzzleButton.style.display = currentChapter === "investigateDoor" ? 'block' : 'none';
 
-document.getElementById('nextButton').removeEventListener('click', nextChapter);
-displayChapter();
-
-document.getElementById('nextButton').addEventListener('click', nextChapter);
-
-
-
-function investigateDoor() {
-    currentChapter = "investigateDoor";
+function playPuzzle() {
+    currentChapter = "playPuzzle";
     buttonContainer.style.display = 'none';
-    nextButton.style.display = "block";
-    displayChapter();
-}
-function enterArmory() {
-    console.log('Function enterArmory ran');
-    currentChapter = "enterArmory";
-    enterArmoryButton.style.display = 'block';
-    nextButton.style.display = "none";
-    buttonContainer.style.display = 'none';
-    enterArmoryButton.style.display = 'none';
+    playPuzzleButton.style.display = "block";
     displayChapter();
 }
 
-function investigateArmor() {
-    console.log("function investigate Armor ran");
-    currentChapter = "investigateArmor";
-    nextButton.style.display = "block";
-    investigateArmorB.style.display = 'none';
-    displayChapter();
-}
-function exitArmory() {
-  console.log("function exit Armory ran");
-  currentChapter = "exitArmory";
-  nextButton.style.display = "block";
-  exitArmoryButton.style.display = 'none';
-  displayChapter();
-}
 
 let puzzleSize = 4; 
 
 initializePuzzle();
-
-// Define markRoomAsCompleted function
-function markRoomAsCompleted(roomId) {
-  const completedRooms = JSON.parse(localStorage.getItem('completedRooms')) || [];
-  if (!completedRooms.includes(roomId)) {
-    completedRooms.push(roomId);
-    localStorage.setItem('completedRooms', JSON.stringify(completedRooms));
-  }
-}
-
-// Initialize completedRooms in local storage if not set
-const initialCompletedRooms = [];
-localStorage.setItem('completedRooms', JSON.stringify(initialCompletedRooms));
 
 // Function to submit the answer
 function submitAnswer() {
@@ -247,9 +189,5 @@ function playPuzzle() {
   const puzzleContainer = document.getElementById("puzzleContainer");
   puzzleContainer.style.display = "block";
 }
-
-
-currentChapter = "start";
-displayChapter(); 
 
 };
