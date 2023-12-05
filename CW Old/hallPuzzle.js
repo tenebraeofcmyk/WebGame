@@ -10,7 +10,7 @@
 
 
 
-    function WPpuzzleroom3() {
+    function entryCourtyardPuzzle() {
         
         //Initial Display
         document.getElementById("result").innerHTML = '';
