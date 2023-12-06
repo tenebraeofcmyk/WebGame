@@ -5,8 +5,8 @@
     let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
     document.getElementById('correctCountFood').textContent = correctAnswersFood;
     let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
-    document.getElementById('correctCountCins').textContent = correctAnswersCoins;
-    let correctAnswersTOrch = localStorage.getItem('correctAnswersTorch') || 0;
+    document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+    let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
     document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 
     document.getElementById("goToNextRoom").style.display = "none";
@@ -26,7 +26,6 @@
         },
         searchKitchen2: {
             lines: [
-            "You decide the best idea is to search the kitchen.",
             "Immediately your nose is met with the smells of food, salt, and wine.",
             "You pass three fires, all with empty pots hanging in each hearth.",
             "There are lots of abandoned dishes, pots, and goblets, but no people.",

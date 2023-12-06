@@ -5,8 +5,8 @@
     let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
     document.getElementById('correctCountFood').textContent = correctAnswersFood;
     let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
-    document.getElementById('correctCountCins').textContent = correctAnswersCoins;
-    let correctAnswersTOrch = localStorage.getItem('correctAnswersTorch') || 0;
+    document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+    let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
     document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 
     document.getElementById("goToNextRoom").style.display = "none";
@@ -138,7 +138,7 @@
         const correctAnswerlabyrinth1 = 4;
         
         //problem and userInput visible
-        document.getElementById("problem").innerHTML = `There are 16 rows of hedges some are coverein vines and others are not.  If the rows with vines is 25% of the total, how many rows is that?`;
+        document.getElementById("problem").innerHTML = `There are 16 rows of hedges, with 25% covered in vines. How many rows are covered in vines?`;
         document.getElementById("userInput").style.display = "block";
     
         // Check the answer when the user submits
