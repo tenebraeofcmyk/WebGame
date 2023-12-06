@@ -33,8 +33,7 @@
         },
         openCourtyard: {
             lines: [
-            "With the grayish natural light, you no longer need the torch.",
-            "Shaking it until there are no more flames, you concentrate on your left.",
+            "You no longer need the torch, so you shake it until there are no more flames",
             "The right is only a stone wall. You walk forward.",
             "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
             ]
@@ -43,12 +42,12 @@
             lines: [
             "You take a few more steps forward, and more of the castle comes into view.",
             "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows… and you realize there is likely a lot of wealth hidden in each of the different rooms.",
-            "You want to get down to the courtyard to find these trinkets."            
+            "You want to get down to the courtyard to find these treasures."            
             ]
         },  
         entryCourtyardPuzzle: {
             lines: [
-            "Seeing the expanses of the castle, you are so glad you stopped as the market for candy before embarking on your journey.",
+            "Seeing the expanses of the castle, you are so glad you stopped at a market for candy before embarking on your journey.",
             "Solve a puzzle to retireve food and gain entry into the courtyard."
             ]
         },        
@@ -155,7 +154,7 @@
         
             if (userAnswer == correctAnswer) {
                 
-                document.getElementById("result").innerHTML = "Fantastic! You get food.";
+                document.getElementById("result").innerHTML = "Fantastic! You get food and now have a choice... do you want to play another puzzle or enter the courtyard.";
                 correctAnswersFood++;
                 
                 // Save correct answer count to local storage
@@ -180,3 +179,16 @@
             }
             }  
         }
+    
+        function clearLocalStorage() {
+            var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+            
+            if (confirmation) {
+                // User clicked "Yes"
+                localStorage.clear();
+                window.location.href = 'myindex.html'; 
+            } 
+            else {
+                // User clicked "No" or closed the dialog
+            } 
+       }

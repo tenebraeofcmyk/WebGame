@@ -75,7 +75,7 @@
     const buttonContainer = document.getElementById("buttonContainer");
 
    document.getElementById("labyrinthPuzzle1B").addEventListener('click', labyrinthPuzzle1Q);
-
+   document.getElementById("labyrinthPuzzle2B").addEventListener('click', labyrinthPuzzle2Q);
 
 
 
@@ -89,6 +89,7 @@
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "block";
                 labyrinthPuzzle1B.style.display = "none";
+                labyrinthPuzzle2B.style.display = "none";
                 currentChapter = "enterLabyrinth2";
                 break;
             case "enterLabyrinth2":
@@ -96,13 +97,15 @@
                     buttonContainer.style.display = 'block';
                     nextButton.style.display = "block";
                     labyrinthPuzzle1B.style.display = "none";
+                    labyrinthPuzzle2B.style.display = "none";
                     currentChapter = "inHedges";
                     break;
             case "inHedges":
                 //console.log('Switch case: enterLabyrinth1');
                 buttonContainer.style.display = 'block';
-                nextButton.style.display = "block";
-                labyrinthPuzzle1B.style.display = "none";
+                nextButton.style.display = "none";
+                labyrinthPuzzle1B.style.display = "block";
+                labyrinthPuzzle2B.style.display = "none";
                 currentChapter = "labyrinthPuzzle1";
                 break;
             case "labyrinthPuzzle1":
@@ -110,6 +113,7 @@
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "none";
                 labyrinthPuzzle1B.style.display = "block";
+                labyrinthPuzzle2B.style.display = "block";
                 break;
 
             // Add more cases as needed
@@ -149,15 +153,15 @@
         
             if (userAnswer == correctAnswerlabyrinth1) {
                 
-                document.getElementById("result").innerHTML = "Correct! You see a gap in the hedges to sneak thru and find a jewel!";
+                document.getElementById("result").innerHTML = "Correct! You see a gap in the hedges and find a jewel as you sneak thru. But oh, no... there it was a trap. Solve the next puzzle to make it thru.";
                 correctAnswersJewel++;
                 
                 // Save correct answer count to local storage
                 localStorage.setItem('correctAnswersJewel', correctAnswersJewel);
                 updateCorrectCountJewel();
 
-                document.getElementById("goToNextRoom").style.display = "block";
-                document.getElementById("labyrinthPuzzle1B").style.display = "none";
+                document.getElementById("goToNextRoom").style.display = "none";
+                document.getElementById("labyrinthPuzzle2B").style.display = "block";
             } 
 
             else {
@@ -174,3 +178,65 @@
             }
             }  
         }
+
+
+
+        function labyrinthPuzzle2Q() {
+
+            //Initial Display
+            document.getElementById("result").innerHTML = '';
+            document.getElementById("labyrinthPuzzle2B").style.display = "none";
+            document.getElementById("userAnswer").value='';
+            document.getElementById("goToNextRoom").style.display = "none";
+    
+            //Equation    
+            const correctAnswerlabyrinth2 = 3;
+            
+            //problem and userInput visible
+            document.getElementById("problem").innerHTML = `There are 10 mice scurring about. 70% of the mice have cheese.  How many mice to no have cheese?`;
+            document.getElementById("userInput").style.display = "block";
+        
+            // Check the answer when the user submits
+            document.getElementById("submitBtn").onclick = function () {
+                const userAnswer = document.getElementById("userAnswer").value;
+            
+                if (userAnswer == correctAnswerlabyrinth2) {
+                    
+                    document.getElementById("result").innerHTML = "Correct! You escape back to the courtyard and find a coin along the way!";
+                    correctAnswersCoins++;
+                    
+                    // Save correct answer count to local storage
+                    localStorage.setItem('correctAnswersCoins', correctAnswersCoins);
+                    updateCorrectCountCoins();
+    
+                    document.getElementById("goToNextRoom").style.display = "block";
+ //                   document.getElementById("labyrinthPuzzle2B").style.display = "block";
+                } 
+    
+                else {
+                        document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
+                        document.getElementById("labyrinthPuzzle2B").style.display = "block";
+                }
+        
+                // Hide the input field after submitting
+                document.getElementById("problem").innerHTML = '';
+                document.getElementById("userInput").style.display = "none";
+    
+                function updateCorrectCountCoins() {
+                    document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+                }
+                }  
+            }
+
+        function clearLocalStorage() {
+            var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+            
+            if (confirmation) {
+                // User clicked "Yes"
+                localStorage.clear();
+                window.location.href = 'myindex.html'; 
+            } 
+            else {
+                // User clicked "No" or closed the dialog
+            } 
+       }

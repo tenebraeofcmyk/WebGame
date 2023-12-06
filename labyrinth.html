@@ -42,7 +42,7 @@
           <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">A Text Game</a>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
-          <a class="btn btn-sm btn-outline-secondary" href="#">Restart</a>
+          <a class="btn btn-sm btn-outline-secondary" onclick="clearLocalStorage()">Start New Game</a>
         </div>
       </div>
     </header>
@@ -74,6 +74,7 @@
             <br>
             <div class="col p-4 d-flex">
               <button type="button" class="btn btn-outline-light" id="labyrinthPuzzle1B" onclick="labyrinthPuzzle1Q()">Solve Puzzle</button>
+              <button type="button" class="btn btn-outline-light" id="labyrinthPuzzle2B" onclick="labyrinthPuzzle2Q()">Solve Puzzle</button>
               <button id="goToNextRoom" class="btn btn-outline-light"  onclick="goToNextRoom()">Go to Courtyard</button>
             </div>
           </span>

@@ -99,8 +99,8 @@
             case "checkCellar":
                 //console.log('Switch case: searchKitchen1');
                 buttonContainer.style.display = 'block';
-                nextButton.style.display = "block";
-                kitchenPuzzle1B.style.display = "none";
+                nextButton.style.display = "none";
+                kitchenPuzzle1B.style.display = "block";
                 currentChapter = "kitchenPuzzle1";
                 break;
 
@@ -140,7 +140,7 @@
         const correctAnswerKitchen1 = 20;
         
         //problem and userInput visible
-        document.getElementById("problem").innerHTML = `You see 5 jars on a shelf. 4 of the jars have spices. What percentage of the jars are EMPTY?`;
+        document.getElementById("problem").innerHTML = `You see jars lined up on a cellar shelf. Four of the five jars have spices anf one jar is empty. What percentage of the jars are empty?`;
         document.getElementById("userInput").style.display = "block";
     
         // Check the answer when the user submits
@@ -174,3 +174,16 @@
             }
             }  
         }
+
+        function clearLocalStorage() {
+            var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+            
+            if (confirmation) {
+                // User clicked "Yes"
+                localStorage.clear();
+                window.location.href = 'myindex.html'; 
+            } 
+            else {
+                // User clicked "No" or closed the dialog
+            } 
+       }
