@@ -1,7 +1,7 @@
 
     // Load correct answer count from local storage on page load
-    let correctAnswers = localStorage.getItem('correctAnswers') || 0;
-    document.getElementById('correctCountFood').textContent = correctAnswers;
+    let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
+    document.getElementById('correctCountFood').textContent = correctAnswersFood;
     document.getElementById("goToNextRoom").style.display = "none";
 
     function goToNextRoom() {
@@ -15,9 +15,6 @@
         searchKitchen1: {
             lines: [
                 "You decide the best idea is to search the kitchen.",
-                "Immediately your nose is met with the smells of food, salt, and wine.",
-                "You pass three fires, all with empty pots hanging in each hearth.",
-                "There are lots of abandoned dishes, pots, and goblets, but no people."
             ]
         },
         searchKitchen2: {
@@ -30,14 +27,14 @@
         }, 
         checkCellar: {
             lines: [
-            "You try to find the cellar.",
-            "There is a door in the back of the cellar behind a bunch of barrels that smell of wine and grain."
+            "There is a door in the back of the cellar kitchen with a bunch of barrels and jars.",
+            "It smells good."
             ]
         },  
         kitchenPuzzle1: {
             lines: [
-            "blah blah blah.",
-            "fdsagsgs."
+            "Being in the Kitchen is making you hungry, so you decide to search for food.",
+            "Solve the puzzle to get more food."
             ]
         },        
     }
@@ -96,11 +93,11 @@
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "block";
                 kitchenPuzzleB.style.display = "none";
-                currentChapter = "kitchenPuzzle";
+                currentChapter = "kitchenPuzzle1";
                 break;
 
 
-            case "kitchenPuzzle":
+            case "kitchenPuzzle1":
                 //console.log('Switch case: searchKitchen1');
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "none";
@@ -132,35 +129,31 @@
         document.getElementById("goToNextRoom").style.display = "none";
 
         //Equation    
-        const num1 = Math.floor(Math.random() * 107) + 52;
-        const num2 = Math.floor(Math.random() * 107) + 1;
-        const num3 = Math.floor(Math.random() * 14) + 1;
-        const operation = "multiplication";
-        const correctAnswer = (num2 * num3);
+        const correctAnswerKitchen1 = 20;
         
         //problem and userInput visible
-        document.getElementById("problem").innerHTML = `You bought candy for $${num2} per bag. If you bought ${num3} bags, how much does you spend?`;
+        document.getElementById("problem").innerHTML = `You see 5 jars on a shelf. 4 of the jars have spices. What percentage of the jars are EMPTY?`;
         document.getElementById("userInput").style.display = "block";
     
         // Check the answer when the user submits
         document.getElementById("submitBtn").onclick = function () {
             const userAnswer = document.getElementById("userAnswer").value;
         
-            if (userAnswer == correctAnswer) {
+            if (userAnswer == correctAnswerKitchen1) {
                 
-                document.getElementById("result").innerHTML = "Fantastic! You get one coin";
-                correctAnswers++;
+                document.getElementById("result").innerHTML = "Fantastic! You get food";
+                correctAnswersFood++;
                 
                 // Save correct answer count to local storage
-                localStorage.setItem('correctAnswers', correctAnswers);
+                localStorage.setItem('correctAnswersFood', correctAnswersFood);
                 updateCorrectCountFood();
 
                 document.getElementById("goToNextRoom").style.display = "block";
-                document.getElementById("kitchenPuzzleB").style.display = "block";
+                document.getElementById("kitchenPuzzleB").style.display = "none";
             } 
 
             else {
-                    document.getElementById("result").innerHTML = `Sorry, the correct answer is ${correctAnswer}. Keep practicing!`;
+                    document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
                     document.getElementById("kitchenPuzzleB").style.display = "block";
             }
     
@@ -169,7 +162,7 @@
             document.getElementById("userInput").style.display = "none";
 
             function updateCorrectCountFood() {
-                document.getElementById('correctCountFood').textContent = correctAnswers;
+                document.getElementById('correctCountFood').textContent = correctAnswersFood;
             }
             }  
         }

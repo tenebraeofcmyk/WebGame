@@ -16,10 +16,12 @@
     <link href="css/blog.css" rel="stylesheet">
 
 </head>
-<body>
-    
+<body>  
 
     <h1>This is a holding file for the courtyard</h1>
+
+    <a href=kitchen.html>kitchen</a>
+    <a href=labyrinth.html>labyrinth</a>
 
 
     <div class="col-md-4">
@@ -47,10 +49,13 @@
       <script>
 
         // Load correct answer count from local storage on page load
-        let correctAnswers = localStorage.getItem('correctAnswers') || 0;
-        document.getElementById('correctCountFood').textContent = correctAnswers;
-        document.getElementById('correctCountTorch').textContent = correctAnswers;
-        document.getElementById('correctCountJewels').textContent = correctAnswers;
+        let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
+        let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
+        let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
+        let correctAnswersJewels = localStorage.getItem('correctAnswersJewels') || 0;
+        document.getElementById('correctCountFood').textContent = correctAnswersFood;
+        document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+        document.getElementById('correctCountJewels').textContent = correctAnswersJewels;
         document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
         document.getElementById("goToNextRoom").style.display = "none";
     

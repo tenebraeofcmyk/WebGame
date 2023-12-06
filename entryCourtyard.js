@@ -1,7 +1,7 @@
 
     // Load correct answer count from local storage on page load
-    let correctAnswers = localStorage.getItem('correctAnswers') || 0;
-    document.getElementById('correctCountFood').textContent = correctAnswers;
+    let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
+    document.getElementById('correctCountFood').textContent = correctAnswersFood;
     document.getElementById("goToNextRoom").style.display = "none";
 
     function goToNextRoom() {
@@ -31,15 +31,14 @@
         castleView: {
             lines: [
             "You take a few more steps forward, and more of the castle comes into view.",
-            "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows…",
-            "With the grandeur of the castle, you realize there is likely a lot of wealth hidden in each of the different rooms.",
-            "You want to find these trinkets."            
+            "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows… and you realize there is likely a lot of wealth hidden in each of the different rooms.",
+            "You want to get down to the courtyard to find these trinkets."            
             ]
         },  
         entryCourtyardPuzzle: {
             lines: [
             "Seeing the expanses of the castle, you are so glad you stopped as the market for candy before embarking on your journey.",
-            "Solve a puzzle to gain entry into the courtyard."
+            "Solve a puzzle to retireve food and gain entry into the courtyard."
             ]
         },        
     }
@@ -149,11 +148,11 @@
         
             if (userAnswer == correctAnswer) {
                 
-                document.getElementById("result").innerHTML = "Fantastic! You get one coin";
-                correctAnswers++;
+                document.getElementById("result").innerHTML = "Fantastic! You get food.";
+                correctAnswersFood++;
                 
                 // Save correct answer count to local storage
-                localStorage.setItem('correctAnswers', correctAnswers);
+                localStorage.setItem('correctAnswersFood', correctAnswersFood);
                 updateCorrectCountFood();
 
                 document.getElementById("goToNextRoom").style.display = "block";
@@ -170,7 +169,7 @@
             document.getElementById("userInput").style.display = "none";
 
             function updateCorrectCountFood() {
-                document.getElementById('correctCountFood').textContent = correctAnswers;
+                document.getElementById('correctCountFood').textContent = correctAnswersFood;
             }
             }  
         }
