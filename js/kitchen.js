@@ -8,6 +8,8 @@
     document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
     let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
     document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+    let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
+    document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
 
     document.getElementById("goToNextRoom").style.display = "none";
 
@@ -34,12 +36,12 @@
         checkCellar: {
             lines: [
             "There is a door in the back of the cellar kitchen with a bunch of barrels and jars.",
-            "It smells good."
+            "It smells good... a blend of different spices."
             ]
         },  
         kitchenPuzzle1: {
             lines: [
-            "Being in the Kitchen is making you hungry, so you decide to search for food.",
+            "Being in the kitchen is making you hungry, so you decide to search for food.",
             "Solve the puzzle to get more food."
             ]
         },        
@@ -147,7 +149,7 @@
         
             if (userAnswer == correctAnswerKitchen1) {
                 
-                document.getElementById("result").innerHTML = "Fantastic! You get food";
+                document.getElementById("result").innerHTML = "Fantastic! You get food and decide to head back to the courtyard.";
                 correctAnswersFood++;
                 
                 // Save correct answer count to local storage

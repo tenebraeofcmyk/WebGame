@@ -51,7 +51,7 @@
   <main class="container">
     <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
       <div class="col-lg-6 px-0">
-        <h1 class="display-5 fst-italic">You decide to search the kitchen</h1>
+        <h1 class="display-5 fst-italic">You decide to search the kitchen...</h1>
         <div id="scriptContainer"></div>
         <button id="nextButton" class="btn btn-outline-light"> Next</button>
       </div>
@@ -87,7 +87,6 @@
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">Inventory</h4>
-          <p class="mb-0">All the stuff you have collected</p>
           <div  id="torchIcon" style="display:none">
             <i class="fa-solid fa-fire-flame-curved fa-xl"> <var>1 Torch</var></i>
           </div>
@@ -97,6 +96,7 @@
           <div id="candy">
             <!-- These items have to match the ones from the puzzles-->
             <p>Food: <span id="correctCountFood"></span></p> 
+            <p>Iron Pick: <span id="correctCountIronPick"></span></p> 
             <p>Torch: <span id="correctCountTorch"></span></p> 
             <p>Jewels: <span id="correctCountJewel"></span></p>       
             <p>Coins: <span id="correctCountCoins"></span></p>        
@@ -114,7 +114,7 @@
     </p>
   </footer>
 
-<script src = "kitchen.js"></script>
+<script src = "js/kitchen.js"></script>
 
 </body>
 </html>

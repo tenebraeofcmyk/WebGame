@@ -8,6 +8,8 @@
     document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
     let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
     document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+    let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
+    document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
 
     document.getElementById("goToNextRoom").style.display = "none";
 
