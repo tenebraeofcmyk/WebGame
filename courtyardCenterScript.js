@@ -71,7 +71,7 @@ window.onload = (event) => {
             ]
         }
 
-    let currentChapter = "";
+    let currentChapter = "walkForward";
 
 
         function displayChapter() {
