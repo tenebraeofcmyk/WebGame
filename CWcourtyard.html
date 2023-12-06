@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- <script src="js/color-modes.js"></script>
+    <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script> -->
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Clear Local Storage</title>
+  
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+
+</head>
+<body>
+    
+
+    <h1>This is a holding file for the courtyard</h1>
+
+
+    <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem;">
+          <div class="p-4 mb-3 bg-body-tertiary rounded">
+            <h4 class="fst-italic">Inventory</h4>
+            <p class="mb-0">All the stuff you have collected</p>
+            <div  id="torchIcon" style="display:none">
+              <i class="fa-solid fa-fire-flame-curved fa-xl"> <var>1 Torch</var></i>
+            </div>
+            <div id="ironPickIcon" style="display:none">
+              <i class="fa-solid fa-trowel fa-xl"><var> 1 Iron Pick</var></i>
+            </div>
+            <div id="candy">
+              <p>Food: <span id="correctCountFood"></span></p> 
+              <p>Torch: <span id="correctCountTorch"></span></p> 
+              <p>Jewels: <span id="correctCountJewels"></span></p>       
+              <p>Coins: <span id="correctCountCoins"></span></p>        
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <script>
+
+        // Load correct answer count from local storage on page load
+        let correctAnswers = localStorage.getItem('correctAnswers') || 0;
+        document.getElementById('correctCountFood').textContent = correctAnswers;
+        document.getElementById('correctCountTorch').textContent = correctAnswers;
+        document.getElementById('correctCountJewels').textContent = correctAnswers;
+        document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+        document.getElementById("goToNextRoom").style.display = "none";
+    
+        function goToNextRoom() {
+            window.location.href = 'CWcourtyard.html';
+        }
+
+      </script>
+
+
+</body>
+</html>

@@ -1,6 +1,24 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 
+
+<!-- Christie Needs to:
+
+-- need to add functionality to give congrats at end (email received 12-2-2023 at 4:21pm in classes folder)
+-- DONE - change the story names
+-- DONE - add the puzzle
+-- add the styling from the courtyard html file (how does the flexbox, etc work??)
+-- DONE - if this is working, i need to make this file the entrycourtyard one
+-- make sure local storage works (and add inventory box???)
+-- remove the current question
+-- put script into js file
+-- DONE - make a courtyard holding html page that i will remove before migrating to main
+-- Need to make the inventory hold diffferent types of items
+-- if i get wrong answer, need solve puzzle button to pop back up
+
+-->
+
+
 <head>
   <script src="color-modes.js"></script>
   <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
@@ -9,16 +27,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
 
-  <title>Entry to Courtyard</title>
+  <title>A Text Game using Bootstrap v5.3</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
   <link href="bootstrap.min.css" rel="stylesheet">
   <link href="blog.css" rel="stylesheet">
 
-  <style>
+  <style></style>
 
-  </style>
   <!-- Custom styles for this template -->
   <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
 
@@ -26,6 +43,7 @@
 </head>
 
 <body>
+
 
   <div class="container">
     <header class="border-bottom lh-1 py-3">
@@ -42,93 +60,62 @@
       </div>
     </header>
 
-    <div class="nav-scroller py-1 mb-3 border-bottom">
-        <nav class="nav nav-underline justify-content-between">
-          <a class="nav-item nav-link link-body-emphasis active" href="myindex.html">Hallway</a>
-          <a class="nav-item nav-link link-body-emphasis" href="courtyard.html">Courtyard</a>
-          <!-- <a class="nav-item nav-link link-body-emphasis" href="#">Armory</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Chambers</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Drawbridge</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Kitchen</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Throneroom</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Labrynth</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Stables</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#">Infirmary/a>
-        -->
-        </nav>
-      </div>
-
 
   </div>
 
   <main class="container">
     <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
       <div class="col-lg-6 px-0">
-          <!-- <h1 class="display-5 fst-italic">You wake in a dim room....</h1> -->
-          <div id="scriptContainer"></div>
-          <button id="nextButton" class="btn btn-outline-light"> Next</button>
-          <!--<button id="lightTorchButton" class="btn btn-outline-light" style="display:none"> Light Torch</button> -->
+        <h1 class="display-5 fst-italic">You wake in a dim room....</h1>
+        <div id="scriptContainer"></div>
+        <button id="nextButton" class="btn btn-outline-light"> Next</button>
       </div>
     </div>
 
-    <!-- <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
-      <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="investigateWarmB">Investigate the warm
-          feeling</button>
-      </div>
-    </div> -->
-
-    <!-- <div class="row mb-2 align-left" id="continueKick" style="display: none;">
-      <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="continueSearchB">Continue searching</button>
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="kickDoorB">Kick down the door</button>
-        
-      </div>
-    </div> -->
-
-   
-<!-- Christie's Code-->
-
-    <!--  <p style="font-weight: bold;">Inventory</p>
-    <p>Coins: <span id="correctCount"></span></p> 
-    <h1>Puzzle1</h1>
-    -->
-    <p>You are so glad you stopped as the market for candy before embarking on your journey. </p>
-    <div id="problem"></div>
-    <div id="userInput" style="display: none;">
-        <br>
-        <label for="userAnswer">Your Answer: $</label>
-        <input type="text" id="userAnswer">
-        <button id="submitBtn">Submit</button>
-        <br>
+<!-- This is my puzzle-->
+    <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+            <div id="problem"></div>
+            <div id="userInput" style="display: none;">
+                <br>
+                <label for="userAnswer">Your Answer: $</label>
+                <input type="text" id="userAnswer">
+                <button id="submitBtn">Submit</button>
+                <br>
+            </div>
+            <br>
+            <div id="result"></div>
+            <br>
+            <div>
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="entryCourtyardPuzzleB" onclick="entryCourtyardPuzzleQ()">Solve a Puzzle</button>
+           <button id="goToNextRoom" onclick="goToNextRoom()">Move On</button>
+        </div>
+        </div>
     </div>
-    <br>
-    <div id="result"></div>
-    <br>
-    <div>
-        <button id="ShowPuzzleButton" onclick="WPpuzzleroom3()">New Puzzle</button> 
-        <button id="goToNextRoom" onclick="goToNextRoom()">Move On</button>
+  
+      </div>
     </div>
-
-
-<!-- End Christie's Code-->
-
-
-
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">Inventory</h4>
           <p class="mb-0">All the stuff you have collected</p>
-          <div id="flint">
-            <i class="fa-solid fa-fire-flame-curved fa-xl" id="torchIcon" style="display:none;margin:10px"></i>
+          <div  id="torchIcon" style="display:none">
+            <i class="fa-solid fa-fire-flame-curved fa-xl"> <var>1 Torch</var></i>
+          </div>
+          <div id="ironPickIcon" style="display:none">
+            <i class="fa-solid fa-trowel fa-xl"><var> 1 Iron Pick</var></i>
           </div>
           <div id="candy">
-            
+            <p>Food: <span id="correctCountFood"></span></p> 
+            <p>Torch: <span id="correctCountTorch"></span></p> 
+            <p>Jewels: <span id="correctCountJewels"></span></p>       
+            <p>Coins: <span id="correctCountCoins"></span></p>        
           </div>
         </div>
-
+      </div>
+    </div>
 
   </main>
 
@@ -142,12 +129,193 @@
 
 
 
-  
+<script>
 
-  <script src="entrycourtyardscript.js"></script>
+    // Load correct answer count from local storage on page load
+    let correctAnswers = localStorage.getItem('correctAnswers') || 0;
+    document.getElementById('correctCountFood').textContent = correctAnswers;
+    document.getElementById("goToNextRoom").style.display = "none";
+
+    function goToNextRoom() {
+        window.location.href = 'CWcourtyard.html';
+    }
+
+//window.onload = (event) => {
+//    console.log("page is fully loaded");
+
+    const story = {
+        walkForward: {
+            lines: [
+                "With the grayish natural light, you no longer need the torch.",
+                "Shaking it until there are no more flames, you concentrate on your left.",
+                "The right is only a stone wall.",
+                "You walk forward."
+            ]
+        },
+        openCourtyard: {
+            lines: [
+            "With the grayish natural light, you no longer need the torch.",
+            "Shaking it until there are no more flames, you concentrate on your left.",
+            "The right is only a stone wall. You walk forward.",
+            "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
+            ]
+        }, 
+        castleView: {
+            lines: [
+            "You take a few more steps forward, and more of the castle comes into view.",
+            "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows…",
+            "With the grandeur of the castle, you realize there is likely a lot of wealth hidden in each of the different rooms.",
+            "You want to find these trinkets."            
+            ]
+        },  
+        entryCourtyardPuzzle: {
+            lines: [
+            "Seeing the expanses of the castle, you are so glad you stopped as the market for candy before embarking on your journey.",
+            "Solve a puzzle to gain entry into the courtyard."
+            ]
+        },        
+    }
+
+    let currentChapter = "walkForward";
+
+
+    function displayChapter() {
+        console.log('Entering displayChapter. Current chapter:', currentChapter);
+        const storyContainer = document.getElementById('scriptContainer');
+        const chapter = story[currentChapter];
+
+        const chapterElement = document.createElement('div');
+
+        chapter.lines.forEach(line => {
+            const lineElement = document.createElement('p');
+            lineElement.classList.add('lead', 'my-3');
+            lineElement.textContent = line;
+            chapterElement.appendChild(lineElement);
+        });
+        storyContainer.innerHTML = '';
+        storyContainer.appendChild(chapterElement);
+
+    }
+
+    document.getElementById('nextButton').addEventListener('click', nextChapter);
+
+    const buttonContainer = document.getElementById("buttonContainer");
+
+   document.getElementById("entryCourtyardPuzzleB").addEventListener('click', entryCourtyardPuzzleQ);
+
+
+
+
+    function nextChapter() {
+        // Logic to determine the next chapter based on the current chapter
+        console.log('Entering nextChapter. Current chapter:', currentChapter);
+
+        switch (currentChapter) {
+            case "walkForward":
+                //console.log('Switch case: walkForward');
+                buttonContainer.style.display = 'block';
+                nextButton.style.display = "block";
+                entryCourtyardPuzzleB.style.display = "none";
+                currentChapter = "openCourtyard";
+                break;
+            case "openCourtyard":
+                //console.log('Switch case: walkForward');
+                buttonContainer.style.display = 'block';
+                nextButton.style.display = "block";
+                entryCourtyardPuzzleB.style.display = "none";
+                currentChapter = "castleView";
+                break;
+            case "castleView":
+                //console.log('Switch case: walkForward');
+                buttonContainer.style.display = 'block';
+                nextButton.style.display = "none";
+                entryCourtyardPuzzleB.style.display = "block";
+                currentChapter = "entryCourtyardPuzzle";
+                break;
+
+            case "entryCourtyardPuzzle":
+                //console.log('Switch case: walkForward');
+                buttonContainer.style.display = 'block';
+                nextButton.style.display = "none";
+                entryCourtyardPuzzleB.style.display = "block";
+//                currentChapter = "investigateWarm";
+                break;
+
+
+
+            // Add more cases as needed
+        }
+        document.getElementById('nextButton').removeEventListener('click', nextChapter);
+        displayChapter();
+
+        document.getElementById('nextButton').addEventListener('click', nextChapter);
+    }
+
+
+    function entryCourtyardPuzzle() {
+        currentChapter = "entryCourtyardPuzzle";
+        buttonContainer.style.display = 'none';
+        nextButton.style.display = "block";
+        displayChapter();
+        }
+
+    function entryCourtyardPuzzleQ() {
+
+        //Initial Display
+        document.getElementById("result").innerHTML = '';
+        document.getElementById("entryCourtyardPuzzleB").style.display = "none";
+        document.getElementById("userAnswer").value='';
+        document.getElementById("goToNextRoom").style.display = "none";
+
+        //Equation    
+        const num1 = Math.floor(Math.random() * 107) + 52;
+        const num2 = Math.floor(Math.random() * 107) + 1;
+        const num3 = Math.floor(Math.random() * 14) + 1;
+        const operation = "multiplication";
+        const correctAnswer = (num2 * num3);
+        
+        //problem and userInput visible
+        document.getElementById("problem").innerHTML = `You bought candy for $${num2} per bag. If you bought ${num3} bags, how much does you spend?`;
+        document.getElementById("userInput").style.display = "block";
+    
+        // Check the answer when the user submits
+        document.getElementById("submitBtn").onclick = function () {
+            const userAnswer = document.getElementById("userAnswer").value;
+        
+            if (userAnswer == correctAnswer) {
+                
+                document.getElementById("result").innerHTML = "Fantastic! You get one coin";
+                correctAnswers++;
+                
+                // Save correct answer count to local storage
+                localStorage.setItem('correctAnswers', correctAnswers);
+                updateCorrectCountFood();
+
+                document.getElementById("goToNextRoom").style.display = "block";
+                document.getElementById("entryCourtyardPuzzleB").style.display = "block";
+            } 
+
+            else {
+                    document.getElementById("result").innerHTML = `Sorry, the correct answer is ${correctAnswer}. Keep practicing!`;
+                    document.getElementById("entryCourtyardPuzzleB").style.display = "block";
+            }
+    
+            // Hide the input field after submitting
+            document.getElementById("problem").innerHTML = '';
+            document.getElementById("userInput").style.display = "none";
+
+            function updateCorrectCountFood() {
+                document.getElementById('correctCountFood').textContent = correctAnswers;
+            }
+            }  
+        }
+
+</script>
+
+
+
 
 </body>
 
-
-
 </html>
+
