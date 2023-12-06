@@ -38,7 +38,7 @@
             <div id="candy">
               <p>Food: <span id="correctCountFood"></span></p> 
               <p>Torch: <span id="correctCountTorch"></span></p> 
-              <p>Jewels: <span id="correctCountJewels"></span></p>       
+              <p>Jewels: <span id="correctCountJewel"></span></p>       
               <p>Coins: <span id="correctCountCoins"></span></p>        
             </div>
           </div>
@@ -52,10 +52,10 @@
         let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
         let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
         let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
-        let correctAnswersJewels = localStorage.getItem('correctAnswersJewels') || 0;
+        let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
         document.getElementById('correctCountFood').textContent = correctAnswersFood;
         document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
-        document.getElementById('correctCountJewels').textContent = correctAnswersJewels;
+        document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
         document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
         document.getElementById("goToNextRoom").style.display = "none";
     

@@ -1,7 +1,16 @@
 
     // Load correct answer count from local storage on page load
+    // i need to use key/value pairs throughout website
+
     let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
     document.getElementById('correctCountFood').textContent = correctAnswersFood;
+    let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
+    document.getElementById('correctCountCins').textContent = correctAnswersCoins;
+    let correctAnswersTOrch = localStorage.getItem('correctAnswersTorch') || 0;
+    document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+    let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
+    document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
+
     document.getElementById("goToNextRoom").style.display = "none";
 
     function goToNextRoom() {

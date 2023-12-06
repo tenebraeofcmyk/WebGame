@@ -19,34 +19,35 @@
 //    console.log("page is fully loaded");
 
     const story = {
-        searchKitchen1: {
+        enterLabyrinth1: {
             lines: [
-                "You decide the best idea is to search the kitchen.",
+                "With your newfound bravery from the events of today, you are feeling strong enough to go into the gardens in the back, near the stables.",
             ]
         },
-        searchKitchen2: {
+        enterLabyrinth2: {
             lines: [
-            "You decide the best idea is to search the kitchen.",
-            "Immediately your nose is met with the smells of food, salt, and wine.",
-            "You pass three fires, all with empty pots hanging in each hearth.",
-            "There are lots of abandoned dishes, pots, and goblets, but no people.",
+            "With your newfound bravery from the events of today, you are feeling strong enough to go into the gardens in the back, near the stables.",
+            "As you come closer, you see the gardens are actually a labyrinth, hedges that rise over twice your own height.",
+            "When you step closer to the hedges, a breeze picks up from above, carrying the noise of birds…",
+            "…And the sound of voices. The voices sound like a mother and children, laughing and giggling while the mother calls out names you cannot here.",
+            "You follow the voices down the paths of hedges.",
+            "You are being pulled in now by the voices.",
             ]
         }, 
-        checkCellar: {
+        inHedges: {
             lines: [
-            "There is a door in the back of the cellar kitchen with a bunch of barrels and jars.",
-            "It smells good."
+                "Before you can stop yourself, you have lost track of time, and you are now lost.",
+                "You attempt to find your way back through the hedges but to no avail.",
             ]
         },  
-        kitchenPuzzle1: {
+        labyrinthPuzzle1: {
             lines: [
-            "Being in the Kitchen is making you hungry, so you decide to search for food.",
-            "Solve the puzzle to get more food."
+            "Solve the puzzle to get find a trinket and look for exit.",
             ]
         },        
     }
 
-    let currentChapter = "searchKitchen1";
+    let currentChapter = "enterLabyrinth1";
 
 
     function displayChapter() {
@@ -71,7 +72,7 @@
 
     const buttonContainer = document.getElementById("buttonContainer");
 
-   document.getElementById("kitchenPuzzle1B").addEventListener('click', kitchenPuzzle1Q);
+   document.getElementById("labyrinthPuzzle1B").addEventListener('click', labyrinthPuzzle1Q);
 
 
 
@@ -81,34 +82,32 @@
         console.log('Entering nextChapter. Current chapter:', currentChapter);
 
         switch (currentChapter) {
-            case "searchKitchen1":
-                //console.log('Switch case: searchKitchen1');
+            case "enterLabyrinth1":
+                //console.log('Switch case: enterLabyrinth1');
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "block";
-                kitchenPuzzle1B.style.display = "none";
-                currentChapter = "searchKitchen2";
+                labyrinthPuzzle1B.style.display = "none";
+                currentChapter = "enterLabyrinth2";
                 break;
-            case "searchKitchen2":
-                    //console.log('Switch case: searchKitchen1');
+            case "enterLabyrinth2":
+                    //console.log('Switch case: enterLabyrinth1');
                     buttonContainer.style.display = 'block';
                     nextButton.style.display = "block";
-                    kitchenPuzzle1B.style.display = "none";
-                    currentChapter = "checkCellar";
+                    labyrinthPuzzle1B.style.display = "none";
+                    currentChapter = "inHedges";
                     break;
-            case "checkCellar":
-                //console.log('Switch case: searchKitchen1');
+            case "inHedges":
+                //console.log('Switch case: enterLabyrinth1');
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "block";
-                kitchenPuzzle1B.style.display = "none";
-                currentChapter = "kitchenPuzzle1";
+                labyrinthPuzzle1B.style.display = "none";
+                currentChapter = "labyrinthPuzzle1";
                 break;
-
-
-            case "kitchenPuzzle1":
-                //console.log('Switch case: searchKitchen1');
+            case "labyrinthPuzzle1":
+                //console.log('Switch case: enterLabyrinth1');
                 buttonContainer.style.display = 'block';
                 nextButton.style.display = "none";
-                kitchenPuzzle1B.style.display = "block";
+                labyrinthPuzzle1B.style.display = "block";
                 break;
 
             // Add more cases as needed
@@ -120,56 +119,56 @@
     }
 
 
-    function kitchenPuzzle1() {
-        currentChapter = "kitchenPuzzle1";
+    function labyrinthPuzzle1() {
+        currentChapter = "labyrinthPuzzle1";
         buttonContainer.style.display = 'none';
         nextButton.style.display = "block";
         displayChapter();
         }
 
-    function kitchenPuzzle1Q() {
+    function labyrinthPuzzle1Q() {
 
         //Initial Display
         document.getElementById("result").innerHTML = '';
-        document.getElementById("kitchenPuzzle1B").style.display = "none";
+        document.getElementById("labyrinthPuzzle1B").style.display = "none";
         document.getElementById("userAnswer").value='';
         document.getElementById("goToNextRoom").style.display = "none";
 
         //Equation    
-        const correctAnswerKitchen1 = 20;
+        const correctAnswerlabyrinth1 = 4;
         
         //problem and userInput visible
-        document.getElementById("problem").innerHTML = `You see 5 jars on a shelf. 4 of the jars have spices. What percentage of the jars are EMPTY?`;
+        document.getElementById("problem").innerHTML = `There are 16 rows of hedges some are coverein vines and others are not.  If the rows with vines is 25% of the total, how many rows is that?`;
         document.getElementById("userInput").style.display = "block";
     
         // Check the answer when the user submits
         document.getElementById("submitBtn").onclick = function () {
             const userAnswer = document.getElementById("userAnswer").value;
         
-            if (userAnswer == correctAnswerKitchen1) {
+            if (userAnswer == correctAnswerlabyrinth1) {
                 
-                document.getElementById("result").innerHTML = "Fantastic! You get food";
-                correctAnswersFood++;
+                document.getElementById("result").innerHTML = "Correct! You see a gap in the hedges to sneak thru and find a jewel!";
+                correctAnswersJewel++;
                 
                 // Save correct answer count to local storage
-                localStorage.setItem('correctAnswersFood', correctAnswersFood);
-                updateCorrectCountFood();
+                localStorage.setItem('correctAnswersJewel', correctAnswersJewel);
+                updateCorrectCountJewel();
 
                 document.getElementById("goToNextRoom").style.display = "block";
-                document.getElementById("kitchenPuzzle1B").style.display = "none";
+                document.getElementById("labyrinthPuzzle1B").style.display = "none";
             } 
 
             else {
                     document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
-                    document.getElementById("kitchenPuzzle1B").style.display = "block";
+                    document.getElementById("labyrinthPuzzle1B").style.display = "block";
             }
     
             // Hide the input field after submitting
             document.getElementById("problem").innerHTML = '';
             document.getElementById("userInput").style.display = "none";
 
-            function updateCorrectCountFood() {
-                document.getElementById('correctCountFood').textContent = correctAnswersFood;
+            function updateCorrectCountJewel() {
+                document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
             }
             }  
         }

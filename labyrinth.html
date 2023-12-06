@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 
+
+<!--tasks for Christie
+    -- no puzzle
+    -- last page doesnt load
+    -- need to have a different kind of inventory item for testing
+
+-->
+
+
   <head>
     <script src="color-modes.js"></script>
     <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
@@ -55,7 +64,7 @@
             <div id="problem"></div>
             <div id="userInput" style="display: none;">
                 <br>
-                <label for="userAnswer">Your Answer: $</label>
+                <label for="userAnswer">Your Answer: </label>
                 <input type="text" id="userAnswer">
                 <button id="submitBtn"class="btn btn-outline-light">Submit</button>
                 <br>
@@ -64,13 +73,15 @@
             <div id="result"></div>
             <br>
             <div class="col p-4 d-flex">
-              <button type="button" class="btn btn-outline-light" id="entryCourtyardPuzzleB" onclick="entryCourtyardPuzzleQ()">Solve a Puzzle</button>
+              <button type="button" class="btn btn-outline-light" id="labyrinthPuzzle1B" onclick="labyrinthPuzzle1Q()">Solve Puzzle</button>
               <button id="goToNextRoom" class="btn btn-outline-light"  onclick="goToNextRoom()">Go to Courtyard</button>
             </div>
           </span>
         </div>
     </div>
-  
+ 
+    
+    <!-- This is the Inventory -->
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
@@ -83,6 +94,7 @@
             <i class="fa-solid fa-trowel fa-xl"><var> 1 Iron Pick</var></i>
           </div>
           <div id="candy">
+            <!-- These items have to match the ones from the puzzles-->
             <p>Food: <span id="correctCountFood"></span></p> 
             <p>Torch: <span id="correctCountTorch"></span></p> 
             <p>Jewels: <span id="correctCountJewel"></span></p>       
@@ -101,7 +113,7 @@
     </p>
   </footer>
 
-<script src = "entryCourtyard.js"></script>
+<script src = "labyrinth.js"></script>
 
 </body>
 </html>
