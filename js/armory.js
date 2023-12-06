@@ -1,5 +1,6 @@
-window.onload = () => {
-    console.log("page is fully loaded");
+window.onload = (event) => {
+  console.log("page is fully loaded");
+
 
   const story = {
     start: {
@@ -35,30 +36,37 @@ window.onload = () => {
 };
 
 let currentChapter = "start";
-displayChapter();
+let puzzleSize = 4; 
 
-const nextButton = document.getElementById('nextButton');
-nextButton.addEventListener('click', nextChapter);
-const playPuzzleButton = document.getElementById("playPuzzleButton");
-playPuzzleButton.addEventListener('click', playPuzzle);
+initializePuzzle();
 
 function displayChapter() {
-    console.log('Entering displayChapter. Current chapter:', currentChapter);
-    const storyContainer = document.getElementById('scriptContainer');
-    const chapter = story[currentChapter];
-    const chapterElement = document.createElement('div');
+  console.log('Entering displayChapter. Current chapter:', currentChapter);
+  const storyContainer = document.getElementById('scriptContainer');
+  const chapter = story[currentChapter];
+  const chapterElement = document.createElement('div');
 
-    chapter.lines.forEach(line => {
-        const lineElement = document.createElement('p');
-        lineElement.classList.add('lead', 'my-3');
-        lineElement.textContent = line;
-        chapterElement.appendChild(lineElement);
-    });
+  chapter.lines.forEach(line => {
+      const lineElement = document.createElement('p');
+      lineElement.classList.add('lead', 'my-3');
+      lineElement.textContent = line;
+      chapterElement.appendChild(lineElement);
+  });
 
-    storyContainer.innerHTML = '';
-    storyContainer.appendChild(chapterElement);
+  storyContainer.innerHTML = '';
+  storyContainer.appendChild(chapterElement);
+}
+
+  storyContainer.innerHTML = '';
+  storyContainer.appendChild(chapterElement);
 
 }
+
+    const nextButton = document.getElementById('yourNextButtonId');
+    document.getElementById('nextButton').addEventListener('click', nextChapter);
+
+    const buttonContainer = document.getElementById("buttonContainer");
+    document.getElementById("playPuzzleButton").addEventListener('click', playPuzzle);
 
 
 function nextChapter() {
@@ -69,55 +77,72 @@ function nextChapter() {
       
       case "start":
           //console.log('Switch case: start');
-          buttonContainer.style.display = 'block';
-          nextButton.style.display = "none";
-          currentChapter = "start";
-          displayChapter();
+          buttonContainer.style.display = 'none';
+          nextButton.style.display = "block";
           break;
       case "investigateDoor":
-          //console.log('Switch case: investigateDoor');
-          buttonContainer.style.display = 'block';
-          nextButton.style.display = "none";
+          //  console.log('Switch case: investigateDoor');
+          buttonContainer.style.display = 'none';
+          nextButton.style.display = "block";
           currentChapter = "investigateDoor";
           break;
       case "playPuzzle":
           //console.log('Switch case:playPuzzle');
           currentChapter = "playPuzzle";
-          playPuzzleButton.style.display = 'block';
+          buttonContainer.style.display = 'block';
           nextButton.style.display = "none";
           break;
       case "enterArmory":
-          //console.log('Switch case:enterArmory');
-          currentChapter = "enterArmory";
+          //  console.log('Switch case: enterArmory');
+          buttonContainer.style.display = 'none';
           nextButton.style.display = "block";
+          currentChapter = "enterArmory";
           break;
       case "investigateArmor":
-          //console.log('Switch case:investigateArmor');
-          currentChapter = "investigateArmor";
+          //  console.log('Switch case: investigateArmor');
+          buttonContainer.style.display = 'none';
           nextButton.style.display = "block";
+          currentChapter = "investigateArmor";
           break;
 
       }
-
       document.getElementById('nextButton').removeEventListener('click', nextChapter);
-        displayChapter();
+      displayChapter();
 
-        document.getElementById('nextButton').addEventListener('click', nextChapter);
+      document.getElementById('nextButton').addEventListener('click', nextChapter);
+  }
 
-}
+  function start() {
+      currentChapter = "start";
+      buttonContainer.style.display = 'none';
+      nextButton.style.display = "block";
+      displayChapter();
+  }
+  function investigateDoor() {
+      currentChapter = "investigateDoor";
+      buttonContainer.style.display = 'none';
+      nextButton.style.display = "block";
+      displayChapter();
+  }
+  function playPuzzle() {
+      currentChapter = "playPuzzle";
+      buttonContainer.style.display = 'block';
+      nextButton.style.display = "none";
+      displayChapter();
+  }
+  function enterArmory() {
+      currentChapter = "enterArmory";
+      buttonContainer.style.display = 'none';
+      nextButton.style.display = "block";
+      displayChapter();
+  }
+  function investigateArmor() {
+      currentChapter = "investigateArmor";
+      buttonContainer.style.display = 'none';
+      nextButton.style.display = "block";
+      displayChapter();
+  }
 
-
-function playPuzzle() {
-    currentChapter = "playPuzzle";
-    buttonContainer.style.display = 'none';
-    playPuzzleButton.style.display = "block";
-    displayChapter();
-}
-
-
-let puzzleSize = 4; 
-
-initializePuzzle();
 
 // Function to submit the answer
 function submitAnswer() {
@@ -188,6 +213,4 @@ function playPuzzle() {
   initializePuzzle();
   const puzzleContainer = document.getElementById("puzzleContainer");
   puzzleContainer.style.display = "block";
-}
-
 };

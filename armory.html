@@ -3,7 +3,6 @@
 
 <head>
     <script src="js/color-modes.js"></script>
-    <script src="js/armory.js"></script>
     <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>    
 
   <meta charset="utf-8">
@@ -53,12 +52,24 @@
       <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
           <div class="col-lg-6 px-0">
               <h1 class="display-5 fst-italic">Every Castle Has an Armory....</h1>
-              <div class="scriptContainer"></div>
+            <div class="scriptContainer">   </div>
               <button id="nextButton" class="btn btn-outline-light"> Next</button>
-              <button id="playPuzzleButton" class="btn btn-outline-light" style="display:none"> Play Puzzle</button>
-            </div>
+              <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
+                <button id="playPuzzleButton" class="btn btn-outline-light" style="display:none">Play Puzzle</button>
+              </div>
+          </div>
       </div>
-    
+
+      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+          <div id="puzzleContainer">
+            
+          </div>
+          <button id="nextButton" class="btn btn-outline-light"> Next</button>
+          <button id="lightTorchButton" class="btn btn-outline-light" style="display:none"> Light Torch</button>
+          <button id="takePickButton" class="btn btn-outline-light" style="display:none"> Take Iron Pick</button>
+        </div>
+      </div>
     </main>
 
     <div class="col-md-4">
@@ -88,5 +99,7 @@
 
 
 </body>
+
+<script src="js/armory.js"></script>
 
 </html>
