@@ -102,6 +102,12 @@ window.onload = (event) => {
 
     let currentChapter = "start";
 
+     // Load correct answer count from local storage on page load
+     let correctAnswers = localStorage.getItem('correctAnswers') || 0;
+     document.getElementById('correctCount').textContent = correctAnswers;
+
+ 
+
 
     function displayChapter() {
         console.log('Entering displayChapter. Current chapter:', currentChapter);
@@ -263,6 +269,7 @@ window.onload = (event) => {
         nextButton.style.display = "block";
         ironPickIcon.style.display = 'block';
         currentChapter = "backUp";
+        addTorch();
         displayChapter();
     }
 
@@ -283,3 +290,60 @@ window.onload = (event) => {
     }
 }
 
+function startNewGameAndClearLocalStorage() {
+    localStorage.clear();
+    alert('New Game Started.');
+}
+
+var inventory = [
+    { name: 'Torch', quantity:1 , type: 'Consumable' },
+    { name: 'IronPick', quantity: 1, type: 'Tool' },
+    // Add more items as needed
+];
+
+var inventoryJSON = JSON.stringify(inventory);
+localStorage.setItem('gameInventory', inventoryJSON);
+
+
+
+
+// Modify the inventory as needed
+storedInventory[0].quantity += 3;
+
+// Save the updated inventory to local storage
+localStorage.setItem('gameInventory', JSON.stringify(storedInventory));
+
+
+function addTorch(Torch){
+var storedInventoryJSON = localStorage.getItem('gameInventory');
+var storedInventory = JSON.parse(storedInventoryJSON) || [];
+
+var existingItem =storedInventory.find(item=>item.name === Torch);
+if (existingItem){
+    existingItem.quantity += 1;
+}
+else {
+    var newItem ={name:Torch, quantity:1, type:'Default'};
+    storedInventory.push(newItem);
+}
+
+
+
+
+//     // Save the updated inventory to local storage
+//     localStorage.setItem('gameInventory', JSON.stringify(storedInventory));
+
+//     // You can also return the updated inventory if needed
+//     return storedInventory;
+// }
+
+// // Example of how to use the function on a button click
+// document.getElementById('addItemButton').addEventListener('click', function () {
+//     var itemNameToAdd = prompt('Enter the item name to add:');
+//     if (itemNameToAdd) {
+//         addItemToInventory(itemNameToAdd);
+//         // You can do additional actions or UI updates here if needed
+//     }
+// });
+
+}
