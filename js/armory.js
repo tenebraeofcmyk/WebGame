@@ -1,9 +1,12 @@
+let currentChapter = "findArmory";
+let puzzleSize = 4; 
+
 window.onload = (event) => {
   console.log("page is fully loaded");
 
 
   const story = {
-    start: {
+    findArmory: {
       lines: [
         "You are interested in seeing if any damage happened to the knights of this castle, and you figure the armory could give clues to this.",
         "Getting closer to the drawbridge reveals a door in the side of the alcove’s walls."
@@ -35,8 +38,6 @@ window.onload = (event) => {
   }  
 };
 
-let currentChapter = "start";
-let puzzleSize = 4; 
 
 initializePuzzle();
 
@@ -75,8 +76,8 @@ function nextChapter() {
 
     switch (currentChapter) {
       
-      case "start":
-          //console.log('Switch case: start');
+      case "findArmory":
+          //console.log('Switch case: findArmory');
           buttonContainer.style.display = 'none';
           nextButton.style.display = "block";
           break;
@@ -112,8 +113,8 @@ function nextChapter() {
       document.getElementById('nextButton').addEventListener('click', nextChapter);
   }
 
-  function start() {
-      currentChapter = "start";
+  function findArmory() {
+      currentChapter = "findArmory";
       buttonContainer.style.display = 'none';
       nextButton.style.display = "block";
       displayChapter();
