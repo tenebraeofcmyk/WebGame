@@ -75,7 +75,8 @@ const buttonContainer = document.getElementById("doorButtonContainer");
 
 document.getElementById("doorSleepingB").addEventListener('click', sleepingChamberdoor);
 document.getElementById("doorKitchenB").addEventListener('click', kitchenDoor);
-
+document.getElementById("doorStablesB").addEventListener('click',stableDoor);
+document.getElementById("doorLabyrinthB").addEventListener('click',labyrinthDoor);
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
@@ -91,6 +92,7 @@ function nextChapter() {
             //  console.log('Switch case: investigateWarm');
             currentChapter = "seeDoors";
             buttonContainer.style.display ="block";
+            nextButton.style.display = "none";
             break;
 
         // Add more cases as needed
@@ -108,6 +110,14 @@ function sleepingChamberdoor() {
 
 function kitchenDoor(){
     window.location.href="kitchen.html";
+}
+
+function stableDoor(){
+    window.location.href="stables.html";
+}
+
+function labyrinthDoor (){
+    window.location.href="labyrinth.html"; 
 }
 
 function clearLocalStorage() {
