@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+
+<!-- Christie Needs to:
+
+-- need to add functionality to give congrats at end (email received 12-2-2023 at 4:21pm in classes folder)
+-- DONE - change the story names
+-- add the puzzle
+-- add the styling from the courtyard html file (how does the flexbox, etc work??)
+-- if this is working, i need to make this file the entrycourtyard one
+-- make sure local storage works (and add inventory box???)
+-- remove the current question
+-- put script into js file
+-- make a courtyard holding html page that i will remove before migrating to main
+
+-->
+
+
+<head>
+  <script src="color-modes.js"></script>
+  <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+
+  <title>Entry to Courtyard</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="bootstrap2.min.css" rel="stylesheet">
+  <link href="blog.css" rel="stylesheet">
+
+  
+  <!-- Custom styles for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Text</title>
+</head>
+
+<div class="container">
+    <header class="border-bottom lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+          <a class="link-secondary" href="#">About</a>
+        </div>
+        <div class="col-4 text-center">
+          <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">A Text Game</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <a class="btn btn-sm btn-outline-secondary" href="#">Restart</a>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="nav-scroller py-1 mb-3 border-bottom">
+        <nav class="nav nav-underline justify-content-between">
+          <a class="nav-item nav-link link-body-emphasis active" href="myindex.html">Hallway</a>
+          <a class="nav-item nav-link link-body-emphasis" href="courtyard.html">Courtyard</a>
+        </nav>
+    </div>
+
+</div>
+
+
+<body>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+          <div class="col-lg-6 px-0">
+              <div id="scriptContainer"></div>
+              <button id="nextButton">Next</button> 
+
+              
+
+<!--             <div id="problem"></div>
+                <p>You are so glad you stopped as the market for candy before embarking on your journey. </p>
+                <div id="userInput" style="display: none">
+                    <br>
+                    <label for="userAnswer">Your Answer: $</label>
+                    <input type="text" id="userAnswer">
+                    <button id="submitBtn">Submit</button>
+                    <br>
+                </div>
+                <br>
+                <div id="result"></div>
+                <br>
+                <div>
+                    <button id="ShowPuzzleButton" onclick="entryCourtyardPuzzle()">New Puzzle</button> 
+                </div>
+                --> 
+
+    
+    </div>
+</div>
+    <!-- End Christie's Code-->
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+<p style="font-weight: bold;">Inventory</p>
+    <p>Coins: <span id="correctCount"></span></p> 
+
+
+</main>
+
+
+<footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+    
+    <p class="mb-0">
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+
+
+
+
+
+
+
+<script>
+
+    // Different chapters of text within a story
+    const storyChapters = {
+        "walkForward": {
+            lines: [
+                "With the grayish natural light, you no longer need the torch.",
+                "Shaking it until there are no more flames, you concentrate on your left.",
+                "The right is only a stone wall.",
+                "You walk forward."
+            ]
+        },
+        "openCourtyard": {
+            lines: [
+                "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
+                "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."
+            ]
+        },
+        "castleView": {
+            lines: [
+                "You take a few more steps forward, and more of the castle comes into view.",
+                "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows…",
+                "With the grandeur of the castle, you realize there is likely a lot of wealth hidden in each of the different rooms.",
+                "You want to find these trinkets."  
+            ]  
+        },
+    }
+    
+    
+    
+
+    // Function to display the text for a given chapter
+    function displayChapter(chapter) {
+        document.getElementById("scriptContainer").innerHTML = storyChapters[chapter] || stop;
+
+        // Check if it's the last chapter and show/hide buttons accordingly
+        if (chapter === "castleView") {
+            document.getElementById("finishButton").style.display = "block";
+            document.getElementById("nextButton").style.display = "none";
+        } else {
+            document.getElementById("finishButton").style.display = "none";
+            document.getElementById("nextButton").style.display = "block";
+        }
+    }
+
+    let currentChapter = "";
+
+    // Function to determine the next chapter based on current chapter
+    function determineNextChapter(currentChapter) {
+        // Add your logic here to determine the next chapter based on the current chapter
+        // For simplicity, let's assume a linear progression
+        switch (currentChapter) {
+            case "":
+                return "walkForward";
+            case "walkForward":
+                return "openCourtyard";
+            case "openCourtyard":
+                return "castleView";
+//            case "castleView":
+//                default:
+//                return null; // No more chapters
+        }
+    }
+
+   // Function to handle the "Next Chapter" button click
+   function nextChapter() {
+//        // If it's the first click or the current chapter is null, set it to "walkForward"
+        if (currentChapter = null) {
+            currentChapter = "walkForward";
+        } else {
+            // Determine the next chapter based on currentChapter
+            currentChapter = determineNextChapter(currentChapter);
+        }
+        // Display the text for the next chapter
+        displayChapter(currentChapter);
+    }
+
+
+    // Function to ask a question before allowing access to the last chapter
+
+    function askQuestion() {
+        // Replace the question and answer with your own
+        const userAnswer = prompt("To proceed, answer the question: What is the capital of France?").toLowerCase();
+
+        if (userAnswer === "paris") {
+            // Redirect to the last chapter if the answer is correct
+            window.location.href = "path/to/your/page.html";
+        } else {
+            // Alert and do not proceed if the answer is incorrect
+            alert("Incorrect answer. Try again!");
+        }
+    }
+
+
+    //Candy Puzzle
+    function entryCourtyardPuzzle() {
+        
+        //Initial Display
+        document.getElementById("result").innerHTML = '';
+        document.getElementById("ShowPuzzleButton").style.display = "none";
+        document.getElementById("userAnswer").value='';
+        document.getElementById("goToNextRoom").style.display = "none";
+
+        //Equation    
+        const num1 = Math.floor(Math.random() * 107) + 52;
+        const num2 = Math.floor(Math.random() * 107) + 1;
+        const num3 = Math.floor(Math.random() * 14) + 1;
+        const operation = "multiplication";
+        const correctAnswer = (num2 * num3);
+        
+        //problem and userInput visible
+        document.getElementById("problem").innerHTML = `You bought candy for $${num2} per bag. If you bought ${num3} bags, how much does you spend?`;
+        document.getElementById("userInput").style.display = "block";
+    
+        // Check the answer when the user submits
+        document.getElementById("submitBtn").onclick = function () {
+            const userAnswer = document.getElementById("userAnswer").value;
+        
+            if (userAnswer == correctAnswer) {
+                
+                document.getElementById("result").innerHTML = "Fantastic! You get one coin";
+                correctAnswers++;
+                
+                // Save correct answer count to local storage
+                localStorage.setItem('correctAnswers', correctAnswers);
+                updateCorrectCount();
+
+                document.getElementById("goToNextRoom").style.display = "block";
+                document.getElementById("ShowPuzzleButton").style.display = "block";
+            } 
+
+            else {
+                    document.getElementById("result").innerHTML = `Sorry, the correct answer is ${correctAnswer}. Keep practicing!`;
+                    document.getElementById("ShowPuzzleButton").style.display = "block";
+            }
+    
+            // Hide the input field after submitting
+            document.getElementById("problem").innerHTML = '';
+            document.getElementById("userInput").style.display = "none";
+
+            function updateCorrectCount() {
+                document.getElementById('correctCount').textContent = correctAnswers;
+            }
+        }  
+        }
+
+
+
+</script>
+
+</body>
+</html>
+
+

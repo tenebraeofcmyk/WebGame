@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- 
+        
+    README:
+        The "start new game" button will appear on main page. It is designed to reset the coin counter.
+            - user click will initiate the first javascript function.
+        Optional - the "Go to first puzzle" button will take user to first puzzle - "hallPuzzle.html"
+            - user click will initiate the second javascript function-->
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Clear Local Storage</title>
+  
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+
+</head>
+<body>
+   
+    <!-- Page Description: Clearing Local Storage on Starting New Game</h1> -->
+
+    <!-- Two Buttons -->
+
+    <button onclick="clearLocalStorage()">Start New Game</button>
+    <button onclick="goToRoom1Puzzle()">Go to First Puzzle</button>
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function clearLocalStorage() {
+        var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+        
+        if (confirmation) {
+            // User clicked "Yes"
+            localStorage.clear();
+//            alert("Local storage cleared. Redirecting to homepage.");
+            window.location.href = 'entrycourtyard.html'; // Replace with your homepage URL
+        } else {
+            // User clicked "No" or closed the dialog
+//           alert("Local storage not cleared. Stay on the current page.");
+        }
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>
