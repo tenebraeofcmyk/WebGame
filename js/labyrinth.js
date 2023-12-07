@@ -214,7 +214,7 @@
                 } 
     
                 else {
-                        document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
+                        document.getElementById("result").innerHTML = `Sorry, that is not correct, please try again!`;
                         document.getElementById("labyrinthPuzzle2B").style.display = "block";
                 }
         

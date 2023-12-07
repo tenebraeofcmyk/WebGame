@@ -1,149 +1,124 @@
-window.onload = (event) => {
-    console.log("page is fully loaded");
 
-    const story = {
-        walkForward: {
-            lines: [
-                "With the grayish natural light, you no longer need the torch.",
-                "Shaking it until there are no more flames, you concentrate on your left.",
-                "The right is only a stone wall.",
-                "You walk forward."]
-            },
-        belowFountain:{
-            lines:[
-                "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
-                "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."
-            ]
-            },
-        realizeTreasure:{
-            lines:[
-                "You take a few more steps forward, and more of the castle comes into view.",
-                "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows…",
-                "With the grandeur of the castle, you realize there is likely a lot of wealth hidden in each of the different rooms.",
-                "You want to find these trinkets."  
-            ]  
-        }
+// Load correct answer count from local storage on page load
+
+let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
+document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
+let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
+document.getElementById('correctCountFood').textContent = correctAnswersFood;
+let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
+document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
+document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
+ document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+
+// document.getElementById("goToNextRoom").style.display = "none";
+
+// function goToNextRoom() {
+//     window.location.href = 'courtyard.html';
+// }
+
+
+
+
+
+const story = {
+
+    belowFountain: {
+        lines: [
+            "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
+            "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."
+        ]
+    },
+
+    surveyYard: {
+        lines: [
+            "You finally make it over the wall, and now you can see the different points of the castle.",
+            "The wall across the one you scaled only bears one set of double doors, twice your height. You can see that they used to be coated in varnish.",
+            "The wall to your left is the tallest of all the walls, and there in the center is a large alcove with a drawbridge filling the space.",
+            "There are two walls to your right."
+        ]
+    },
+    seeDoors: {
+        lines: [
+            "You realize the five-sided castle is poorly protected at the back walls, where the walls on the right—the back of the castle--open into the stables and gardens. There is a likely a labyrinth with lots of secrets.",
+            "When you turn around, the wall you scaled down is lined with doors tucked away in the overhang.",
+            "These doors likely lead to a variety of chambers."
+        ]
     }
 
-    let currentChapter = "walkForward";
+}
+let currentChapter = "belowFountain";
 
 
-    function displayChapter() {
-        console.log('Entering displayChapter. Current chapter:', currentChapter);
-        const storyContainer = document.getElementById('scriptContainer');
-        const chapter = story[currentChapter];
+function displayChapter() {
+    console.log('Entering displayChapter. Current chapter:', currentChapter);
+    const storyContainer = document.getElementById('scriptContainer');
+    const chapter = story[currentChapter];
 
-        const chapterElement = document.createElement('div');
+    const chapterElement = document.createElement('div');
 
-        chapter.lines.forEach(line => {
-            const lineElement = document.createElement('p');
-            lineElement.classList.add('lead', 'my-3');
-            lineElement.textContent = line;
-            chapterElement.appendChild(lineElement);
-        });
-        storyContainer.innerHTML = '';
-        storyContainer.appendChild(chapterElement);
+    chapter.lines.forEach(line => {
+        const lineElement = document.createElement('p');
+        lineElement.classList.add('lead', 'my-3');
+        lineElement.textContent = line;
+        chapterElement.appendChild(lineElement);
+    });
+    storyContainer.innerHTML = '';
+    storyContainer.appendChild(chapterElement);
 
+}
+
+document.getElementById('nextButton').addEventListener('click', nextChapter);
+
+const buttonContainer = document.getElementById("doorButtonContainer");
+
+document.getElementById("doorSleepingB").addEventListener('click', sleepingChamberdoor);
+document.getElementById("doorKitchenB").addEventListener('click', kitchenDoor);
+
+
+function nextChapter() {
+    // Logic to determine the next chapter based on the current chapter
+    console.log('Entering nextChapter. Current chapter:', currentChapter);
+
+    switch (currentChapter) {
+        case "belowFountain":
+            console.log('Switch case: belowFountain');
+            nextButton.style.display = "block";
+            currentChapter = "surveyYard";
+            break;
+        case "surveyYard":
+            //  console.log('Switch case: investigateWarm');
+            currentChapter = "seeDoors";
+            buttonContainer.style.display ="block";
+            break;
+
+        // Add more cases as needed
     }
+    document.getElementById('nextButton').removeEventListener('click', nextChapter);
+    displayChapter();
 
     document.getElementById('nextButton').addEventListener('click', nextChapter);
-
-    const buttonContainer = document.getElementById("buttonContainer");
-    document.getElementById("investigateWarmB").addEventListener('click', investigateWarm);
-    document.getElementById("keepMovingB").addEventListener('click', keepMoving);
-
-    const continueKick = document.getElementById("continueKick");
-    document.getElementById("continueSearchB").addEventListener('click', continueSearch);
-    document.getElementById("kickDoorB").addEventListener('click', kickDoor);
-
-    document.getElementById('lightTorchButton').addEventListener('click', lightTorch);
-
-    const torchIcon = document.getElementById("torchIcon");
+}
 
 
-    function nextChapter() {
-        // Logic to determine the next chapter based on the current chapter
-        console.log('Entering nextChapter. Current chapter:', currentChapter);
+function sleepingChamberdoor() {
+    window.location.href = 'sleepingChambers.html';
+}
 
-        switch (currentChapter) {
-            case "walkForward":
-                //console.log('Switch case: start');
-                buttonContainer.style.display = 'none';
-                nextButton.style.display = "block";
-                currentChapter ="belowFountain";
-                break;
-            case "investigateWarm":
-                //  console.log('Switch case: investigateWarm');
-                continueKick.style.display = 'block';
-                break;
-            case "keepMoving":
-                console.log('Switch case:keepMoving');
-                //currentChapter="";
+function kitchenDoor(){
+    window.location.href="kitchen.html";
+}
 
-                break;
-            case "continueSearch":
-                console.log('Switch case:continueSearch');
-                // currentChapter = "lightTorch";
-                break;
-            case "kickDoor":
-                console.log('Switch case:kickDoor');
-                currentChapter = "lightTorch";
-                lightTorchButton.style.display = 'block';
-                nextButton.style.display = "none";
-                break;
-            case "lightTorch":
-                console.log('Switch to light Torch');
-              currentChapter = "plaqueDoors";
-                break;
-            case "plaqueDoors":
-                currentChapter = "plaqueRead";
-                console.log('Switch to plaqueDoors');
-                lightTorchButton.style.display = 'none';
-                break;
+function clearLocalStorage() {
+    var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
 
-
-            // Add more cases as needed
-        }
-        document.getElementById('nextButton').removeEventListener('click', nextChapter);
-        displayChapter();
-    
-    document.getElementById('nextButton').addEventListener('click', nextChapter);
+    if (confirmation) {
+        // User clicked "Yes"
+        localStorage.clear();
+        window.location.href = 'myindex.html';
     }
-
-    function investigateWarm() {
-        currentChapter = "investigateWarm";
-        buttonContainer.style.display = 'none';
-        nextButton.style.display = "block";
-        displayChapter();
-    }
-    function keepMoving() {
-        currentChapter = "keepMoving";
-        continueKick.style.display = 'block'; 
-        buttonContainer.style.display = 'none';
-        displayChapter();
-    }
-    function continueSearch() {
-        currentChapter = "continueSearch";
-        displayChapter();
-    }
-
-    function kickDoor() {
-        console.log ("function kick Door ran");
-        currentChapter = "kickDoor";
-        nextButton.style.display = "block";
-        continueKick.style.display = 'none';
-        displayChapter();
-    }
-    function lightTorch() {
-        console.log("function lightTorch ran");
-        currentChapter="lightTorch";
-        torchIcon.style.display = 'block';
-        lightTorchButton.style.display = 'none';
-        nextButton.style.display = "block";
-        nextChapter();
-    }
-    function plaqueDoors() {
-        currentChapter = "plaqueDoors";
-        displayChapter();
+    else {
+        // User clicked "No" or closed the dialog
     }
 }
