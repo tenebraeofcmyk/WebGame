@@ -16,7 +16,7 @@
     document.getElementById("goToNextRoom").style.display = "none";
 
     function goToNextRoom() {
-        window.location.href = 'CWcourtyard.html';
+        window.location.href = 'courtyard.html';
     }
 
 //window.onload = (event) => {
@@ -33,22 +33,22 @@
         },
         openCourtyard: {
             lines: [
-            "You no longer need the torch, so you shake it until there are no more flames",
-            "The right is only a stone wall. You walk forward.",
+            "You no longer need the torch, so you shake it until there are no more flames.",
+            "To the right is only a stone wall. You walk forward.",
             "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
             ]
         }, 
         castleView: {
             lines: [
             "You take a few more steps forward, and more of the castle comes into view.",
-            "You see the grandeur of the castle, towers in each corner of the length of each wall, the high walls, the stained glass windows… and you realize there is likely a lot of wealth hidden in each of the different rooms.",
+            "You see the grandeur of the castle, towers in each corner, the high walls, the stained glass windows… and you realize there is likely a lot of wealth hidden in the different rooms.",
             "You want to get down to the courtyard to find these treasures."            
             ]
         },  
         entryCourtyardPuzzle: {
             lines: [
             "Seeing the expanses of the castle, you are so glad you stopped at a market for candy before embarking on your journey.",
-            "Solve a puzzle to retireve food and gain entry into the courtyard."
+            "Solve a puzzle to retrieve food and gain entry into the courtyard."
             ]
         },        
     }
@@ -154,7 +154,7 @@
         
             if (userAnswer == correctAnswer) {
                 
-                document.getElementById("result").innerHTML = "Fantastic! You get food and now have a choice... do you want to play another puzzle or enter the courtyard.";
+                document.getElementById("result").innerHTML = "Fantastic! You get food and now have a choice... do you want to play another puzzle or enter the courtyard?";
                 correctAnswersFood++;
                 
                 // Save correct answer count to local storage

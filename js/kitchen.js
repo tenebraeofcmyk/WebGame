@@ -14,7 +14,7 @@
     document.getElementById("goToNextRoom").style.display = "none";
 
     function goToNextRoom() {
-        window.location.href = 'CWcourtyard.html';
+        window.location.href = 'courtyard.html';
     }
 
 //window.onload = (event) => {
@@ -140,7 +140,7 @@
         const correctAnswerKitchen1 = 20;
         
         //problem and userInput visible
-        document.getElementById("problem").innerHTML = `You see jars lined up on a cellar shelf. Four of the five jars have spices anf one jar is empty. What percentage of the jars are empty?`;
+        document.getElementById("problem").innerHTML = `You see jars lined up on a cellar shelf. Four of the five jars have spices and one jar is empty. What percentage of the jars are empty?`;
         document.getElementById("userInput").style.display = "block";
     
         // Check the answer when the user submits

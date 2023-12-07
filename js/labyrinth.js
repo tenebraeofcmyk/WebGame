@@ -14,7 +14,7 @@
     document.getElementById("goToNextRoom").style.display = "none";
 
     function goToNextRoom() {
-        window.location.href = 'CWcourtyard.html';
+        window.location.href = 'courtyard.html';
     }
 
 //window.onload = (event) => {
@@ -153,7 +153,7 @@
         
             if (userAnswer == correctAnswerlabyrinth1) {
                 
-                document.getElementById("result").innerHTML = "Correct! You see a gap in the hedges and find a jewel as you sneak thru. But oh, no... there it was a trap. Solve the next puzzle to make it thru.";
+                document.getElementById("result").innerHTML = "Correct! You see a gap in the hedges and find a jewel as you sneak thru. But oh, no... it was a trap. Solve the next puzzle to make it thru.";
                 correctAnswersJewel++;
                 
                 // Save correct answer count to local storage
@@ -193,7 +193,7 @@
             const correctAnswerlabyrinth2 = 3;
             
             //problem and userInput visible
-            document.getElementById("problem").innerHTML = `There are 10 mice scurring about. 70% of the mice have cheese.  How many mice to no have cheese?`;
+            document.getElementById("problem").innerHTML = `Ten mice scurrying about. 70% of the mice have cheese.  How many mice to no have cheese?`;
             document.getElementById("userInput").style.display = "block";
         
             // Check the answer when the user submits
