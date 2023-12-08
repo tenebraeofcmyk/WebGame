@@ -89,7 +89,6 @@ function nextChapter() {
             currentChapter = "surveyYard";
             break;
         case "surveyYard":
-            //  console.log('Switch case: investigateWarm');
             currentChapter = "seeDoors";
             buttonContainer.style.display ="block";
             nextButton.style.display = "none";
@@ -119,6 +118,8 @@ function stableDoor(){
 function labyrinthDoor (){
     window.location.href="labyrinth.html"; 
 }
+
+
 
 function clearLocalStorage() {
     var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
