@@ -1,5 +1,4 @@
 <!doctype html>
-<!doctype html>
 <html lang="en" data-bs-theme="dark">
 
 <head>
@@ -48,31 +47,52 @@
 
   </div>
 
-    <!---<h1>Wolf Logic Puzzle</h1>
-    <p>There are two wolves in front of a wolf, two wolves behind a wolf, and a wolf in the middle. How many wolves are there? (Answer with a number)</p>
-    <input type="number" id="answer" placeholder="Enter your answer">
-    <button onclick="checkAnswer()">Check Answer</button>
-    <p id="result"></p>--->
-
-
 <main class="container">
+
     <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
         <div class="col-lg-6 px-0">
         <h1 class="display-5 fst-italic">Outside the Castle, You See Something...</h1>
             <div id="scriptContainer">
-                
+                    
             </div>
         <button id="nextButton" class="btn btn-outline-light"> Next</button>
-        <button id="lightTorchButton" class="btn btn-outline-light" style="display:none"> Light Torch</button>
-        <button id="takePickButton" class="btn btn-outline-light" style="display:none"> Take Iron Pick</button>
         </div>
     </div>
 
-    <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
+    <div class="row mb-2 align-left" id="drawbridgeContainer" style="display: none;">
         <div class="col p-4 d-flex">
         <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-            id="drawbridgePuzzle">Play Puzzle</button>
+            id="startDrawbridgeB">Go to the Drawbridge</button>
         </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="leverContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="crankLeverB">Crank Lever</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="leaveContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="leaveCastleB">Leave the Castle</button>
+        </div>
+    </div>
+        
+    <div class="row mb-2 align-left" id="wolvesContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="encounterWolvesB">Encountering the Wolves</button>
+        </div>
+    </div>
+    
+    <div class="row mb-2 align-left" id="logicContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="drawbridgePuzzleB">Play Puzzle</button>
+        </div>
+    </div>
 
         <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">
@@ -91,10 +111,7 @@
             </div>
         </div>
         </div>
-    
-    
-    
-    </main>
+</main>
     
     <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
     

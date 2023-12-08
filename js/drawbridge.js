@@ -1,5 +1,6 @@
+//script lines
 window.onload = (event) => {
-    console.log("page is fully loaded");
+   console.log("page is fully loaded");
 
     const story = {
         startDrawbridge: {
@@ -56,15 +57,21 @@ window.onload = (event) => {
 
     }
 
-    const buttonContainer = document.getElementById("buttonContainer");
-
     document.getElementById('nextButton').addEventListener('click', nextChapter);
-    document.getElementById('startDrawbridge').addEventListener('click', nextChapter);
-    document.getElementById('crankLever').addEventListener('click', nextChapter);
-    document.getElementById('leaveCastle').addEventListener('click', nextChapter);
-    document.getElementById('encounterWolves').addEventListener('click', nextChapter);
 
-    document.getElementById('drawbridgePuzzle').addEventListener('click', nextChapter);
+    const drawbridgeContainer = document.getElementById("drawbridgeContainer");
+    document.getElementById('startDrawbridgeB').addEventListener('click', startDrawbridge);
+
+    const leverContainer = document.getElementById("leverContainer");
+    document.getElementById('crankLeverB').addEventListener('click', crankLever);
+
+    const leaveContainer = document.getElementById("leaveContainer");
+    document.getElementById('leaveCastleB').addEventListener('click', leaveCastle);
+
+    const wolvesContainer = document.getElementById("wolvesContainer");
+    document.getElementById('encounterWolvesB').addEventListener('click', encounterWolves);
+
+    const logicContainer = document.getElementById("logicContainer");
     document.getElementById("drawbridgePuzzleB").addEventListener('click', drawbridgePuzzle);
 
    function nextChapter() {
@@ -74,35 +81,35 @@ window.onload = (event) => {
     switch (currentChapter) {
         case "startDrawbridge":
             //console.log('Switch case: startDrawbridge');
-            buttonContainer.style.display = 'block';
-            startDrawbridge.style.display = "block";
-            drawbridgePuzzle.style.display = "none";
+            drawbridgeContainer.style.display = 'block';
+            nextButton.style.display = "none";
+            startDrawbridgeB.style.display = "block";
             currentChapter = "startDrawbridge";
             break;
         case "crankLever":
             //console.log('Switch case: crankLever');
-            buttonContainer.style.display = 'block';
-            crankLever.style.display = "block";
-            drawbridgePuzzle.style.display = "none";
+            leverContainer.style.display = 'block';
+            nextButton.style.display = "none";
+            crankLeverB.style.display = "block";
             currentChapter = "crankLever";
             break;
         case "leaveCastle":
             //console.log('Switch case: leaveCastle');
-            buttonContainer.style.display = 'block';
-            leaveCastle.style.display = "block";
-            drawbridgePuzzle.style.display = "none";
+            leaveContainer.style.display = 'block';
+            nextButton.style.display = "none";
+            leaveCastleB.style.display = "block";
             currentChapter = "leaveCastle";
             break;
         case "encounterWolves":
             //console.log('Switch case: encounterWolves');
-            buttonContainer.style.display = 'block';
-            encounterWolves.style.display = "block";
-            drawbridgePuzzle.style.display = "none";
+            wolvesContainer.style.display = 'block';
+            nextButton.style.display = "none";
+            encounterWolvesB.style.display = "block";
             currentChapter = "encounterWolves";
             break;
         case "drawbridgePuzzle":
             //console.log('Switch case: drawbridgePuzzle');
-            buttonContainer.style.display = 'block';
+            logicContainer.style.display = 'block';
             nextButton.style.display = "none";
             drawbridgePuzzle.style.display = "block";
             break;
@@ -113,36 +120,54 @@ window.onload = (event) => {
     document.getElementById('nextButton').addEventListener('click', nextChapter);
 }
 
+// Load correct answer count from local storage on page load
+let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
+document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
+let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
+document.getElementById('correctCountFood').textContent = correctAnswersFood;
+let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
+document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
+document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
+document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+
+document.getElementById("goToNextRoom").style.display = "none";
+
+function goToNextRoom() {
+    window.location.href = 'courtyard.html';
+}
 
 function drawbridgePuzzle() {
     currentChapter = "drawbridgePuzzle";
     buttonContainer.style.display = 'none';
     nextButton.style.display = "block";
     displayChapter();
-    }
+}
 
+// Logic Puzzle
 function drawbridgePuzzle() {
 
-    //Initial Display
+    // Initial Display
     document.getElementById("result").innerHTML = '';
     document.getElementById("drawbridgePuzzle1B").style.display = "none";
-    document.getElementById("userAnswer").value='';
+    document.getElementById("userAnswer").value='3';
     document.getElementById("enterCourtyard").style.display = "none";
 
-    //Equation    
+    // Equation    
     const correctAnswerdrawbridge = 3;
     
-    //problem and userInput visible
-    document.getElementById("problem").innerHTML = `There are 16 rows of hedges some are coverein vines and others are not.  If the rows with vines is 25% of the total, how many rows is that?`;
+    // Problem and userInput visible
+    document.getElementById("problem").innerHTML = `There are two wolves in front of a wolf, two wolves behind a duck and a wolf in the middle. How many wolves are there?`;
     document.getElementById("userInput").style.display = "block";
 
-    // Check the answer when the user submits
-    document.getElementById("submitBtn").onclick = function () {
+    // Check  answer when the user submits
+    document.getElementById("submitB").onclick = function () {
         const userAnswer = document.getElementById("userAnswer").value;
     
-        if (userAnswer == correctAnswerlabyrinth1) {
+        if (userAnswer == correctAnswerDrawbridge) {
             
-            document.getElementById("result").innerHTML = "Correct! You see a gap in the hedges to sneak thru and find a jewel!";
+            document.getElementById("result").innerHTML = "Correct! The drawbridge cranks open, and you rush inside before the wolves can bite you!";
             correctAnswersJewel++;
             
             // Save correct answer count to local storage
@@ -154,7 +179,7 @@ function drawbridgePuzzle() {
         } 
 
         else {
-                document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
+                document.getElementById("result").innerHTML = `The wolves get closer. You try again.`;
                 document.getElementById("labyrinthPuzzle1B").style.display = "block";
         }
 
@@ -168,15 +193,21 @@ function drawbridgePuzzle() {
         }  
     }
 
-//logic puzzle
-function checkAnswer() {
-    var userAnswer = document.getElementById('answer').value;
-    var correctAnswer = 3; // The correct answer to the puzzle
+        function updateCorrectCountFood() {
+            document.getElementById('correctCountFood').textContent = correctAnswersFood;
+        }
+        }  
 
-    if (userAnswer == correctAnswer) {
-        document.getElementById('result').textContent = 'Bravo to you. You continue with your search for more answers.';
-    } else {
-        document.getElementById('result').textContent = 'The wolves get closer. You try again. ';
-    }
-}
+
+function clearLocalStorage() {
+    var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+    
+    if (confirmation) {
+        // User clicked "Yes"
+        localStorage.clear();
+        window.location.href = 'myindex.html'; 
+    } 
+    else {
+        // User clicked "No" or closed the dialog
+    } 
 }
