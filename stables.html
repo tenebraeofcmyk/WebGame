@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
- 
+
   <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
 
   <meta charset="utf-8">
@@ -37,18 +37,18 @@
           <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">A Text Game</a>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
-           <a class="btn btn-sm btn-outline-secondary" onclick="startNewGameAndClearLocalStorage()">Restart</a>
+          <a class="btn btn-sm btn-outline-secondary" onclick="startNewGameAndClearLocalStorage()">Restart</a>
         </div>
       </div>
     </header>
 
     <div class="nav-scroller py-1 mb-3 border-bottom">
-        <nav class="nav nav-underline justify-content-between">
-          <a class="nav-item nav-link link-body-emphasis" href="myindex.html">Hallway</a>
-          <a class="nav-item nav-link link-body-emphasis active" href="courtyard.html">Courtyard</a>
-          <a class="nav-item nav-link link-body-emphasis active" href="stables.html">Stables</a>
-        </nav>
-      </div>
+      <nav class="nav nav-underline justify-content-between">
+        <a class="nav-item nav-link link-body-emphasis" href="myindex.html">Hallway</a>
+        <a class="nav-item nav-link link-body-emphasis active" href="courtyard.html">Courtyard</a>
+        <a class="nav-item nav-link link-body-emphasis active" href="stables.html">Stables</a>
+      </nav>
+    </div>
 
 
   </div>
@@ -59,7 +59,19 @@
         <!-- <h1 class="display-5 fst-italic">You look around in the dim light...</h1> -->
         <div id="scriptContainer"></div>
         <button id="nextButton" class="btn btn-outline-light">Next</button>
-       
+
+      </div>
+    </div>
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary"style="display: none;" id="outsideChoice">
+      <div class="col-lg-6 px-0">
+        <button id="outsideB" class="btn btn-outline-light">Continue Outside</button>
+      </div>
+    </div>
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary" style="display: none;" id="stableDecision">
+      <div class="col-lg-6 px-0">
+        <button id="leadInB" class="btn btn-outline-light">Lead the Horses into the Stable to Feed Them</button>
+        <button id="leaveB" class="btn btn-outline-light">Leave</button>
       </div>
     </div>
 
@@ -68,34 +80,39 @@
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">Inventory</h4>
-          <div  id="torchIcon" style="display:none">
+          <div id="torchIcon" style="display:none">
           </div>
           <div id="candy">
-            <p><i class="fa-solid fa-bowl-food fa-xl" style ="padding:10px;"></i>Food: <span id="correctCountFood"></span></p> 
-            <p> <i class="fa-solid fa-trowel fa-xl" style ="padding:10px;"></i>Iron Pick: <span id="correctCountIronPick"></span></p> 
-            <p> <i class="fa-solid fa-fire-flame-curved fa-xl" style ="padding:10px;"></i>Torch: <span id="correctCountTorch"></span></p> 
-            <p><i class="fa-solid fa-gem fa-xl" style ="padding:10px;"></i>Jewels: <span id="correctCountJewel"></span></p>       
-            <p><i class="fa-solid fa-coins fa-xl"style ="padding:10px;"></i>Coins: <span id="correctCountCoins"></span></p>      
+            <p><i class="fa-solid fa-bowl-food fa-xl" style="padding:10px;"></i>Food: <span
+                id="correctCountFood"></span></p>
+            <p> <i class="fa-solid fa-trowel fa-xl" style="padding:10px;"></i>Iron Pick: <span
+                id="correctCountIronPick"></span></p>
+            <p> <i class="fa-solid fa-fire-flame-curved fa-xl" style="padding:10px;"></i>Torch: <span
+                id="correctCountTorch"></span></p>
+            <p><i class="fa-solid fa-gem fa-xl" style="padding:10px;"></i>Jewels: <span id="correctCountJewel"></span>
+            </p>
+            <p><i class="fa-solid fa-coins fa-xl" style="padding:10px;"></i>Coins: <span id="correctCountCoins"></span>
+            </p>
           </div>
         </div>
       </div>
     </div>
-  
-  
-    </main>
-  
-    <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-  
-      <p class="mb-0">
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
-  
-  
-    <script src=></script> 
-  
-  
-  
-  </body>
-  
-  </html>
+
+
+  </main>
+
+  <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+
+    <p class="mb-0">
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+
+
+  <script src=></script>
+
+
+
+</body>
+
+</html>

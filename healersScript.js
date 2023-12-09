@@ -22,7 +22,7 @@ const story = {
         ]
     },
 
-    //Room 10 – Healer’s Room – Cannot access until Throne Room and Labyritnh are done.   
+    //Room 10 – Healer’s Room – Cannot access until Throne Room and Labyrinth are done.   
 
  
 
