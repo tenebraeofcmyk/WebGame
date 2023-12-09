@@ -55,6 +55,16 @@ const story = {
         lines: [
             "You leave the rooms."
         ]
+    },
+    lastBox: {
+        lines: [
+            "You reach out to open the second box."
+        ]
+    },
+    puzzleCorrect: {
+        lines: [
+            "You hear the box open up. You got the puzzle correctly. You take the jewels and necklace you find in the open box."
+        ]
     }
 }
 
@@ -84,12 +94,16 @@ document.getElementById('nextButton').addEventListener('click', nextChapter);
 const buttonContainer = document.getElementById("chamberButtonContainer1");
 
 document.getElementById("searchVanityB").addEventListener('click', searchChamber);
-document.getElementById("moveOnB").addEventListener('click', nextChapter);
+document.getElementById("moveOnB").addEventListener('click', searchMoreRooms);
 
 const buttonContainer2 = document.getElementById("chamberButtonContainer2");
 
 document.getElementById("nextBoxB").addEventListener('click', openBox);
 document.getElementById("necklaceBoxB").addEventListener('click', necklaceBox);
+
+const boxPuzzleContainer = document.getElementById("boxPuzzleContainer");
+const exitContainer = document.getElementById("exitContainer");
+document.getElementById("exitButtonB").addEventListener('click', exitChambers);
 
 
 function nextChapter() {
@@ -98,14 +112,46 @@ function nextChapter() {
 
     switch (currentChapter) {
         case "bedroomFirst":
-            nextButton.style.display = "block";
-            currentChapter = "bedroomMisc";
+
+            nextButton.style.display = "none";
+            buttonContainer.style.display = "block";
             break;
-        case "bedroomMisc":
+        case "bedroomsMisc":
+            buttonContainer2.style.display = "block";
+            nextButton.style.display = "none";
+            break;
+        case "searchDrawers":
+            currentChapter = "bedroomsMisc";
             buttonContainer2.style.display = "block";
             nextButton.style.display = "none";
             break;
         case "clutterBox":
+            nextButton.style.display = "none";
+            boxPuzzleContainer.style.display = "block";
+            exitContainer.style.display = "block";
+            buttonContainer2.style.display = "none";
+            buttonContainer.style.display = "none";
+            break;
+        case "necklaceBox":
+            currentChapter = "lastBox";
+            buttonContainer2.style.display = "none";
+            nextButton.style.display = "block";
+            exitContainer.style.display = "block";
+
+            break;
+           
+        case "lastBox":
+            currentChapter = "clutterBox";
+            break;
+        case "necklacePearls":
+            currentChapter = "leaveRoom";
+            boxPuzzleContainer.style.display = "none";
+            nextButton.style.display = "block";
+            break;
+
+        case "leaveRoom":
+            exitChambers();
+            break;
 
 
         // Add more cases as needed
@@ -117,25 +163,47 @@ function nextChapter() {
 }
 
 function searchChamber() {
-    currentChapter = "seeDoors";
-    nextButton.style.display = "none";
+    currentChapter = "searchDrawers";
+    nextButton.style.display = "block";
     buttonContainer.style.display = "none";
     displayChapter();
 
+}
+function searchMoreRooms() {
+    currentChapter = "bedroomsMisc";
+    buttonContainer2.style.display = "block";
+    buttonContainer.style.display = "none";
+    nextButton.style.display = "none";
+    displayChapter();
 }
 
 function openBox() {
     currentChapter = "clutterBox";
     nextButton.style.display = "none";
+    boxPuzzleContainer.style.display = "block";
+    buttonContainer2.style.display = "none";
+    buttonContainer.style.display = "none";
     displayChapter();
 
 }
 function necklaceBox() {
-    currentChapter ="necklaceBox";
+    currentChapter = "necklaceBox";
     buttonContainer.style.display = "none";
     nextButton.style.display = "block";
+    buttonContainer2.style.display = "none";
+    localStorage.setItem('correctAnswersJewel', correctAnswersJewel);
+    updateCorrectCountJewel();
     displayChapter();
 
+}
+
+function exitChambers() {
+    window.location.href = "courtyard.html";
+
+}
+
+function updateCorrectCountJewel() {
+    document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
 }
 
 function clearLocalStorage() {
@@ -151,3 +219,48 @@ function clearLocalStorage() {
     }
 }
 
+//document.addEventListener("DOMContentLoaded", function () {
+    const words = ["apothecary", "courtyard", "cobblestone", "flintstone", "riddles"];
+    const unscrambledWord = pickRandomWord(words);
+    const scrambledWord = scrambleWord(unscrambledWord);
+
+    const puzzleContainer = document.getElementById("puzzle-container");
+    const submitButton = document.getElementById("submit-button");
+
+    puzzleContainer.textContent = scrambledWord;
+
+    submitButton.addEventListener("click", function () {
+        const userInput = document.getElementById("user-input").value.toLowerCase();
+
+        if (userInput === unscrambledWord) {
+           // alert("You hear the box open up. You got the puzzle correctly. You take the jewels and necklace you find in the open box.");
+            // addToInventory("jewels");
+            // addToInventory("necklace");
+            correctAnswersJewel++;
+            localStorage.setItem('correctAnswersJewel', correctAnswersJewel);
+            updateCorrectCountJewel();
+            currentChapter = "necklacePearls";
+            boxPuzzleContainer.style.display = "none";
+            nextButton.style.display = "block";
+            displayChapter();
+
+        } else {
+            alert("Incorrect! Try again.");
+        }
+    });
+
+
+    function scrambleWord(word) {
+        return word.split("").sort(() => Math.random() - 0.5).join("");
+    }
+
+    function pickRandomWord(wordList) {
+        return wordList[Math.floor(Math.random() * wordList.length)];
+    }
+
+    function addToInventory(item) {
+        const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+        inventory.push(item);
+        localStorage.setItem("inventory", JSON.stringify(inventory));
+    }
+//});
