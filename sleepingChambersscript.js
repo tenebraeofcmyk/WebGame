@@ -45,7 +45,16 @@ const story = {
             "At the bottom is a fine locket, gilded gold with engraved leaves and vines.",
             "You try to open the locket, but cannot."
         ]
-
+    },
+    necklacePearls: {
+        lines: [
+            "You solve the puzzle and gain three necklaces crafted with fine pearls."
+        ]
+    },
+    leaveRoom: {
+        lines: [
+            "You leave the rooms."
+        ]
     }
 }
 
@@ -79,8 +88,8 @@ document.getElementById("moveOnB").addEventListener('click', nextChapter);
 
 const buttonContainer2 = document.getElementById("chamberButtonContainer2");
 
-document.getElementById("nextBoxB").addEventListener('click',openBox );
-document.getElementById("necklaceBoxB").addEventListener('click',);
+document.getElementById("nextBoxB").addEventListener('click', openBox);
+document.getElementById("necklaceBoxB").addEventListener('click', necklaceBox);
 
 
 function nextChapter() {
@@ -96,6 +105,8 @@ function nextChapter() {
             buttonContainer2.style.display = "block";
             nextButton.style.display = "none";
             break;
+        case "clutterBox":
+
 
         // Add more cases as needed
     }
@@ -105,16 +116,25 @@ function nextChapter() {
     document.getElementById('nextButton').addEventListener('click', nextChapter);
 }
 
-function searchChamber (){
+function searchChamber() {
     currentChapter = "seeDoors";
-    nextButton.style.display ="none";
+    nextButton.style.display = "none";
     buttonContainer.style.display = "none";
+    displayChapter();
 
 }
 
-function openBox(){
-    currentChapter="clutterBox";
-    nextButton.style.display ="none"
+function openBox() {
+    currentChapter = "clutterBox";
+    nextButton.style.display = "none";
+    displayChapter();
+
+}
+function necklaceBox() {
+    currentChapter ="necklaceBox";
+    buttonContainer.style.display = "none";
+    nextButton.style.display = "block";
+    displayChapter();
 
 }
 
