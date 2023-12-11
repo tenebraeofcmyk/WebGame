@@ -31,12 +31,12 @@ const story = {
         ]
     },
 
-    belowFountain: {
-        lines: [
-            "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
-            "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."
-        ]
-    },
+    // belowFountain: {
+    //     lines: [
+    //         "The left wall is only a railing, and down below is an open courtyard, a fountain flowing with water, surrounded by flowers that are in the turning to fall.",
+    //         "Through the dry branches you see the ground below littered with the petals and leaves, and you realize this is where the rustling comes from."
+    //     ]
+    // },
 
     surveyYard: {
         lines: [
@@ -91,11 +91,8 @@ function nextChapter() {
 
     switch (currentChapter) {
         case "opening":
-            console.log('Switch case: belowFountain');
+            //console.log('Switch case: belowFountain');
             nextButton.style.display = "block";
-            currentChapter = "belowFountain";
-            break;
-        case "belowFountain":
             currentChapter = "surveyYard";
             break;
         case "surveyYard":
