@@ -2,14 +2,14 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-  <!-- <script src="color-modes.js"></script> -->
+
   <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
 
-  <title>A Text Game using Bootstrap v5.3</title>
+  <title>The Stables</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -19,8 +19,6 @@
   <style>
 
   </style>
-
-
   <!-- Custom styles for this template -->
   <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
 
@@ -40,11 +38,17 @@
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
           <a class="btn btn-sm btn-outline-secondary" onclick="startNewGameAndClearLocalStorage()">Restart</a>
-
-
         </div>
       </div>
     </header>
+
+    <div class="nav-scroller py-1 mb-3 border-bottom">
+      <nav class="nav nav-underline justify-content-between">
+        <a class="nav-item nav-link link-body-emphasis" href="myindex.html">Hallway</a>
+        <a class="nav-item nav-link link-body-emphasis active" href="courtyard.html">Courtyard</a>
+        <a class="nav-item nav-link link-body-emphasis active" href="stables.html">Stables</a>
+      </nav>
+    </div>
 
 
   </div>
@@ -52,53 +56,36 @@
   <main class="container">
     <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
       <div class="col-lg-6 px-0">
-        <h1 class="display-5 fst-italic">You look around the dim room....</h1>
-        <div id="scriptContainer">
-
-        </div>
-        <button id="nextButton" class="btn btn-outline-light"> Next</button>
+        <h1 class="display-5 fst-italic">You look ahead...</h1> 
+        <div id="scriptContainer"></div>
+        <button id="nextButton" class="btn btn-outline-light">Next</button>
 
       </div>
     </div>
-
-    <div class="row mb-2 align-left" id="chamberButtonContainer1" style="display: none;">
-      <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="searchVanityB">Search
-          the Vanity</button>
-        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="moveOnB">Move
-          On</button>
-      </div>
-    </div>
-    <div class="row mb-2 align-left" id="chamberButtonContainer2" style="display: none;">
-      <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="necklaceBoxB">Open the
-          First Box</button>
-        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" id="nextBoxB">Open the Box
-          on the Bottom</button>
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary"style="display: none;" id="outsideChoice">
+      <div class="col-lg-6 px-0">
+        <button id="outsideB" class="btn btn-outline-light">Continue Outside</button>
       </div>
     </div>
 
-    
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary" style="display: none;" id="stableDecision">
+      <div class="col-lg-6 px-0">
+        <button id="leadInB" class="btn btn-outline-light">Lead the Horses into the Stable to Feed Them</button>
+        <button id="leaveB" class="btn btn-outline-light">Leave</button>
+      </div>
+    </div>
+
     <div class="row mb-3 align-left" id="boxPuzzleContainer" style="display:none";>
       <div class="col p-4 d-flex">
         <form>
         <div id="puzzle-container" class="form-control-lg"></div>
-        <label for="user-input" class="form-label">Unscramble the Word:</label>
+        <!-- <label for="user-input" class="form-label">Unscramble the Word:</label>
         <input type="text" class="form-control" id="user-input">
-        <button type="button" id="submit-button" class="btn btn-outline-light" style="padding:10px; margin:10px">Submit</button>
+        <button type="button" id="submit-button" class="btn btn-outline-light" style="padding:10px; margin:10px">Submit</button> -->
         
         </form>
       </div>
     </div>
-    <div class="row mb-3 align-left" id="exitContainer" style="display:none";>
-      <div class="col p-4 d-flex">
-       
-        <button type="button" id="exitButtonB" class="btn btn-outline-light" style="padding:10px; margin:10px">Leave</button>
-      
-      </div>
-    </div>
-    
-
 
 
     <div class="col-md-4">
@@ -120,8 +107,6 @@
     </div>
 
 
-
-
   </main>
 
   <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
@@ -132,10 +117,7 @@
   </footer>
 
 
-
-
-  <script src="sleepingChambersscript.js"></script>
- 
+  <script src= "stablesScript.js"></script>
 
 
 

@@ -175,7 +175,7 @@
             } 
 
             else {
-                    document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
+                    document.getElementById("result").innerHTML = `Sorry, that is not correct, please try again!`;
                     document.getElementById("labyrinthPuzzle1B").style.display = "block";
             }
     
@@ -203,7 +203,10 @@
             const correctAnswerlabyrinth2 = 3;
             
             //problem and userInput visible
+
+
             document.getElementById("problem").innerHTML = `You see ten mice scurrying about. 70% of the mice have cheese.  How many mice don't have cheese?`;
+
             document.getElementById("userInput").style.display = "block";
         
             // Check the answer when the user submits
@@ -224,7 +227,7 @@
                 } 
     
                 else {
-                        document.getElementById("result").innerHTML = `Sorry, that is not correct, plase try again!`;
+                        document.getElementById("result").innerHTML = `Sorry, that is not correct, please try again!`;
                         document.getElementById("labyrinthPuzzle2B").style.display = "block";
                 }
         
