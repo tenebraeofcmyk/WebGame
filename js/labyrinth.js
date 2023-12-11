@@ -1,5 +1,6 @@
 
     // Load correct answer count from local storage on page load
+
     let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
     document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
     let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
@@ -46,8 +47,15 @@
         },  
         labyrinthPuzzle1: {
             lines: [
-            "Solve the puzzle to get find a trinket and look for exit.",
+            "Solve the puzzle to find a trinket and look for exit.",
             ]
+        },
+
+        labyrinthEnd: {
+            lines: [
+            "He arrived, he has been here all along, and we were so blind we did not even see...",
+            "A traitor brought this fate onto the whole castle. The fate of this castle piques your interest even more, and you keep the diary in the fold of your coat until you need it to learn more.",       
+        ]
         },        
     }
 
@@ -195,7 +203,10 @@
             const correctAnswerlabyrinth2 = 3;
             
             //problem and userInput visible
-            document.getElementById("problem").innerHTML = `Ten mice scurrying about. 70% of the mice have cheese.  How many mice do not have cheese?`;
+
+
+            document.getElementById("problem").innerHTML = `You see ten mice scurrying about. 70% of the mice have cheese.  How many mice don't have cheese?`;
+
             document.getElementById("userInput").style.display = "block";
         
             // Check the answer when the user submits
@@ -204,12 +215,12 @@
             
                 if (userAnswer == correctAnswerlabyrinth2) {
                     
-                    document.getElementById("result").innerHTML = "Correct! You escape back to the courtyard and find a coin along the way!";
-                    correctAnswersCoins++;
+                    document.getElementById("result").innerHTML = "Correct! As you are escaping, you stumble on a journal and pick it up...";
+                    correctAnswersJournal++;
                     
                     // Save correct answer count to local storage
-                    localStorage.setItem('correctAnswersCoins', correctAnswersCoins);
-                    updateCorrectCountCoins();
+                    localStorage.setItem('correctAnswersJournal', correctAnswersJournal);
+                    updateCorrectCountJournal();
     
                     document.getElementById("goToNextRoom").style.display = "block";
  //                   document.getElementById("labyrinthPuzzle2B").style.display = "block";
@@ -224,8 +235,8 @@
                 document.getElementById("problem").innerHTML = '';
                 document.getElementById("userInput").style.display = "none";
     
-                function updateCorrectCountCoins() {
-                    document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+                function updateCorrectCountJournal() {
+                    document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
                 }
                 }  
             }

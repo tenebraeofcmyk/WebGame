@@ -1,5 +1,6 @@
 
     // Load correct answer count from local storage on page load
+       
     let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
     document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
     let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
