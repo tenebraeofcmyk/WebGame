@@ -1,5 +1,6 @@
 
     // Load correct answer count from local storage on page load
+       
     let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
     document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
     let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
@@ -10,6 +11,8 @@
     document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
     let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
     document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+    let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
+    document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
     document.getElementById("goToNextRoom").style.display = "none";
 
