@@ -18,34 +18,56 @@ let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0
 
 const story = {
 
-    belowFountain: {
+    opening: {
         lines: [
             ""
         ]
     },
-
+    lookClue: {
+        lines: [
+            "You decide to flip through the pages of the diary, in hopes if there are anymore clues to why you lost your memory.",
+             "One particular entry catches your eye."
+        ]
+    },
+    strangeEntry: {
+        lines: [
+            "It is strange to see how our staff has been slowly losing their pallor, despite the bright summer sun warming the fields this season. I watch servants cross paths, walking in the sun all day, squires working with the horses in the fields, and yet, they grow weaker everyday. Their skin becomes paler, and they are fatigued all day. I have approached our healer multiple times, but he says he is unable to provide an antidote. I worry that for the first time he has been this castle’s healer he rejects the idea of an antidote so easily. Does he know something we do not? Is he withholding from telling us there is no antidote? What is he hiding from us? Why is he hiding it from me and His Majesty?",
+            "You realize you have not seen any place where a healer could work. You try to figure out where there could be a healer's room."
+        ]
+    },
+    lookHealer: {
+        lines: [
+            "You keep reading the diary, looking for any directions or drawings.",
+            "You find nothing in the diary that helps.",
+            "You decide to instead try to search the castle grounds for the healer's room."
+        ]
+    },
+    opening: {
+        lines: [
+            ""
+        ]
+    },
+    opening: {
+        lines: [
+            ""
+        ]
+    },
     //Room 10 – Healer’s Room – Cannot access until Throne Room and Labyrinth are done.   
 
  
 
-    // You decide to flip through the pages of the diary, in hopes if there are anymore clues to why you lost your memory.>> 
+   
     
-    // One particular entry catches your eye.>> 
-    
-    // <<graphic with text?>> 
-    
-    // “It is strange to see how our staff has been slowly losing their pallor, despite the bright summer sun warming the fields this season. I watch servants cross paths, walking in the sun all day, squires working with the horses in the fields, and yet, they grow weaker everyday. Their skin becomes paler, and they are fatigued all day. I have approached our healer multiple times, but he says he is unable to provide an antidote. I worry that for the first time he has been this castle’s healer he rejects the idea of an antidote so easily. Does he know something we do not? Is he withholding from telling us there is no antidote? What is he hiding from us? Why is he hiding it from me and His Majesty?”>> 
-    //     You realize you have not seen any place where a healer could work. You try to figure out where there could be a healer’s room.  
     
      
     
     // Keep reading diary.>> OR 
     
-    // You keep reading the diary, looking for any directions or drawings.>> 
+    // >> 
     
-    // You find nothing in the diary that helps.>> 
+    // >> 
     
-    // You decide to instead try to search the castle grounds for the healer’s room.>> 
+    // .>> 
     
      
     
@@ -111,7 +133,7 @@ const story = {
     // You remember one last thing: You were the healer that caused it all.>>      
 
 }
-let currentChapter = "belowFountain";
+let currentChapter = "opening";
 
 
 function displayChapter() {
@@ -134,12 +156,13 @@ function displayChapter() {
 
 document.getElementById('nextButton').addEventListener('click', nextChapter);
 
-const buttonContainer = document.getElementById("doorButtonContainer");
+const buttonContainer = document.getElementById("journalRead");
 
-document.getElementById("doorSleepingB").addEventListener('click', sleepingChamberdoor);
-document.getElementById("doorKitchenB").addEventListener('click', kitchenDoor);
-document.getElementById("doorStablesB").addEventListener('click',stableDoor);
-document.getElementById("doorLabyrinthB").addEventListener('click',labyrinthDoor);
+document.getElementById("leaveB").addEventListener('click', courtyardExit);
+document.getElementById("journalCluesB").addEventListener('click', journalRead);
+
+document.getElementById("B").addEventListener('click',stableDoor);
+document.getElementById("B").addEventListener('click',labyrinthDoor);
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
@@ -172,7 +195,9 @@ function courtyardExit(){
     window.location.href="courtyard.html";
 }
 
+function journalRead (){
 
+}
 
 
 function clearLocalStorage() {
