@@ -201,13 +201,14 @@ function labyrinthDoor() {
 
 function clearLocalStorage() {
     var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
-
+    
     if (confirmation) {
         // User clicked "Yes"
         localStorage.clear();
-        window.location.href = 'myindex.html';
-    }
+        window.location.href = 'myindex.html'; 
+    } 
     else {
         // User clicked "No" or closed the dialog
-    }
+    } 
 }
+
