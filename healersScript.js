@@ -100,7 +100,7 @@ const story = {
     
     // You are remembering more and more details as the smell grows stronger.>> 
     
-    // Working all day, all night, trying to sneak the poison into everyone’s food. Hiding the powder during meals, melting the powder down and experimenting how to create more forms of the poison. Breathing in the fumes with every experiment, becoming dizzy from the darkness and the smells… 
+    /// Working all day, all night, trying to sneak the poison into everyone’s food. Hiding the powder during meals, melting the powder down and experimenting how to create more forms of the poison. Breathing in the fumes with every experiment, becoming dizzy from the darkness and the smells… 
     
     // Just like now.>> 
     

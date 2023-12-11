@@ -16,6 +16,13 @@ document.getElementById('correctCountIronPick').textContent = correctAnswersIron
 
 const story = {
 
+    opening: {
+        lines: [
+            ""
+        ]
+
+    },
+
     narrowWall: {
         lines: [
             "When you look to your right, there is a narrower wall than the others.",
@@ -68,7 +75,7 @@ const story = {
 // 	If user passes puzzle, then the animals comply and seem happy to be inside. You find a jewel-studded harness while bringing them in and keep it. You go back to the courtyard. 
 // 	If you fail the puzzle, animals are mad at a new person and chase you out of the field. 
 
-let currentChapter = "narrowWall";
+let currentChapter = "opening";
 
 
 function displayChapter() {
@@ -93,11 +100,13 @@ document.getElementById('nextButton').addEventListener('click', nextChapter);
 
 const buttonContainer = document.getElementById("stableDecision");
 
-document.getElementById("leadInB").addEventListener('click', );
-document.getElementById("LeaveB").addEventListener('click', );
+document.getElementById("leadInB").addEventListener('click', beginPuzzle);
+document.getElementById("leaveB").addEventListener('click', exitStables);
 
-const outsideChoice =document.getElementById("outsideChoice");
-document.getElementById("outsideB").addEventListener('click', );
+const outsideButtons = document.getElementById("outsideChoice");
+document.getElementById("outsideB").addEventListener('click', goOutside);
+
+const boxPuzzleContainer = document.getElementById("boxPuzzleContainer");
 
 
 function nextChapter() {
@@ -105,15 +114,21 @@ function nextChapter() {
     console.log('Entering nextChapter. Current chapter:', currentChapter);
 
     switch (currentChapter) {
+        case "opening":
+            currentChapter = "narrowWall";
+            nextButton.style.display = "block";
+            break;
         case "narrowWall":
-            
             nextButton.style.display = "block";
             currentChapter = "smellHay";
             break;
-        case "surveyYard":
-            currentChapter = "seeDoors";
-            buttonContainer.style.display = "block";
+        case "smellHay":
+            currentChapter = "checkOutside";
+            outsideButtons.style.display = "block";
             nextButton.style.display = "none";
+            break;
+        case "puzzleFail":
+            exitStables();
             break;
 
         // Add more cases as needed
@@ -124,6 +139,26 @@ function nextChapter() {
     document.getElementById('nextButton').addEventListener('click', nextChapter);
 }
 
+function goOutside() {
+    currentChapter = "openField";
+    buttonContainer.style.display = "block";
+    outsideButtons.style.display = "none";
+    nextButton = "none";
+    displayChapter();
+
+}
+
+function exitStables() {
+    window.location.href = 'courtyard.html';
+}
+
+
+function beginPuzzle() {
+    currentChapter = "stubbornHorse";
+    boxPuzzleContainer.style.display = "block";
+    buttonContainer.style.display = "none";
+    displayChapter();
+}
 
 function sleepingChamberdoor() {
     window.location.href = 'sleepingChambers.html';
@@ -141,6 +176,25 @@ function labyrinthDoor() {
     window.location.href = "labyrinth.html";
 }
 
+
+
+
+// //Puzzle space
+// if {
+//     //Correct
+//     currentChapter = "puzzleSuccess";
+//     boxPuzzleContainer.style.display = "none";
+//     nextButton.style.display = "block";
+//     displayChapter();
+
+// }
+
+// else {
+//     currentChapter = "puzzleFail";
+//     boxPuzzleContainer.style.display = "none";
+//     nextButton.style.display = "block";
+//     displayChapter();
+// }
 
 
 function clearLocalStorage() {

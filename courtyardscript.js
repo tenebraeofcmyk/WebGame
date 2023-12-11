@@ -10,7 +10,7 @@ document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
 let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
 document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
- document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
 
 // document.getElementById("goToNextRoom").style.display = "none";
 
@@ -23,6 +23,11 @@ let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0
 
 
 const story = {
+    opening: {
+        lines: [
+            ""
+        ]
+    },
 
     belowFountain: {
         lines: [
@@ -48,7 +53,7 @@ const story = {
     }
 
 }
-let currentChapter = "belowFountain";
+let currentChapter = "opening";
 
 
 function displayChapter() {
@@ -75,22 +80,25 @@ const buttonContainer = document.getElementById("doorButtonContainer");
 
 document.getElementById("doorSleepingB").addEventListener('click', sleepingChamberdoor);
 document.getElementById("doorKitchenB").addEventListener('click', kitchenDoor);
-document.getElementById("doorStablesB").addEventListener('click',stableDoor);
-document.getElementById("doorLabyrinthB").addEventListener('click',labyrinthDoor);
+document.getElementById("doorStablesB").addEventListener('click', stableDoor);
+document.getElementById("doorLabyrinthB").addEventListener('click', labyrinthDoor);
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
     console.log('Entering nextChapter. Current chapter:', currentChapter);
 
     switch (currentChapter) {
-        case "belowFountain":
+        case "opening":
             console.log('Switch case: belowFountain');
             nextButton.style.display = "block";
+            currentChapter = "belowFountain";
+            break;
+        case "belowFountain":
             currentChapter = "surveyYard";
             break;
         case "surveyYard":
             currentChapter = "seeDoors";
-            buttonContainer.style.display ="block";
+            buttonContainer.style.display = "block";
             nextButton.style.display = "none";
             break;
 
@@ -107,16 +115,16 @@ function sleepingChamberdoor() {
     window.location.href = 'sleepingChambers.html';
 }
 
-function kitchenDoor(){
-    window.location.href="kitchen.html";
+function kitchenDoor() {
+    window.location.href = "kitchen.html";
 }
 
-function stableDoor(){
-    window.location.href="stables.html";
+function stableDoor() {
+    window.location.href = "stables.html";
 }
 
-function labyrinthDoor (){
-    window.location.href="labyrinth.html"; 
+function labyrinthDoor() {
+    window.location.href = "labyrinth.html";
 }
 
 
