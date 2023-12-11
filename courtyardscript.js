@@ -129,6 +129,17 @@ function labyrinthDoor() {
     window.location.href = "labyrinth.html";
 }
 
+//Show the page to the Healer's Room only when the journal is in local storage
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the specific ID is present in local storage
+    var specificId = localStorage.getItem("correctCountJournal");
+
+    if (specificId === "correctCountJournal") {
+        // If the specific ID is present, show the div
+        document.getElementById("journalreadB").classList.remove("hidden");
+    }
+});
 
 
 function clearLocalStorage() {
