@@ -1,3 +1,17 @@
+let correctAnswersJewel = localStorage.getItem('correctAnswersJewel') || 0;
+document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
+let correctAnswersFood = localStorage.getItem('correctAnswersFood') || 0;
+document.getElementById('correctCountFood').textContent = correctAnswersFood;
+let correctAnswersCoins = localStorage.getItem('correctAnswersCoins') || 0;
+document.getElementById('correctCountCoins').textContent = correctAnswersCoins;
+let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
+document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
+let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
+document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
+document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
+
+//script lines
 let currentChapter = "findArmory";
 let puzzleSize = 4; 
 
