@@ -105,6 +105,8 @@ window.onload = (event) => {
      // Load correct answer count from local storage on page load
      let correctAnswers = localStorage.getItem('correctAnswers') || 0;
      document.getElementById('correctCount').textContent = correctAnswers;
+     let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
+     document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
  
 

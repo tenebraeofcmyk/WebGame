@@ -11,6 +11,8 @@ let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
 document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
  document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+ let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
+ document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
 
 
