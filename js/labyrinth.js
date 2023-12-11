@@ -49,6 +49,13 @@
             lines: [
             "Solve the puzzle to find a trinket and look for exit.",
             ]
+        },
+
+        labyrinthEnd: {
+            lines: [
+            "He arrived, he has been here all along, and we were so blind we did not even see...",
+            "A traitor brought this fate onto the whole castle. The fate of this castle piques your interest even more, and you keep the diary in the fold of your coat until you need it to learn more.",       
+        ]
         },        
     }
 
@@ -205,7 +212,7 @@
             
                 if (userAnswer == correctAnswerlabyrinth2) {
                     
-                    document.getElementById("result").innerHTML = "Correct! As you are escaping, you stumble on a journal. After picking it up, you quickly flip thru the pages stopping on the last one that ends abrutply with the following scribble...<br>He arrived, he has been here all along, and we were so blind we did not even see<br>A traitor brought this fate onto the whole castle. The fate of this castle piques your interest even more, and you keep the diary in the fold of your coat until you need it to learn more.";
+                    document.getElementById("result").innerHTML = "Correct! As you are escaping, you stumble on a journal and pick it up...";
                     correctAnswersJournal++;
                     
                     // Save correct answer count to local storage
