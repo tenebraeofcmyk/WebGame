@@ -88,7 +88,12 @@ document.getElementById('encounterWolvesB').addEventListener('click', nextChapte
 const logicContainer = document.getElementById("returnContainer");
 document.getElementById("drawbridgeReturnB").addEventListener('click', nextChapter);
 
-//document.getElementById("logicContainerB").addEventListener('click', nextChapter);
+const logicPuzzleContainer = document.getElementById("logicPuzzleContainer");
+const exitContainer = document.getElementById("exitContainer");
+
+document.getElementById("exitButtonB").addEventListener('click', exitDrawbridge);
+document.getElementById("exitDrawbridge").style.display = "none";
+
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
@@ -131,10 +136,15 @@ function nextChapter() {
             break;
         case "drawbridgeReturn":
             console.log('Switch case: drawbridgeReturn');
-            logicContainer.style.display = 'block';
             nextButton.style.display = "none";
+            logicContainer.style.display = "block";
+            currentChapter = "drawbridgePuzzle";
+            break;
+        case "drawbridgePuzzle":
+            exitDrawbridge();
             break;
     }
+
     document.getElementById('nextButton').removeEventListener('click', nextChapter);
     displayChapter();
 
@@ -148,6 +158,11 @@ function drawbridgePuzzle() {
     logicContainer.style.display = 'block';
     displayChapter();
 }
+
+function exitDrawbridge() {
+    window.location.href = 'courtyard.html';
+}
+
 
 const puzzleContainer = document.getElementById("puzzle-container");
 const submitButton = document.getElementById("submit-button");
@@ -216,12 +231,6 @@ function clearLocalStorage() {
     }
     else {
         // User clicked "No" or closed the dialog
-    }
-
-document.getElementById("goToNextRoom").style.display = "none";
-
-function goToNextRoom() {
-        window.location.href = 'courtyard.html';
     }
 
 }
