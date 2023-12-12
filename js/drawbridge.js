@@ -11,7 +11,6 @@ document.getElementById('correctCountIronPick').textContent = correctAnswersIron
 let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
 document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
-
 const story = {
     opening: {
         lines: [

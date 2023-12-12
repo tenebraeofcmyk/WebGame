@@ -8,14 +8,6 @@ let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
 document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
 document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
-let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
-document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
-
-    document.getElementById("goToNextRoom").style.display = "none";
-
-    function goToNextRoom() {
-        window.location.href = 'courtyard.html';
-    }
 
 window.onload = (event) => {
     console.log("page is fully loaded");
@@ -87,56 +79,65 @@ window.onload = (event) => {
     
     document.getElementById('nextButton').addEventListener('click', nextChapter);
     
-    const drawbridgeContainer = document.getElementById("drawbridgeContainer");
-    document.getElementById('startDrawbridgeB').addEventListener('click', nextChapter);
+    const enterThroneContainer = document.getElementById("enterThroneContainer");
+    document.getElementById('enterThroneContainerB').addEventListener('click', nextChapter);
     
-    const leverContainer = document.getElementById("leverContainer");
-    document.getElementById('crankLeverB').addEventListener('click', nextChapter);
+    const investigateThroneContainer = document.getElementById("investigateThroneContainer");
+    document.getElementById('investigateThroneContainerB').addEventListener('click', nextChapter);
     
-    const leaveContainer = document.getElementById("leaveContainer");
-    document.getElementById('leaveCastleB').addEventListener('click', nextChapter);
+    const investigateReliefContainer = document.getElementById("investigateReliefContainer");
+    document.getElementById('investigateReliefContainerB').addEventListener('click', nextChapter);
     
-    const wolvesContainer = document.getElementById("wolvesContainer");
-    document.getElementById('encounterWolvesB').addEventListener('click', nextChapter);
+    const afterReliefContainer = document.getElementById("afterReliefContainer");
+    document.getElementById('afterReliefContainerB').addEventListener('click', nextChapter);
     
-    const logicContainer = document.getElementById("returnContainer");
-    document.getElementById("drawbridgeReturnB").addEventListener('click', nextChapter);
-    
-    //document.getElementById("logicContainerB").addEventListener('click', nextChapter);
-    
+    const exitThroneContainer = document.getElementById("exitThroneContainer");
+    document.getElementById("exitThroneContainerB").addEventListener('click', nextChapter);
+
+    document.getElementById("leaveThrone").style.display = "none";
+
+
     function nextChapter() {
         // Logic to determine the next chapter based on the current chapter
         console.log('Entering nextChapter. Current chapter:', currentChapter);
-    
+
         switch (currentChapter) {
             case "opening":
                 currentChapter = "enterThrone";
-                nextButton.style.display ="block";
+                enterThroneContainer.style.display = "block";
+                nextButton.style.display ="none";
                 break;
             case "enterThrone":
                 console.log('Switch case: enterThrone');
+                enterThroneContainer.style.display = "none";
                 nextButton.style.display = "none";
+                investigateThroneContainer.style.display = "block";
                 currentChapter = "investigateThrone"; 
                 break;
             case "investigateThrone":
-                console.log('Switch case: crankLever');
+                console.log('Switch case: investigateThrone');
+                investigateThroneContainer.style.display = "none";
                 nextButton.style.display = "none";
+                investigateReliefContainer.style.display = "block";
                 currentChapter = "investigateRelief"; 
-                break;            
+                break;           
             case "investigateRelief":
-                console.log('Switch case: leaveCastle');
+                console.log('Switch case: investigateThrone');
+                investigateReliefContainer.style.display = "none";
                 nextButton.style.display = "none";
-                currentChapter = "afterRelief";
-                break;
+                afterReliefContainer.style.display = "block";
+                currentChapter = "afterRelief"; 
+                break;  
             case "afterRelief":
-                console.log('Switch case: encounterWolves');
+                console.log('Switch case: afterRelief');
+                afterReliefContainer.style.display = "none";
                 nextButton.style.display = "none";
-                currentChapter = "exitThrone";
-                break;
+                exitThroneContainer.style.display = "block";
+                currentChapter = "exitThrone"; 
+                break; 
             case "exitThrone":
-                console.log('Switch case: drawbridgeReturn');
-                nextButton.style.display = "none";
-                break;
+                leaveThrone();
+                break; 
         }
         document.getElementById('nextButton').removeEventListener('click', nextChapter);
         displayChapter();
@@ -144,38 +145,21 @@ window.onload = (event) => {
         document.getElementById('nextButton').addEventListener('click', nextChapter);
     }
 
+function leaveThrone() {
+    window.location.href = 'courtyard.html';
+}
 
-    function kitchenPuzzle1() {
-        currentChapter = "kitchenPuzzle1";
-        buttonContainer.style.display = 'none';
-        nextButton.style.display = "block";
-        displayChapter();
-        }
-
-    function kitchenPuzzle1Q() {
-
-        //Initial Display
-        document.getElementById("result").innerHTML = '';
-        document.getElementById("kitchenPuzzle1B").style.display = "none";
-        document.getElementById("userAnswer").value='';
-        document.getElementById("goToNextRoom").style.display = "none";
-
-
-            function updateCorrectCountFood() {
-                document.getElementById('correctCountFood').textContent = correctAnswersFood;
-            }
-            }  
-        }
-
-        function clearLocalStorage() {
-            var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
-            
-            if (confirmation) {
-                // User clicked "Yes"
-                localStorage.clear();
-                window.location.href = 'myindex.html'; 
-            } 
-            else {
-                // User clicked "No" or closed the dialog
-            } 
-       }
+// Local Storage
+function clearLocalStorage() {
+    var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+    
+    if (confirmation) {
+        // User clicked "Yes"
+        localStorage.clear();
+        window.location.href = 'myindex.html'; 
+    } 
+    else {
+        // User clicked "No" or closed the dialog
+    } 
+}
+}
