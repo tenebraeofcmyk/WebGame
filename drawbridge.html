@@ -86,12 +86,31 @@
             id="encounterWolvesB">Encountering the Wolves</button>
         </div>
     </div>
-    
-    <div class="row mb-2 align-left" id="logicContainer" style="display: none;">
+
+    <div class="row mb-2 align-left" id="returnContainer" style="display: none;">
         <div class="col p-4 d-flex">
         <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-            id="drawbridgePuzzleB">Play Puzzle</button>
+            id="drawbridgeReturnB">Go to Safety</button>
         </div>
+    </div>
+
+    <div class="row mb-3 align-left" id="logicContainer" style="display:none";>
+        <div class="col p-4 d-flex">
+          <form>
+            <div id="puzzle-container" class="form-control-lg"></div>
+            <label for="user-input" class="form-label">Answer the Question:</label>
+            <input type="text" class="form-control" id="user-input">
+            <button type="button" id="submit-button" class="btn btn-outline-light" style="padding:10px; margin:10px">Submit</button>
+          </form>
+        </div>
+    </div>
+
+    <div class="row mb-3 align-left" id="exitContainer" style="display:none";>
+    <div class="col p-4 d-flex">
+        
+        <button type="button" id="exitButtonB" class="btn btn-outline-light" style="padding:10px; margin:10px">Leave</button>
+    
+    </div>
     </div>
 
     <div class="col-md-4">

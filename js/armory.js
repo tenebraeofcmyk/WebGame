@@ -11,6 +11,7 @@ document.getElementById('correctCountIronPick').textContent = correctAnswersIron
 let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
 document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
+
 //script lines
 let currentChapter = "findArmory";
 let puzzleSize = 4; 

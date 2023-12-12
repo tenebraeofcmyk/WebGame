@@ -11,8 +11,6 @@ document.getElementById('correctCountIronPick').textContent = correctAnswersIron
 let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
 document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
-//script lines
-
 
 const story = {
     opening: {
@@ -46,7 +44,7 @@ const story = {
         ]
 
     },
-    drawbridgePuzzle: {
+    drawbridgeReturn: {
         lines: [
             "You rush back into the castle, and you try to shut the drawbridge."
 
@@ -83,13 +81,15 @@ const leverContainer = document.getElementById("leverContainer");
 document.getElementById('crankLeverB').addEventListener('click', nextChapter);
 
 const leaveContainer = document.getElementById("leaveContainer");
-document.getElementById('leaveCastleB').addEventListener('click', leaveCastle);
+document.getElementById('leaveCastleB').addEventListener('click', nextChapter);
 
 const wolvesContainer = document.getElementById("wolvesContainer");
-document.getElementById('encounterWolvesB').addEventListener('click', encounterWolves);
+document.getElementById('encounterWolvesB').addEventListener('click', nextChapter);
 
-const logicContainer = document.getElementById("logicContainer");
-document.getElementById("drawbridgePuzzleB").addEventListener('click', drawbridgePuzzle);
+const logicContainer = document.getElementById("returnContainer");
+document.getElementById("drawbridgeReturnB").addEventListener('click', nextChapter);
+
+//document.getElementById("logicContainerB").addEventListener('click', nextChapter);
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
@@ -105,35 +105,35 @@ function nextChapter() {
             console.log('Switch case: startDrawbridge');
             nextButton.style.display = "none";
             drawbridgeContainer.style.display = 'none';
-            // startDrawbridgeB.style.display = "none";
+            startDrawbridgeB.style.display = "none";
             currentChapter = "crankLever"; 
             leverContainer.style.display = "block";
             break;
         case "crankLever":
-            //console.log('Switch case: crankLever');
-            leverContainer.style.display = 'none';
+            console.log('Switch case: crankLever');
             nextButton.style.display = "none";
-           
-            break;
+            leverContainer.style.display = 'none';
+            currentChapter = "leaveCastle"; 
+            leaveContainer.style.display = "block";
+            break;            
         case "leaveCastle":
-            //console.log('Switch case: leaveCastle');
-            leaveContainer.style.display = 'block';
+            console.log('Switch case: leaveCastle');
+            leaveContainer.style.display = 'none';
             nextButton.style.display = "none";
             leaveCastleB.style.display = "block";
-            currentChapter = "leaveCastle";
-            break;
-        case "encounterWolves":
-            //console.log('Switch case: encounterWolves');
-            wolvesContainer.style.display = 'block';
-            nextButton.style.display = "none";
-            encounterWolvesB.style.display = "block";
             currentChapter = "encounterWolves";
             break;
-        case "drawbridgePuzzle":
-            //console.log('Switch case: drawbridgePuzzle');
+        case "encounterWolves":
+            console.log('Switch case: encounterWolves');
+            wolvesContainer.style.display = 'none';
+            nextButton.style.display = "none";
+            drawbridgeReturnB.style.display = "block";
+            currentChapter = "drawbridgeReturn";
+            break;
+        case "drawbridgeReturn":
+            console.log('Switch case: drawbridgeReturn');
             logicContainer.style.display = 'block';
             nextButton.style.display = "none";
-            drawbridgePuzzle.style.display = "block";
             break;
     }
     document.getElementById('nextButton').removeEventListener('click', nextChapter);
@@ -142,32 +142,29 @@ function nextChapter() {
     document.getElementById('nextButton').addEventListener('click', nextChapter);
 }
 
-
-
-document.getElementById("goToNextRoom").style.display = "none";
-
-function goToNextRoom() {
-    window.location.href = 'courtyard.html';
-}
-
 function drawbridgePuzzle() {
     currentChapter = "drawbridgePuzzle";
     buttonContainer.style.display = 'none';
     nextButton.style.display = "block";
+    logicContainer.style.display = 'block';
     displayChapter();
 }
 
+const puzzleContainer = document.getElementById("puzzle-container");
+const submitButton = document.getElementById("submit-button");
+
+
 // Logic Puzzle
-function drawbridgePuzzle() {
+function logicPuzzle() {
 
     // Initial Display
     document.getElementById("result").innerHTML = '';
-    document.getElementById("drawbridgePuzzle1B").style.display = "none";
+    document.getElementById("drawbridgePuzzleB").style.display = "none";
     document.getElementById("userAnswer").value = '3';
     document.getElementById("enterCourtyard").style.display = "none";
 
-    // Equation    
-    const correctAnswerdrawbridge = 3;
+    // Answer    
+    const correctAnswerDrawbridge = 3;
 
     // Problem and userInput visible
     document.getElementById("problem").innerHTML = `There are two wolves in front of a wolf, two wolves behind a duck and a wolf in the middle. How many wolves are there?`;
@@ -179,7 +176,7 @@ function drawbridgePuzzle() {
 
         if (userAnswer == correctAnswerDrawbridge) {
 
-            document.getElementById("result").innerHTML = "Correct! The drawbridge cranks open, and you rush inside before the wolves can bite you!";
+            document.getElementById("result").innerHTML = "Correct! The drawbridge cranks open, and you rush inside before the wolves can bite you.";
             correctAnswersJewel++;
 
             // Save correct answer count to local storage
@@ -187,12 +184,12 @@ function drawbridgePuzzle() {
             updateCorrectCountJewel();
 
             document.getElementById("goToNextRoom").style.display = "block";
-            document.getElementById("labyrinthPuzzle1B").style.display = "none";
+            document.getElementById("drawbridgePuzzle1B").style.display = "none";
         }
 
         else {
             document.getElementById("result").innerHTML = `The wolves get closer. You try again.`;
-            document.getElementById("labyrinthPuzzle1B").style.display = "block";
+            document.getElementById("drawbridgePuzzle1B").style.display = "block";
         }
 
         // Hide the input field after submitting
@@ -205,11 +202,10 @@ function drawbridgePuzzle() {
     }
 }
 
+//Inventory updates
 function updateCorrectCountFood() {
     document.getElementById('correctCountFood').textContent = correctAnswersFood;
 }
-
-
 
 function clearLocalStorage() {
     var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
@@ -222,4 +218,11 @@ function clearLocalStorage() {
     else {
         // User clicked "No" or closed the dialog
     }
+
+document.getElementById("goToNextRoom").style.display = "none";
+
+function goToNextRoom() {
+        window.location.href = 'courtyard.html';
+    }
+
 }
