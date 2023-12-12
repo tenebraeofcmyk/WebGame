@@ -8,19 +8,21 @@ let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
 document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
 document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
-let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
-document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
 
 //script lines
-let currentChapter = "findArmory";
-let puzzleSize = 4; 
+let currentChapter = "opening";
 
 window.onload = (event) => {
   console.log("page is fully loaded");
 
 
   const story = {
+    opening: {
+      lines: [
+          ""
+      ]
+  },
     findArmory: {
       lines: [
         "You are interested in seeing if any damage happened to the knights of this castle, and you figure the armory could give clues to this.",
@@ -53,13 +55,11 @@ window.onload = (event) => {
   }  
 };
 
-
-initializePuzzle();
-
 function displayChapter() {
   console.log('Entering displayChapter. Current chapter:', currentChapter);
   const storyContainer = document.getElementById('scriptContainer');
   const chapter = story[currentChapter];
+
   const chapterElement = document.createElement('div');
 
   chapter.lines.forEach(line => {
@@ -68,21 +68,32 @@ function displayChapter() {
       lineElement.textContent = line;
       chapterElement.appendChild(lineElement);
   });
-
-  storyContainer.innerHTML = '';
-  storyContainer.appendChild(chapterElement);
-}
-
   storyContainer.innerHTML = '';
   storyContainer.appendChild(chapterElement);
 
 }
 
-    const nextButton = document.getElementById('yourNextButtonId');
-    document.getElementById('nextButton').addEventListener('click', nextChapter);
+document.getElementById('nextButton').addEventListener('click', nextChapter);
+    
+const findArmoryContainer = document.getElementById("findArmoryContainer");
+document.getElementById('findArmoryContainerB').addEventListener('click', nextChapter);
 
-    const buttonContainer = document.getElementById("buttonContainer");
-    document.getElementById("playPuzzleButton").addEventListener('click', playPuzzle);
+const investigateDoorContainer = document.getElementById("investigateDoorContainer");
+document.getElementById('investigateDoorContainerB').addEventListener('click', nextChapter);
+
+const armoryPuzzleContainer = document.getElementById("armoryPuzzleContainer");
+document.getElementById('armoryPuzzleContainerB').addEventListener('click', nextChapter);
+
+const enterArmoryContainer = document.getElementById("enterArmoryContainer");
+document.getElementById('enterArmoryContainerB').addEventListener('click', nextChapter);
+
+const investigateArmorContainer = document.getElementById("investigateArmorContainer");
+document.getElementById("investigateArmorContainerB").addEventListener('click', nextChapter);
+
+document.getElementById("leaveArmory").style.display = "none";
+
+    //const buttonContainer = document.getElementById("buttonContainer");
+    //document.getElementById("playPuzzleButton").addEventListener('click', playPuzzle);
 
 
 function nextChapter() {
@@ -90,143 +101,124 @@ function nextChapter() {
     console.log('Entering nextChapter. Current chapter:', currentChapter);
 
     switch (currentChapter) {
-      
+      case "opening":
+          currentChapter = "findArmory";
+          findArmoryContainer.style.display = "block";
+          nextButton.style.display ="none";
+          break;
       case "findArmory":
-          //console.log('Switch case: findArmory');
-          buttonContainer.style.display = 'none';
-          nextButton.style.display = "block";
+          console.log('Switch case: findArmory');
+          findArmoryContainer.style.display = "none";
+          nextButton.style.display = "none";
+          investigateDoorContainer.style.display = "block";
+          currentChapter = "investigateDoor"; 
           break;
       case "investigateDoor":
-          //  console.log('Switch case: investigateDoor');
-          buttonContainer.style.display = 'none';
-          nextButton.style.display = "block";
-          currentChapter = "investigateDoor";
-          break;
-      case "playPuzzle":
-          //console.log('Switch case:playPuzzle');
-          currentChapter = "playPuzzle";
-          buttonContainer.style.display = 'block';
+          console.log('Switch case: investigateDoor');
+          investigateDoorContainer.style.display = "none";
           nextButton.style.display = "none";
+          armoryPuzzleContainer.style.display = "block";
+          currentChapter = "armoryPuzzle"; 
+          break;
+      case "armoryPuzzle":
+          console.log('Switch case:armoryPuzzle');
+          armoryPuzzleContainer.style.display = "none";
+          nextButton.style.display = "none";
+          enterArmoryContainer.style.display = "block";
+          currentChapter = "enterArmory"; 
           break;
       case "enterArmory":
-          //  console.log('Switch case: enterArmory');
-          buttonContainer.style.display = 'none';
-          nextButton.style.display = "block";
-          currentChapter = "enterArmory";
-          break;
+          console.log('Switch case: enterArmory');
+          enterArmoryContainer.style.display = "none";
+          nextButton.style.display = "none";
+          investigateArmorContainer.style.display = "block";
+          currentChapter = "investigateArmor"; 
+          break;    
       case "investigateArmor":
-          //  console.log('Switch case: investigateArmor');
-          buttonContainer.style.display = 'none';
-          nextButton.style.display = "block";
-          currentChapter = "investigateArmor";
-          break;
-
+          leaveArmory();
+          break; 
+    
       }
       document.getElementById('nextButton').removeEventListener('click', nextChapter);
       displayChapter();
-
+    
       document.getElementById('nextButton').addEventListener('click', nextChapter);
-  }
+    }
 
-  function findArmory() {
-      currentChapter = "findArmory";
-      buttonContainer.style.display = 'none';
+ 
+function leaveArmory() {
+  window.location.href = 'courtyard.html';
+}
+
+// Local Storage
+function clearLocalStorage() {
+  var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
+  
+  if (confirmation) {
+      // User clicked "Yes"
+      localStorage.clear();
+      window.location.href = 'myindex.html'; 
+  } 
+  else {
+      // User clicked "No" or closed the dialog
+  } 
+}
+
+// Patterns and Sequence Puzzle
+// Define a sequence of numbers
+const sequence = [9, 12, 7, 10, 5, 8, 3, 6];
+
+// Pick a random starting point for the sequence
+const startIndex = Math.floor(Math.random() * (sequence.length - 2)); // Ensure at least two numbers are remaining
+
+// Generate the puzzle by showing the first few numbers in the sequence
+const puzzleNumbers = sequence.slice(startIndex, startIndex + 2);
+
+// Display the puzzle to the user
+const puzzleContainer = document.getElementById("puzzle-container");
+const submitButton = document.getElementById("submit-button");
+
+puzzleContainer.textContent = `Puzzle: ${puzzleNumbers.join(', ')}`;
+
+// Add event listener for the submit button
+submitButton.addEventListener("click", function () {
+    const userInput = document.getElementById("user-input").value.trim();
+
+    // Check if the user input matches the next two numbers in the sequence
+    const expectedNumbers = sequence.slice(startIndex + 2, startIndex + 4);
+    
+    if (
+      userInput === expectedNumbers[0].toString() &&
+      document.getElementById("user-input2").value.trim() === expectedNumbers[1].toString()
+  ) {
+      alert("The cobbles in front of you change shape. The door opens.");
+      addToInventory("coins");
+      correctAnswersCoins++;
+      localStorage.setItem('correctAnswersCoins', correctAnswersCoins);
+      updateCorrectCountCoin();
+      currentChapter = "coins";
+      boxPuzzleContainer.style.display = "none";
       nextButton.style.display = "block";
       displayChapter();
-  }
-  function investigateDoor() {
-      currentChapter = "investigateDoor";
-      buttonContainer.style.display = 'none';
-      nextButton.style.display = "block";
-      displayChapter();
-  }
-  function playPuzzle() {
-      currentChapter = "playPuzzle";
-      buttonContainer.style.display = 'block';
-      nextButton.style.display = "none";
-      displayChapter();
-  }
-  function enterArmory() {
-      currentChapter = "enterArmory";
-      buttonContainer.style.display = 'none';
-      nextButton.style.display = "block";
-      displayChapter();
-  }
-  function investigateArmor() {
-      currentChapter = "investigateArmor";
-      buttonContainer.style.display = 'none';
-      nextButton.style.display = "block";
-      displayChapter();
-  }
-
-
-// Function to submit the answer
-function submitAnswer() {
-  const answer = document.getElementById("answerInput").value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
-  const correctAnswer = "111111"; // The correct answer
-
-  if (answer === correctAnswer) {
-    alert("The stones shudder as the door to the armory opens. You walk in.");
-    // Mark the room as completed
-    const roomId = 'roomArmory'; // Change this identifier for each room
-    markRoomAsCompleted(roomId);
   } else {
-    alert("The wall does not move. You try again.");
+      alert("The cobbles do not move, you try again.");
   }
+  // Function to ...
+  
+
+// Function to add an item to the inventory (if needed)
+function addToInventory(item) {
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+    inventory.push(item);
+    localStorage.setItem("inventory", JSON.stringify(inventory));
 }
 
-function initializePuzzle() {
-    lights = Array.from({ length: puzzleSize }, () => Array(puzzleSize).fill(true));
 
-  // Randomly toggle some lights initially
-  for (let i = 0; i < puzzleSize * puzzleSize; i++) {
-    const row = Math.floor(Math.random() * puzzleSize);
-    const col = Math.floor(Math.random() * puzzleSize);
-    toggleLight(row, col);
-  }
-
-  renderPuzzle();
+// Function to add an item to the inventory (if needed)
+function addToInventory(item) {
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+    inventory.push(item);
+    localStorage.setItem("inventory", JSON.stringify(inventory));
 }
 
-function toggleLight(row, col) {
-  lights[row][col] = !lights[row][col];
-
-  const neighbors = [
-    { row: row - 1, col },
-    { row: row + 1, col },
-    { row, col: col - 1 },
-    { row, col: col + 1 }
-  ];
-
-  neighbors.forEach(neighbor => {
-    if (neighbor.row >= 0 && neighbor.row < puzzleSize && neighbor.col >= 0 && neighbor.col < puzzleSize) {
-      lights[neighbor.row][neighbor.col] = !lights[neighbor.row][neighbor.col];
-    }
-  });
-}
-
-function renderPuzzle() {
-  const puzzleContainer = document.getElementById("puzzleContainer");
-  puzzleContainer.innerHTML = "";
-
-  for (let i = 0; i < puzzleSize; i++) {
-    for (let j = 0; j < puzzleSize; j++) {
-      const light = document.createElement("div");
-      light.classList.add("light");
-      light.style.backgroundColor = lights[i][j] ? "dark-gray" : "gray";
-      light.onclick = () => {
-        toggleLight(i, j);
-        renderPuzzle();
-      };
-      puzzleContainer.appendChild(light);
-    }
-    const lineBreak = document.createElement("br");
-    puzzleContainer.appendChild(lineBreak);
-  }
-}
-
-function playPuzzle() {
-  initializePuzzle();
-  const puzzleContainer = document.getElementById("puzzleContainer");
-  puzzleContainer.style.display = "block";
-};
+})}

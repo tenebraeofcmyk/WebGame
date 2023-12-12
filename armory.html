@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
   <style>
-    
+
   </style>
 
 </head>
@@ -40,30 +40,60 @@
 
 
   </div>
-    <main class="container">
+  <main class="container">
 
-      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-          <div class="col-lg-6 px-0">
-              <h1 class="display-5 fst-italic">Every Castle Has an Armory....</h1>
-            <div class="scriptContainer">   </div>
-              <button id="nextButton" class="btn btn-outline-light"> Next</button>
-              <div class="row mb-2 align-left" id="buttonContainer" style="display: none;">
-                <button id="playPuzzleButton" class="btn btn-outline-light" style="display:none">Play Puzzle</button>
-              </div>
-          </div>
-      </div>
-
-      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
         <div class="col-lg-6 px-0">
-          <div id="puzzleContainer">
-            
-          </div>
-          <button id="nextButton" class="btn btn-outline-light"> Next</button>
-          <button id="lightTorchButton" class="btn btn-outline-light" style="display:none"> Light Torch</button>
-          <button id="takePickButton" class="btn btn-outline-light" style="display:none"> Take Iron Pick</button>
+        <h1 class="display-5 fst-italic">Every Castle Has an Armory...</h1>
+            <div id="scriptContainer">
+                    
+            </div>
+        <button id="nextButton" class="btn btn-outline-light">Next</button>
         </div>
-      </div>
-    </main>
+    </div>
+
+    <div class="row mb-2 align-left" id="findArmoryContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="findArmoryContainerB">Find Armory Door</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="investigateDoorContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="investigateDoorContainerB">Investigate Door</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="armoryPuzzleContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="armoryPuzzleContainerB">Play Puzzle</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="enterArmoryContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="enterArmoryContainerB">Enter Armory</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="investigateArmorContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="investigateArmorContainerB">Investigate Armor</button>
+        </div>
+    </div>
+
+    <div class="row mb-3 align-left" id="leaveArmoryContainer" style="display:none";>
+        <div class="col p-4 d-flex">
+            
+            <button type="button" id="leaveArmory" class="btn btn-outline-light" style="padding:10px; margin:10px">Leave</button>
+        
+        </div>
+    </div>
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
