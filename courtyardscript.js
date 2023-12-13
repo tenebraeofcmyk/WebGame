@@ -21,9 +21,6 @@ document.getElementById('correctCountJournal').textContent = correctAnswersJourn
 // }
 
 
-
-
-
 const story = {
     opening: {
         lines: [

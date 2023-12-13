@@ -19,43 +19,43 @@ let currentChapter = "opening";
 //   console.log("page is fully loaded");
 
 
-  const story = {
-    opening: {
-      lines: [
-          ""
-      ]
+const story = {
+  opening: {
+    lines: [
+      ""
+    ]
   },
-    findArmory: {
-      lines: [
-        "You are interested in seeing if any damage happened to the knights of this castle, and you figure the armory could give clues to this.",
-        "Getting closer to the drawbridge reveals a door in the side of the alcove’s walls."
-      ]
+  findArmory: {
+    lines: [
+      "You are interested in seeing if any damage happened to the knights of this castle, and you figure the armory could give clues to this.",
+      "Getting closer to the drawbridge reveals a door in the side of the alcove’s walls."
+    ]
   },
   investigateDoor: {
-      lines: [
-          "You realize that if you were not looking for a door you would not find it, it is hidden in the shadows.", 
-          "The wooden door is coated gray, hiding it even more in the shadows of the cobble.", 
-          "As you look closely, the paint is designed to look like the cobble, and there are knobs in the center of each shape.", 
-          "You realize that to unlock the door, you need to press the buttons in the correct order."
-      ]
+    lines: [
+      "You realize that if you were not looking for a door you would not find it, it is hidden in the shadows.",
+      "The wooden door is coated gray, hiding it even more in the shadows of the cobble.",
+      "As you look closely, the paint is designed to look like the cobble, and there are knobs in the center of each shape.",
+      "You realize that to unlock the door, you need to press the buttons in the correct order."
+    ]
   },
   enterArmory: {
-      lines: [
-        "Once you figure out the order, you walk into the room.",  
-        "You see the walls are lined with maces, axes, broadswords, longswords, chains, and armor.",
-        "You keep searching for any clues."
-      ]
+    lines: [
+      "Once you figure out the order, you walk into the room.",
+      "You see the walls are lined with maces, axes, broadswords, longswords, chains, and armor.",
+      "You keep searching for any clues."
+    ]
   },
   investigateArmor: {
-      lines: [
-          "In the corner, you see a pile of armor.",  
-          "You inspect the armor and find it is filled with dead bodies, all of them collapsed on the floor.",
-          "You are surprised they are not fully rotted yet.", 
-          "When you check the knights for signs of damage, you smell a musky smell that makes you scrunch your nose. It almost smells like a poison.",
-          "Concerned of their fate, you quickly turn out and leave the armory."
-      ]
+    lines: [
+      "In the corner, you see a pile of armor.",
+      "You inspect the armor and find it is filled with dead bodies, all of them collapsed on the floor.",
+      "You are surprised they are not fully rotted yet.",
+      "When you check the knights for signs of damage, you smell a musky smell that makes you scrunch your nose. It almost smells like a poison.",
+      "Concerned of their fate, you quickly turn out and leave the armory."
+    ]
   }
-  }
+}
 
 function displayChapter() {
   console.log('Entering displayChapter. Current chapter:', currentChapter);
@@ -65,10 +65,10 @@ function displayChapter() {
   const chapterElement = document.createElement('div');
 
   chapter.lines.forEach(line => {
-      const lineElement = document.createElement('p');
-      lineElement.classList.add('lead', 'my-3');
-      lineElement.textContent = line;
-      chapterElement.appendChild(lineElement);
+    const lineElement = document.createElement('p');
+    lineElement.classList.add('lead', 'my-3');
+    lineElement.textContent = line;
+    chapterElement.appendChild(lineElement);
   });
   storyContainer.innerHTML = '';
   storyContainer.appendChild(chapterElement);
@@ -76,7 +76,7 @@ function displayChapter() {
 }
 
 document.getElementById('nextButton').addEventListener('click', nextChapter);
-    
+
 const findArmoryContainer = document.getElementById("findArmoryContainer");
 document.getElementById('findArmoryContainerB').addEventListener('click', nextChapter);
 
@@ -93,76 +93,84 @@ const investigateArmorContainer = document.getElementById("investigateArmorConta
 document.getElementById("investigateArmorContainerB").addEventListener('click', nextChapter);
 
 const exitArmoryContainer = document.getElementById("exitArmoryContainer");
-document.getElementById("exitArmoryContainerB").addEventListener('click', nextChapter);
+document.getElementById("exitArmoryContainerB").addEventListener('click', leaveArmory);
 
 document.getElementById("leaveArmory").style.display = "none";
 
-    //const buttonContainer = document.getElementById("buttonContainer");
-    //document.getElementById("playPuzzleButton").addEventListener('click', playPuzzle);
+//const buttonContainer = document.getElementById("buttonContainer");
+//document.getElementById("playPuzzleButton").addEventListener('click', playPuzzle);
 
 
 function nextChapter() {
-    // Logic to determine the next chapter based on the current chapter
-    console.log('Entering nextChapter. Current chapter:', currentChapter);
+  // Logic to determine the next chapter based on the current chapter
+  console.log('Entering nextChapter. Current chapter:', currentChapter);
 
-    switch (currentChapter) {
-      case "opening":
-          currentChapter = "findArmory";
-          findArmoryContainer.style.display = "block";
-          nextButton.style.display ="none";
-          break;
-      case "findArmory":
-          console.log('Switch case: findArmory');
-          findArmoryContainer.style.display = "none";
-          nextButton.style.display = "none";
-          investigateDoorContainer.style.display = "block";
-          currentChapter = "investigateDoor"; 
-          break;
-      //case "investigateDoor":
-        //  console.log('Switch case: investigateDoor');
-        // investigateDoorContainer.style.display = "none";
-        //  nextButton.style.display = "none";
-        //  armoryPuzzleContainer.style.display = "block";
-        //  currentChapter = "handlePuzzle"; 
-        //    break;  
-      case "investigateDoor":
-          console.log('Switch case: investigateDoor');
-          investigateDoorContainer.style.display = "none";
-          nextButton.style.display = "none";
-          handlePuzzle();
-          break;
-      case "armoryPuzzle":
-          console.log('Switch case:armoryPuzzle');
-          armoryPuzzleContainer.style.display = "none";
-          nextButton.style.display = "none";
-          enterArmoryContainer.style.display = "block";
-          currentChapter = "enterArmory"; 
-          break;
-      case "enterArmory":
-          console.log('Switch case: enterArmory');
-          enterArmoryContainer.style.display = "none";
-          nextButton.style.display = "none";
-          investigateArmorContainer.style.display = "block";
-          currentChapter = "investigateArmor"; 
-          break;    
-      case "investigateArmor":
-          console.log('Switch case: investigateArmor');
-          enterArmoryContainer.style.display = "none";
-          nextButton.style.display = "none";
-          exitArmoryContainer.style.display = "block";
-          currentChapter = "exitArmory"; 
-          break;
-      case "exitArmory":    
-          leaveArmory();
-          break; 
-      }
-      document.getElementById('nextButton').removeEventListener('click', nextChapter);
-      displayChapter();
-    
-      document.getElementById('nextButton').addEventListener('click', nextChapter);
-    }
+  switch (currentChapter) {
+    case "opening":
+      currentChapter = "findArmory";
+      findArmoryContainer.style.display = "block";
+      nextButton.style.display = "none";
+      break;
+    case "findArmory":
+      console.log('Switch case: findArmory');
+      findArmoryContainer.style.display = "none";
+      nextButton.style.display = "none";
+      investigateDoorContainer.style.display = "block";
+      currentChapter = "investigateDoor";
+      break;
+    //case "investigateDoor":
+    //  console.log('Switch case: investigateDoor');
+    // investigateDoorContainer.style.display = "none";
+    //  nextButton.style.display = "none";
+    //  armoryPuzzleContainer.style.display = "block";
+    //  currentChapter = "handlePuzzle"; 
+    //    break;  
+    case "investigateDoor":
+      console.log('Switch case: investigateDoor');
+      investigateDoorContainer.style.display = "none";
+      nextButton.style.display = "none";
+      handlePuzzle();
+      break;
+    // case "armoryPuzzle":
+    //     console.log('Switch case:armoryPuzzle');
+    //     armoryPuzzleContainer.style.display = "none";
+    //     nextButton.style.display = "none";
+    //     enterArmoryContainer.style.display = "block";
+    //     currentChapter = "enterArmory"; 
+    //     break;
+    case "enterArmory":
+      console.log('Switch case: enterArmory');
+      enterArmoryContainer.style.display = "none";
+      nextButton.style.display = "none";
+      investigateArmorContainer.style.display = "block";
+      currentChapter = "investigateArmor";
+      break;
+    case "investigateArmor":
+      console.log('Switch case: investigateArmor');
+      enterArmoryContainer.style.display = "none";
+      nextButton.style.display = "none";
+      exitArmoryContainer.style.display = "block";
+      //currentChapter = "exitArmory";
+      break;
+    // case "exitArmory":
+    //   leaveArmory();
+    //   break;
+  }
+  document.getElementById('nextButton').removeEventListener('click', nextChapter);
+  displayChapter();
 
- 
+  document.getElementById('nextButton').addEventListener('click', nextChapter);
+}
+
+
+function armoryPuzzle() {
+  armoryPuzzleContainer.style.display = "none";
+  nextButton.style.display = "none";
+  enterArmoryContainer.style.display = "block";
+  currentChapter = "enterArmory";
+  displayChapter();
+}
+
 function leaveArmory() {
   window.location.href = 'courtyard.html';
 }
@@ -170,15 +178,15 @@ function leaveArmory() {
 // Local Storage
 function clearLocalStorage() {
   var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
-  
+
   if (confirmation) {
-      // User clicked "Yes"
-      localStorage.clear();
-      window.location.href = 'index.html'; 
-  } 
+    // User clicked "Yes"
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
   else {
-      // User clicked "No" or closed the dialog
-  } 
+    // User clicked "No" or closed the dialog
+  }
 }
 
 // Pattern Puzzle
@@ -230,7 +238,7 @@ function checkAnswer() {
 
 function addToInventory(item) {
   const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
- inventory.push(item);     localStorage.setItem("inventory", JSON.stringify(inventory));
+  inventory.push(item); localStorage.setItem("inventory", JSON.stringify(inventory));
 }
 
 // // Function to add an item to the inventory (if needed)
@@ -248,4 +256,4 @@ function addToInventory(item) {
 //     localStorage.setItem("inventory", JSON.stringify(inventory));
 // }
 
- //})
+//})
