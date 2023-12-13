@@ -83,7 +83,10 @@ const buttonContainer = document.getElementById("doorButtonContainer");
 document.getElementById("doorSleepingB").addEventListener('click', sleepingChamberdoor);
 document.getElementById("doorKitchenB").addEventListener('click', kitchenDoor);
 document.getElementById("doorStablesB").addEventListener('click', stableDoor);
-document.getElementById("doorLabyrinthB").addEventListener('click', labyrinthDoor);
+document.getElementById("doorlabB").addEventListener('click', labyrinthDoor);
+document.getElementById("doorThroneB").addEventListener('click', throneRoomDoor);
+document.getElementById("doorArmoryB").addEventListener('click', armoryDoor);
+document.getElementById("drawbridgeB").addEventListener('click', drawbridgeDoor);
 
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
@@ -126,29 +129,43 @@ function labyrinthDoor() {
     window.location.href = "labyrinth.html";
 }
 
+function armoryDoor() {
+    window.location.href = "armory.html";
+
+}
+function throneRoomDoor() {
+    window.location.href = "throne-room.html";
+
+}
+function drawbridgeDoor() {
+    window.location.href = "drawbridge.html";
+}
+
 //Show the page to the Healer's Room only when the journal is in local storage
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Check if the specific ID is present in local storage
     var specificId = localStorage.getItem("correctCountJournal");
 
     if (specificId === "correctCountJournal") {
         // If the specific ID is present, show the div
         document.getElementById("journalreadB").classList.remove("hidden");
+        document.getElementById("throneRoomB").classList.remove("hidden");
+
     }
 });
 
 
 function clearLocalStorage() {
     var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
-    
+
     if (confirmation) {
         // User clicked "Yes"
         localStorage.clear();
-        window.location.href = 'myindex.html'; 
-    } 
+        window.location.href = 'myindex.html';
+    }
     else {
         // User clicked "No" or closed the dialog
-    } 
+    }
 }
 
