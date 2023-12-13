@@ -83,9 +83,9 @@ const leaveContainer = document.getElementById("leaveContainer");
 document.getElementById('leaveCastleB').addEventListener('click', nextChapter);
 
 const wolvesContainer = document.getElementById("wolvesContainer");
-document.getElementById('encounterWolvesB').addEventListener('click', nextChapter);
+document.getElementById('encounterWolvesB').addEventListener('click', logicPuzzle);
 
-const logicContainer = document.getElementById("returnContainer");
+const returnContainer = document.getElementById("returnContainer");
 document.getElementById("drawbridgeReturnB").addEventListener('click', nextChapter);
 
 //document.getElementById("logicContainerB").addEventListener('click', nextChapter);
@@ -117,21 +117,24 @@ function nextChapter() {
             break;            
         case "leaveCastle":
             console.log('Switch case: leaveCastle');
-            leaveContainer.style.display = 'none';
+            returnContainer.style.display = 'block';
             nextButton.style.display = "none";
-            leaveCastleB.style.display = "block";
+           // leaveCastleB.style.display = "block";
+           leaveContainer.style.display = "none";
             currentChapter = "encounterWolves";
             break;
         case "encounterWolves":
-            console.log('Switch case: encounterWolves');
+           // console.log('Switch case: encounterWolves');
             wolvesContainer.style.display = 'none';
             nextButton.style.display = "none";
-            drawbridgeReturnB.style.display = "block";
+            returnContainer.style.display = "block";
             currentChapter = "drawbridgeReturn";
             break;
         case "drawbridgeReturn":
             console.log('Switch case: drawbridgeReturn');
             logicContainer.style.display = 'block';
+            wolvesContainer.style.display ="block";
+            returnContainer.style.display = "none";
             nextButton.style.display = "none";
             break;
     }
@@ -141,13 +144,13 @@ function nextChapter() {
     document.getElementById('nextButton').addEventListener('click', nextChapter);
 }
 
-function drawbridgePuzzle() {
-    currentChapter = "drawbridgePuzzle";
-    buttonContainer.style.display = 'none';
-    nextButton.style.display = "block";
-    logicContainer.style.display = 'block';
-    displayChapter();
-}
+// function drawbridgePuzzle() {
+//     currentChapter = "drawbridgePuzzle";
+//     buttonContainer.style.display = 'none';
+//     nextButton.style.display = "block";
+//     logicContainer.style.display = 'block';
+//     displayChapter();
+// }
 
 const puzzleContainer = document.getElementById("puzzle-container");
 const submitButton = document.getElementById("submit-button");
@@ -155,6 +158,7 @@ const submitButton = document.getElementById("submit-button");
 
 // Logic Puzzle
 function logicPuzzle() {
+    console.log('begin puzzle');
 
     // Initial Display
     document.getElementById("result").innerHTML = '';
@@ -171,7 +175,7 @@ function logicPuzzle() {
 
     // Check  answer when the user submits
     document.getElementById("submitB").onclick = function () {
-        const userAnswer = document.getElementById("userAnswer").value;
+        const userAnswer = document.getElementById("userInput").value;
 
         if (userAnswer == correctAnswerDrawbridge) {
 
@@ -183,7 +187,7 @@ function logicPuzzle() {
             updateCorrectCountJewel();
 
             document.getElementById("goToNextRoom").style.display = "block";
-            document.getElementById("drawbridgePuzzle1B").style.display = "none";
+            //document.getElementById("drawbridgePuzzle1B").style.display = "none";
         }
 
         else {

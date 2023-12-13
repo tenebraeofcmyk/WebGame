@@ -8,13 +8,15 @@ let correctAnswersTorch = localStorage.getItem('correctAnswersTorch') || 0;
 document.getElementById('correctCountTorch').textContent = correctAnswersTorch;
 let correctAnswersIronPick = localStorage.getItem('correctAnswersIronPick') || 0;
 document.getElementById('correctCountIronPick').textContent = correctAnswersIronPick;
+let correctAnswersJournal = localStorage.getItem('correctAnswersJournal') || 0;
+document.getElementById('correctCountJournal').textContent = correctAnswersJournal;
 
 
 //script lines
 let currentChapter = "opening";
 
-window.onload = (event) => {
-  console.log("page is fully loaded");
+// window.onload = (event) => {
+//   console.log("page is fully loaded");
 
 
   const story = {
@@ -52,8 +54,8 @@ window.onload = (event) => {
           "When you check the knights for signs of damage, you smell a musky smell that makes you scrunch your nose. It almost smells like a poison.",
           "Concerned of their fate, you quickly turn out and leave the armory."
       ]
-  }  
-};
+  }
+  }
 
 function displayChapter() {
   console.log('Entering displayChapter. Current chapter:', currentChapter);
@@ -118,7 +120,7 @@ function nextChapter() {
           investigateDoorContainer.style.display = "none";
           nextButton.style.display = "none";
           armoryPuzzleContainer.style.display = "block";
-          currentChapter = "armoryPuzzle"; 
+          //currentChapter = "armoryPuzzle"; 
           break;
       case "armoryPuzzle":
           console.log('Switch case:armoryPuzzle');
@@ -175,7 +177,7 @@ const startIndex = Math.floor(Math.random() * (sequence.length - 2)); // Ensure 
 const puzzleNumbers = sequence.slice(startIndex, startIndex + 2);
 
 // Display the puzzle to the user
-const puzzleContainer = document.getElementById("puzzle-container");
+const puzzleContainer = document.getElementById("armoryPuzzleContainer");
 const submitButton = document.getElementById("submit-button");
 
 puzzleContainer.textContent = `Puzzle: ${puzzleNumbers.join(', ')}`;
@@ -196,8 +198,8 @@ submitButton.addEventListener("click", function () {
       correctAnswersCoins++;
       localStorage.setItem('correctAnswersCoins', correctAnswersCoins);
       updateCorrectCountCoin();
-      currentChapter = "coins";
-      boxPuzzleContainer.style.display = "none";
+      currentChapter = "enterArmory";
+      puzzleContainer.style.display = "none";
       nextButton.style.display = "block";
       displayChapter();
   } else {
@@ -206,19 +208,19 @@ submitButton.addEventListener("click", function () {
   // Function to ...
   
 
-// Function to add an item to the inventory (if needed)
-function addToInventory(item) {
-    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-    inventory.push(item);
-    localStorage.setItem("inventory", JSON.stringify(inventory));
-}
+// // Function to add an item to the inventory (if needed)
+// function addToInventory(item) {
+//     const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+//     inventory.push(item);
+//     localStorage.setItem("inventory", JSON.stringify(inventory));
+// }
 
 
-// Function to add an item to the inventory (if needed)
-function addToInventory(item) {
-    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-    inventory.push(item);
-    localStorage.setItem("inventory", JSON.stringify(inventory));
-}
+// // Function to add an item to the inventory (if needed)
+// function addToInventory(item) {
+//     const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+//     inventory.push(item);
+//     localStorage.setItem("inventory", JSON.stringify(inventory));
+// }
 
-})}
+ })
