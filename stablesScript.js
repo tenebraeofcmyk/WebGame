@@ -199,6 +199,8 @@ submitButton.addEventListener("click", function () {
         currentChapter = "puzzleSuccess";
         boxPuzzleContainer.style.display = "none";
         nextButton.style.display = "block";
+        correctAnswersJewel++;
+        updateCorrectCountJewel();
         displayChapter();
 
     } else {
@@ -218,13 +220,15 @@ function pickRandomWord(wordList) {
     return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
-// function addToInventory(item) {
-//     const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-//     inventory.push(item);
-//     localStorage.setItem("inventory", JSON.stringify(inventory));
-// }
+ function addToInventory(item) {
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+   inventory.push(item);     localStorage.setItem("inventory", JSON.stringify(inventory));
+ }
 //});
 
+function updateCorrectCountJewel() {
+    document.getElementById('correctCountJewel').textContent = correctAnswersJewel;
+}
 
 
 function clearLocalStorage() {

@@ -88,6 +88,9 @@ document.getElementById("doorlabB").addEventListener('click', labyrinthDoor);
 document.getElementById("doorArmoryB").addEventListener('click', armoryDoor);
 document.getElementById("drawbridgeB").addEventListener('click', drawbridgeDoor);
 
+
+
+
 function nextChapter() {
     // Logic to determine the next chapter based on the current chapter
     console.log('Entering nextChapter. Current chapter:', currentChapter);
@@ -141,7 +144,13 @@ function drawbridgeDoor() {
     window.location.href = "drawbridge.html";
 }
 
+function healerRoom () {
+    window.location.href="healersRoom.html";
+}
+
 //Show the page to the Healer's Room only when the journal is in local storage
+document.getElementById("journalreadB").addEventListener('click', healerRoom );
+document.getElementById("doorThroneB").addEventListener('click', throneRoomDoor );
 
 document.addEventListener("DOMContentLoaded", function () {
     // Check if the specific ID is present in local storage
@@ -150,11 +159,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (specificId === "correctCountJournal") {
         // If the specific ID is present, show the div
         document.getElementById("journalread").classList.remove("hidden");
-        document.getElementById("throneRoomB").classList.remove("hidden");
+        // document.getElementById("throneRoomB").classList.remove("hidden");
 
     }
 });
 
+
+function addToInventory(item) {
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+   inventory.push(item);     localStorage.setItem("inventory", JSON.stringify(inventory));
+ }
 
 function clearLocalStorage() {
     var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
