@@ -92,6 +92,9 @@ document.getElementById('enterArmoryContainerB').addEventListener('click', nextC
 const investigateArmorContainer = document.getElementById("investigateArmorContainer");
 document.getElementById("investigateArmorContainerB").addEventListener('click', nextChapter);
 
+const exitArmoryContainer = document.getElementById("exitArmoryContainer");
+document.getElementById("exitArmoryContainerB").addEventListener('click', nextChapter);
+
 document.getElementById("leaveArmory").style.display = "none";
 
     //const buttonContainer = document.getElementById("buttonContainer");
@@ -115,12 +118,18 @@ function nextChapter() {
           investigateDoorContainer.style.display = "block";
           currentChapter = "investigateDoor"; 
           break;
+      //case "investigateDoor":
+        //  console.log('Switch case: investigateDoor');
+        // investigateDoorContainer.style.display = "none";
+        //  nextButton.style.display = "none";
+        //  armoryPuzzleContainer.style.display = "block";
+        //  currentChapter = "handlePuzzle"; 
+        //    break;  
       case "investigateDoor":
           console.log('Switch case: investigateDoor');
           investigateDoorContainer.style.display = "none";
           nextButton.style.display = "none";
-          armoryPuzzleContainer.style.display = "block";
-          //currentChapter = "armoryPuzzle"; 
+          handlePuzzle();
           break;
       case "armoryPuzzle":
           console.log('Switch case:armoryPuzzle');
@@ -137,9 +146,15 @@ function nextChapter() {
           currentChapter = "investigateArmor"; 
           break;    
       case "investigateArmor":
+          console.log('Switch case: investigateArmor');
+          enterArmoryContainer.style.display = "none";
+          nextButton.style.display = "none";
+          exitArmoryContainer.style.display = "block";
+          currentChapter = "exitArmory"; 
+          break;
+      case "exitArmory":    
           leaveArmory();
           break; 
-    
       }
       document.getElementById('nextButton').removeEventListener('click', nextChapter);
       displayChapter();
@@ -166,47 +181,54 @@ function clearLocalStorage() {
   } 
 }
 
-// Patterns and Sequence Puzzle
-// Define a sequence of numbers
-const sequence = [9, 12, 7, 10, 5, 8, 3, 6];
+// Pattern Puzzle
+function handlePuzzle() {
+  // Randomize the starting index for the puzzle
+  const startIndex = Math.floor(Math.random() * 7);
 
-// Pick a random starting point for the sequence
-const startIndex = Math.floor(Math.random() * (sequence.length - 2)); // Ensure at least two numbers are remaining
+  // Create the number sequence
+  const numberSequence = [9, 12, 7, 10, 5, 8, 3, 6, 1, 4, -1, 2, -3];
 
-// Generate the puzzle by showing the first few numbers in the sequence
-const puzzleNumbers = sequence.slice(startIndex, startIndex + 2);
+  // Extract the subsequence for the puzzle
+  const puzzleSequence = numberSequence.slice(startIndex, startIndex + 6);
 
-// Display the puzzle to the user
-const puzzleContainer = document.getElementById("armoryPuzzleContainer");
-const submitButton = document.getElementById("submit-button");
+  // Calculate the expected next number in the larger pattern sequence
+  const expectedNextNumber = numberSequence[startIndex + 6];
 
-puzzleContainer.textContent = `Puzzle: ${puzzleNumbers.join(', ')}`;
+  // Display the puzzle to the user
+  const puzzleText = `Complete the sequence: ${puzzleSequence.join(', ')}, ?`;
+  document.getElementById('puzzleText').textContent = puzzleText;
 
-// Add event listener for the submit button
-submitButton.addEventListener("click", function () {
-    const userInput = document.getElementById("user-input").value.trim();
+  // Store the expected next number in the data attribute of the form for later reference
+  document.getElementById('puzzleForm').dataset.expectedNextNumber = expectedNextNumber;
 
-    // Check if the user input matches the next two numbers in the sequence
-    const expectedNumbers = sequence.slice(startIndex + 2, startIndex + 4);
-    
-    if (
-      userInput === expectedNumbers[0].toString() &&
-      document.getElementById("user-input2").value.trim() === expectedNumbers[1].toString()
-  ) {
-      alert("The cobbles in front of you change shape. The door opens.");
-      addToInventory("coins");
-      correctAnswersCoins++;
-      localStorage.setItem('correctAnswersCoins', correctAnswersCoins);
-      updateCorrectCountCoin();
-      currentChapter = "enterArmory";
-      puzzleContainer.style.display = "none";
-      nextButton.style.display = "block";
-      displayChapter();
+  // Show the puzzle container
+  document.getElementById('puzzleContainer').style.display = 'block';
+}
+
+// Add a new function to check the user's answer
+function checkAnswer() {
+  const userAnswer = document.getElementById('userAnswer').value;
+  const expectedNextNumber = parseInt(document.getElementById('puzzleForm').dataset.expectedNextNumber);
+
+  if (parseInt(userAnswer) === expectedNextNumber) {
+    alert("The cobbles move, the door opens.");
+    //addToInventory("coins");
+    //correctAnswersCoins++;
+    //localStorage.setItem('correctAnswersCoins', correctAnswersCoins);
+    //updateCorrectCountCoin();
+    currentChapter = "enterArmory";
+    document.getElementById('puzzleContainer').style.display = 'none';
+    nextButton.style.display = "block";
+    armoryPuzzle();  // Call armoryPuzzle function
   } else {
-      alert("The cobbles do not move, you try again.");
+    alert("The cobbles remain still. You try again.");
+    // Optionally, you can clear the input field for another attempt
+    document.getElementById('userAnswer').value = '';
   }
-  // Function to ...
-  
+}
+
+
 
 // // Function to add an item to the inventory (if needed)
 // function addToInventory(item) {
@@ -223,4 +245,4 @@ submitButton.addEventListener("click", function () {
 //     localStorage.setItem("inventory", JSON.stringify(inventory));
 // }
 
- })
+ //})

@@ -50,6 +50,14 @@
             </div>
         <button id="nextButton" class="btn btn-outline-light">Next</button>
         </div>
+        <div id="puzzleContainer" style="display: none;">
+          <p class ="lead my-3" id="puzzleText"></p>
+          <form id="puzzleForm">
+            <p class ="lead my-3" label for="userAnswer">Your Answer:</label>
+            <input type="text" class="btn btn-outline-light" style="padding:10px; margin:10px" id="userAnswer" name="userAnswer" required>
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" onclick="checkAnswer()">Submit Answer</button>
+          </form>
+        </div>        
     </div>
 
     <div class="row mb-2 align-left" id="findArmoryContainer" style="display: none;">
@@ -87,8 +95,15 @@
     <div class="row mb-2 align-left" id="investigateArmorContainer" style="display: none;">
         <div class="col p-4 d-flex">
         <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-            id="investigateArmorContainerB">Investigate Armor</button>
+            id="investigateArmorContainerB">Leave the Armory</button>
         </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="exitArmoryContainer" style="display: none;">
+      <div class="col p-4 d-flex">
+      <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+          id="exitArmoryContainerB">To the Courtyard</button>
+      </div>
     </div>
 
     <div class="row mb-3 align-left" id="leaveArmoryContainer" style="display:none";>
