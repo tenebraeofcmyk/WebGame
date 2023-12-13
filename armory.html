@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <script src="js/color-modes.js"></script>
+    <script src="https://kit.fontawesome.com/c92bfa29e2.js" crossorigin="anonymous"></script>    
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+
+  <title>In the Armory</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/blog.css" rel="stylesheet">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <style>
+
+  </style>
+
+</head>
+
+<body> 
+<div class="container">
+  <header class="border-bottom lh-1 py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        <a class="link-secondary" href="#">About</a>
+      </div>
+      <div class="col-4 text-center">
+        <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">A Text Game</a>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <a class="btn btn-sm btn-outline-secondary" href="#">Restart</a>
+      </div>
+    </div>
+  </header>
+
+
+  </div>
+  <main class="container">
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+        <h1 class="display-5 fst-italic">Every Castle Has an Armory...</h1>
+            <div id="scriptContainer">
+                    
+            </div>
+        <button id="nextButton" class="btn btn-outline-light">Next</button>
+        </div>
+        <div id="puzzleContainer" style="display: none;">
+          <p class ="lead my-3" id="puzzleText"></p>
+          <form id="puzzleForm">
+            <p class ="lead my-3" label for="userAnswer">Your Answer:</label>
+            <input type="text" class="btn btn-outline-light" style="padding:10px; margin:10px" id="userAnswer" name="userAnswer" required>
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px" onclick="checkAnswer()">Submit Answer</button>
+          </form>
+        </div>        
+    </div>
+
+    <div class="row mb-2 align-left" id="findArmoryContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="findArmoryContainerB">Find Armory Door</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="investigateDoorContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="investigateDoorContainerB">Investigate Door</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="armoryPuzzleContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="armoryPuzzleContainerB">Play Puzzle</button>
+
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="submit-button">Submit</button>
+        
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="enterArmoryContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="enterArmoryContainerB">Enter Armory</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="investigateArmorContainer" style="display: none;">
+        <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+            id="investigateArmorContainerB">Leave the Armory</button>
+        </div>
+    </div>
+
+    <div class="row mb-2 align-left" id="exitArmoryContainer" style="display: none;">
+      <div class="col p-4 d-flex">
+      <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+          id="exitArmoryContainerB">To the Courtyard</button>
+      </div>
+    </div>
+
+    <div class="row mb-3 align-left" id="leaveArmoryContainer" style="display:none";>
+        <div class="col p-4 d-flex">
+            
+            <button type="button" id="leaveArmory" class="btn btn-outline-light" style="padding:10px; margin:10px">Leave</button>
+        
+        </div>
+    </div>
+
+  
+
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-body-tertiary rounded">
+          <h4 class="fst-italic">Inventory</h4>
+          <div  id="torchIcon" style="display:none">
+          </div>
+          <div id="candy">
+            <p><i class="fa-solid fa-bowl-food fa-xl" style ="padding:10px;"></i>Food: <span id="correctCountFood"></span></p> 
+            <p> <i class="fa-solid fa-trowel fa-xl" style ="padding:10px;"></i>Iron Pick: <span id="correctCountIronPick"></span></p> 
+            <p> <i class="fa-solid fa-fire-flame-curved fa-xl" style ="padding:10px;"></i>Torch: <span id="correctCountTorch"></span></p> 
+            <p><i class="fa-solid fa-gem fa-xl" style ="padding:10px;"></i>Jewels: <span id="correctCountJewel"></span></p>       
+            <p><i class="fa-solid fa-coins fa-xl"style ="padding:10px;"></i>Coins: <span id="correctCountCoins"></span></p>  
+            <p><i class="fa-solid fa-book-open fa-xl"style ="padding:10px;"></i>Journal: <span id="correctCountJournal"></span></p>    
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+
+    <p class="mb-0">
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+
+
+</body>
+
+<script src="js/armory.js"></script>
+
+</html>
