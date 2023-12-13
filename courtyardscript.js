@@ -84,7 +84,7 @@ document.getElementById("doorSleepingB").addEventListener('click', sleepingChamb
 document.getElementById("doorKitchenB").addEventListener('click', kitchenDoor);
 document.getElementById("doorStablesB").addEventListener('click', stableDoor);
 document.getElementById("doorlabB").addEventListener('click', labyrinthDoor);
-document.getElementById("doorThroneB").addEventListener('click', throneRoomDoor);
+
 document.getElementById("doorArmoryB").addEventListener('click', armoryDoor);
 document.getElementById("drawbridgeB").addEventListener('click', drawbridgeDoor);
 
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (specificId === "correctCountJournal") {
         // If the specific ID is present, show the div
-        document.getElementById("journalreadB").classList.remove("hidden");
+        document.getElementById("journalread").classList.remove("hidden");
         document.getElementById("throneRoomB").classList.remove("hidden");
 
     }

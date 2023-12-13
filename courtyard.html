@@ -55,17 +55,25 @@
       </div>
     </div>
 
-    <div class="row mb-2 align-left" id="doorButtonContainer" style="display: none;">
-      <div class="col p-4 d-flex">
+    <div class="row mb-2 align-left " id="doorButtonContainer" style="display: none;">
+      <div class="col p-4 d-flex vstack">
         <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorSleepingB"> Open the First Door</button>
         <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorKitchenB">Open the Next Door Down</button>
         <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorStablesB">Go through the Stables Door</button>
         <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorlabB">Look for the Labyrinth</button>
         <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorArmoryB">Armory</button>
-        <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorThroneB">Throne Room</button>
+        <!-- <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="doorThroneB">Throne Room</button> -->
         <button type="button" class="btn btn-outline-light" style= "padding:10px; margin:10px" id="drawbridgeB">Go to the Drawbridge</button>
+        <!-- <button type="button" class="btn btn-outline-light hidden" style= "padding:10px; margin:10px;" id="journalreadB">Look for the Healer's Room</button> -->
       </div>
     </div>
+
+    <div class="row mb-2 align-left hidden" id="journalread" >
+      <div class="col p-4 d-flex">
+        <button type="button" class="btn btn-outline-light hidden" style= "padding:10px; margin:10px;" id="journalreadB">Look for the Healer's Room</button>
+        </div>
+        </div>
+
    
     <div class="row mb-2 align-left" id="journalreadB" style="display: none;">
       <div class="col p-4 d-flex">
@@ -78,9 +86,6 @@
         <div class="p-4 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">Inventory</h4>
 
-          <div id="flint">
-            <i class="fa-solid fa-fire-flame-curved fa-xl" id="torchIcon" style="display:none;margin:10px"></i>
-          </div>
           <div id="candy">
             <p><i class="fa-solid fa-bowl-food fa-xl" style ="padding:10px;"></i>Food: <span id="correctCountFood"></span></p> 
             <p> <i class="fa-solid fa-trowel fa-xl" style ="padding:10px;"></i>Iron Pick: <span id="correctCountIronPick"></span></p> 

@@ -132,6 +132,9 @@ function nextChapter() {
         case "puzzleFail":
             exitStables();
             break;
+        case "puzzleSuccess":
+            exitStables();
+            break;
 
         // Add more cases as needed
     }
@@ -145,7 +148,7 @@ function goOutside() {
     currentChapter = "openField";
     buttonContainer.style.display = "block";
     outsideButtons.style.display = "none";
-    nextButton = "none";
+    nextButton.style.display = "none";
     displayChapter();
 
 }
@@ -178,37 +181,62 @@ function labyrinthDoor() {
     window.location.href = "labyrinth.html";
 }
 
+const words = ["saddle", "stirrups", "harness", "bridle", "grain"];
+const unscrambledWord = pickRandomWord(words);
+const scrambledWord = scrambleWord(unscrambledWord);
+
+const puzzleContainer = document.getElementById("puzzle-container");
+const submitButton = document.getElementById("submit-button");
+
+puzzleContainer.textContent = scrambledWord;
+
+submitButton.addEventListener("click", function () {
+    const userInput = document.getElementById("user-input").value.toLowerCase();
+
+    if (userInput === unscrambledWord) {
+
+        //     //Correct
+        currentChapter = "puzzleSuccess";
+        boxPuzzleContainer.style.display = "none";
+        nextButton.style.display = "block";
+        displayChapter();
+
+    } else {
+        currentChapter = "puzzleFail";
+        boxPuzzleContainer.style.display = "none";
+        nextButton.style.display = "block";
+        displayChapter();
+    }
+});
 
 
+function scrambleWord(word) {
+    return word.split("").sort(() => Math.random() - 0.5).join("");
+}
 
-// //Puzzle space
-// if {
-//     //Correct
-//     currentChapter = "puzzleSuccess";
-//     boxPuzzleContainer.style.display = "none";
-//     nextButton.style.display = "block";
-//     displayChapter();
+function pickRandomWord(wordList) {
+    return wordList[Math.floor(Math.random() * wordList.length)];
+}
 
+// function addToInventory(item) {
+//     const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+//     inventory.push(item);
+//     localStorage.setItem("inventory", JSON.stringify(inventory));
 // }
+//});
 
-// else {
-//     currentChapter = "puzzleFail";
-//     boxPuzzleContainer.style.display = "none";
-//     nextButton.style.display = "block";
-//     displayChapter();
-// }
 
 
 function clearLocalStorage() {
     var confirmation = confirm("Restarting the game will erase all your inventory. Do you want to restart?");
-    
+
     if (confirmation) {
         // User clicked "Yes"
         localStorage.clear();
-        window.location.href = 'myindex.html'; 
-    } 
+        window.location.href = 'myindex.html';
+    }
     else {
         // User clicked "No" or closed the dialog
-    } 
+    }
 }
 
