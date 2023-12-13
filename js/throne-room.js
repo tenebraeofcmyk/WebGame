@@ -55,8 +55,7 @@ window.onload = (event) => {
             ]
         },        
     }
-
-
+    
     let currentChapter = "opening";
 
     function displayChapter() {
