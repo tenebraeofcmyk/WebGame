@@ -191,6 +191,7 @@ function nextChapter() {
         case "plaqueRead":
             console.log('Switch to plaqueRead');
             lightTorchButton.style.display = 'none';
+            nextButton.style.display = "none";
             doorChoice.style.display = 'block';
             break;
         case "firstDoor":
@@ -206,11 +207,13 @@ function nextChapter() {
             doorChoice.style.display = 'block';
             break;
         case "secondDoor":
-            console.log('switch to secondDoor');
+            console.log('switch to plaqueRead');
             currentChapter = "plaqueRead";
+            nextButton.style.display = "none";
+            doorChoice.style.display = 'block';
             break;
         case "thirdDoor":
-            nextButton ="block";
+            nextButton.style.display ="block";
             window.location.href = "entrycourtyard.html";
             break;
 
@@ -288,7 +291,7 @@ function takePick() {
 
 function selectSecondDoor() {
     console.log("second door selected");
-    currentChapter = "secondDoor";
+   currentChapter = "secondDoor";
     doorChoice.style.display = 'none';
     nextButton.style.display = "block";
     displayChapter();
