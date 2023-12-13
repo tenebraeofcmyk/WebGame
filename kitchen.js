@@ -184,7 +184,7 @@
             if (confirmation) {
                 // User clicked "Yes"
                 localStorage.clear();
-                window.location.href = 'myindex.html'; 
+                window.location.href = 'index.html'; 
             } 
             else {
                 // User clicked "No" or closed the dialog
