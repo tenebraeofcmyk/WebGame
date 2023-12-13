@@ -57,6 +57,18 @@
             </div>
         <button id="nextButton" class="btn btn-outline-light"> Next</button>
         </div>
+        <div class="row mb-2 align-left" id="returnContainer" style="display: none;">
+            <div class="col p-4 d-flex">
+            <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
+                id="drawbridgeReturnB">Go to Safety</button>
+            </div>
+            <div id="puzzle-container">
+                <p>There are two wolves in front of a wolf, two wolves behind a wolf, and a wolf in the middle. How many wolves are there?</p>
+                <input type="text" class="form-control" id="user-input">
+                <button id="submit-button" class="btn btn-outline-light" style="padding:10px; margin:10px">Submit</button>
+                <p id="result"></p>
+            </div>
+        </div>
     </div>
 
     <div class="row mb-2 align-left" id="drawbridgeContainer" style="display: none;">
@@ -87,34 +99,15 @@
         </div>
     </div>
 
-    <div class="row mb-2 align-left" id="returnContainer" style="display: none;">
-        <div class="col p-4 d-flex">
-        <button type="button" class="btn btn-outline-light" style="padding:10px; margin:10px"
-            id="drawbridgeReturnB">Go to Safety</button>
-        </div>
-    </div>
 
-    <div class="row mb-3 align-left" id="logicPuzzleContainer" style="display:none";>
-        <div class="col p-4 d-flex">
-          <form>
-          <div id="puzzle-container" class="form-control-lg"></div>
-          <label for="user-input" class="form-label">Unscramble the Word:</label>
-          <input type="text" class="form-control" id="user-input">
-          <button type="button" id="submit-button" class="btn btn-outline-light" style="padding:10px; margin:10px">Submit</button>
-          
-          </form>
-        </div>
-      </div>
       <div class="row mb-3 align-left" id="leaveDrawbridgeContainer" style="display:none";>
         <div class="col p-4 d-flex">
          
-          <button type="button" id="leaveDrawbridge" class="btn btn-outline-light" style="padding:10px; margin:10px">Leave</button>
+          <button type="button" id="exitDrawbridge" class="btn btn-outline-light" style="padding:10px; margin:10px">Leave</button>
         
         </div>
       </div>
       
-  
-
     <div class="col-md-4">
         <div class="position-sticky" style="top: 2rem;">
           <div class="p-4 mb-3 bg-body-tertiary rounded">
